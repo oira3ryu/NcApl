@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <h1>Editing Plant</h1>
+    <form th:action="@{/plant/{id}/edit(id=*{id})}" th:method="post"
+        th:object="${plant}">
+        <p>
+            現場名<input type="text" th:field="*{name}" />
+        </p>
+        <p>
+        <button type="submit">更新</button>
+        </p>
+    </form>
+    <a href="/plant">一覧画面へ</a>
+
+</body>
+</html>

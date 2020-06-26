@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>Plant List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名称名</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="plant : ${plants}" th:object="${plant}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{name}"></td>
+                <td><a th:href="@{/plant/{id}/edit(id=*{id})}">編集</a></td>
+                <td>
+                    <form th:action="@{/plant/{id}(id=*{id})}" th:method="post">
+                        <input type="submit" value="削除" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/plant/plantNew">新規作成</a>
+</body>
+</html>
