@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <h1>Editing Journal</h1>
+    <form th:action="@{/journal/{id}/edit(id=*{id})}" th:method="post"
+        th:object="${journal}">
+        <p>
+            名称<input type="text" th:journal="*{name}" />
+        </p>
+        <p>
+        <button type="submit">更新</button>
+        </p>
+    </form>
+    <a href="/journal">一覧画面へ</a>
+
+</body>
+</html>
