@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <h1>Editing Strength</h1>
+    <form th:action="@{/strength/{id}/edit(id=*{id})}" th:method="post"
+        th:object="${strength}">
+        <p>
+            値<input type="text" th:field="*{value}" />
+        </p>
+        <p>
+        <button type="submit">更新</button>
+        </p>
+    </form>
+    <a href="/strength">一覧画面へ</a>
+
+</body>
+</html>
