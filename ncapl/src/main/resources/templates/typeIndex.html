@@ -5,30 +5,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h1>Field List</h1>
+    <h1>Type List</h1>
 
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>現場名</th>
+                <th>値</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="field : ${fields}" th:object="${field}">
+            <tr th:each="type : ${types}" th:object="${type}">
                 <td th:text="*{id}"></td>
-                <td th:text="*{name}"></td>
-                <td><a th:href="@{/field/{id}/edit(id=*{id})}">編集</a></td>
+                <td th:text="*{value}"></td>
+                <td><a th:href="@{/type/{id}/edit(id=*{id})}">編集</a></td>
                 <td>
-                    <form th:action="@{/field/{id}(id=*{id})}" th:method="post">
+                    <form th:action="@{/type/{id}(id=*{id})}" th:method="post">
                         <input type="submit" value="削除" />
                     </form>
                 </td>
             </tr>
         </tbody>
     </table>
-    <a href="/field/fieldNew">新規作成</a>
+    <a href="/type/typeNew">新規作成</a>
 </body>
 </html>
