@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -16,19 +15,14 @@ import com.example.demo.repository.AggregateRepository;
 public class AggregateService {
 
 	@Autowired
-	AggregateRepository repository;
+	private AggregateRepository repository;
 
 	public List<Aggregate> findAll() {
 		return repository.findAll();
 	}
 
 	public Aggregate findOne(Integer id) {
-		Optional<Aggregate> aggregate = repository.findById(id);
-		if (aggregate.isPresent()) {
-			return aggregate.get();
-		} else {
-			return null;
-		}
+		return repository.findOne(id);
 	}
 
 	public Aggregate save(Aggregate aggregate) {
@@ -36,6 +30,6 @@ public class AggregateService {
 	}
 
 	public void delete(Integer id) {
-		repository.deleteById(id);
+		repository.delete(id);
 	}
 }
