@@ -59,7 +59,29 @@
 		</tbody>
 		</table>
 
-	<script type="text/javascript">
+	<!-- jqueryの場合 -->
+
+	<script>
+		//formタグにサブミット時イベントを設定
+
+		$('form').submit(function(event) {
+
+			// 確認メッセージ表示
+			// 戻り値を変数resultに代入(trueまたはfalse)
+			var result = window.confirm('本当に削除してよろしいですか？');
+
+			// キャンセルボタンが押された場合
+			if (result == false) {
+
+				// サブミットを中止する
+				return false;
+			}
+		});
+	</script>
+
+	<!-- javascriptの場合
+
+		<script type="text/javascript">
 
 		function delcheck() {
 
@@ -75,7 +97,6 @@
 			}
 		}
 
-	</script>
-
+	</script> -->
 </body>
 </html>
