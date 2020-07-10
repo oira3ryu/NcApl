@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<h1 class="my-3 ml-3">日報</h1>
+
+	<div class="col-5 ml-3">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>j_id</th>
+					<th>st_id</th>
+					<th>ag_id</th>
+					<th>sl_id</th>
+					<th>u_id</th>
+					<th>flg_id</th>
+					<th>sl_id</th>
+					<th>t_id</th>
+					<th>fi_id</th>
+					<th>record_date</th>
+					<th>co_id</th>
+					<th>quantity</th>
+					<th>p_id</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="book : ${books}" th:object="${book}">
+					<td th:text="*{id}"></td>
+					<td th:text="*{j_id}"></td>
+					<td th:text="*{st_id}"></td>
+					<td th:text="*{ag_id}"></td>
+					<td th:text="*{sl_id}"></td>
+					<td th:text="*{u_id}"></td>
+					<td th:text="*{flg_id}"></td>
+					<td th:text="*{sl_id}"></td>
+					<td th:text="*{t_id}"></td>
+					<td th:text="*{fi_id}"></td>
+					<td th:text="*{record_date}"></td>
+					<td th:text="*{co_id}"></td>
+					<td th:text="*{quantity}"></td>
+					<td th:text="*{p_id}"></td>
+					<td><a th:href="@{/book/{id}/edit(id=*{id})}"
+						class="btn btn-primary">編集</a></td>
+					<td>
+						<form th:action="@{/book/{id}(id=*{id})}" th:method="post" onSubmit="return delcheck()">
+							<input type="submit" class="btn btn-danger" value="削除" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/" class="btn btn-info">メニュー</a>
+		<span>
+			<a href="/book/bookNew" class="btn btn-primary">新規作成</a>
+		</span>
+		</tbody>
+		</table>
+
+	<!-- jqueryの場合 -->
+
+	<script>
+		//formタグにサブミット時イベントを設定
+
+		$('form').submit(function(event) {
+
+			// 確認メッセージ表示
+			// 戻り値を変数resultに代入(trueまたはfalse)
+			var result = window.confirm('本当に削除してよろしいですか？');
+
+			// キャンセルボタンが押された場合
+			if (result == false) {
+
+				// サブミットを中止する
+				return false;
+			}
+		});
+	</script>
+
+	<!-- javascriptの場合
+
+		<script type="text/javascript">
+
+		function delcheck() {
+
+			if (window.confirm('削除してよろしいですか？')) { // 確認ダイアログを表示
+
+				return true; // 「OK」時は送信を実行
+
+			} else { // 「キャンセル」時の処理
+
+				window.alert('キャンセルされました'); // 警告ダイアログを表示
+				return false; // 送信を中止
+
+			}
+		}
+
+	</script> -->
+
+</body>
+</html>

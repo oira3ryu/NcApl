@@ -1,0 +1,93 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<h1 class="my-3 ml-3">単位 編集</h1>
+
+	<div class="col-5 ml-3">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>j_id</th>
+					<th>st_id</th>
+					<th>ag_id</th>
+					<th>sl_id</th>
+					<th>u_id</th>
+					<th>flg_id</th>
+					<th>sl_id</th>
+					<th>t_id</th>
+					<th>fi_id</th>
+					<th>record_date</th>
+					<th>co_id</th>
+					<th>quantity</th>
+					<th>p_id</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<form th:action="@{/book/{id}/edit(id=*{id})}" th:method="post"
+					th:object="${book}">
+
+					j_id<input type="text" th:field="*{j_id}" />
+					st_id<input type="text" th:field="*{st_id}" />
+					ag_id<input type="text" th:field="*{ag_id}" />
+					sl_id<input type="text" th:field="*{sl_id}" />
+					u_id<input type="text" th:field="*{u_id}" />
+					flg_id<input type="text" th:field="*{flg_id}" />
+					sfl_id<input type="text" th:field="*{sl_id}" />
+					t_id<input type="text" th:field="*{t_id}" />
+					fi_id<input type="text" th:field="*{fi_id}" />
+					record_date<input type="date" name="today" id="today" th:field="*{record_date}" />
+					co_id<input type="text" th:field="*{co_id}" />
+					quantity<input type="text" th:field="*{quantity}" />
+					p_id<input type="text" th:field="*{p_id}" />
+
+					<button type="submit" class="btn btn-warning">更新</button>
+
+				</form>
+
+				<p>
+				<a href="/book" class="btn btn-info">一覧画面へ</a>
+				</p>
+
+			</tbody>
+		</table>
+
+<script type="text/javascript">
+function () {
+    var today = new Date();
+    today.setDate(today.getDate());
+    var yyyy = today.getFullYear();
+    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+    var dd = ("0"+today.getDate()).slice(-2);
+    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+}
+
+
+</script>
+
+</body>
+</html>
