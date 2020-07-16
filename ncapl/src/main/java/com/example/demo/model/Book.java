@@ -13,39 +13,51 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="t_book")
+@Table(name = "t_book")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 
 public class Book {
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    private Integer j_id;
+	private Integer j_id;
 
-    private Integer st_id;
+	private Integer st_id;
 
-    private Integer ag_id;
+	private Integer ag_id;
 
-    private Integer sl_id;
+	private Integer sl_id;
 
-    private Integer u_id;
+	private Integer u_id;
 
-    private Integer flg_id;
+	private Integer flg_id;
 
-    private Integer t_id;
+	private Integer t_id;
 
-    private Integer fi_id;
+	private Integer fi_id;
 
-    private String record_date;
+	private String record_date;
 
-    private Integer co_id;
+	private Integer co_id;
 
-    private String quantity;
+	private String quantity;
 
-    private Integer p_id;
+	private Integer p_id;
+
+	private String selectedValue;
+
+	public void setSelectedValue(String selectedValue) {
+		this.selectedValue = selectedValue;
+	}
+
+	public String getSelectedValue() {
+		// TODO 自動生成されたメソッド・スタブ
+		return selectedValue;
+	}
+
 }

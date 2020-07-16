@@ -57,4 +57,5 @@ public class JournalController {
         journalService.delete(id);
         return "redirect:/journal";
     }
+
 }

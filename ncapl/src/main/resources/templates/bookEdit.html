@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -48,35 +50,41 @@
 			</thead>
 			<tbody>
 
+
+
 				<form th:action="@{/book/{id}/edit(id=*{id})}" th:method="post"
 					th:object="${book}">
 
-					j_id<input type="text" th:field="*{j_id}" />
-					st_id<input type="text" th:field="*{st_id}" />
-					ag_id<input type="text" th:field="*{ag_id}" />
-					sl_id<input type="text" th:field="*{sl_id}" />
-					u_id<input type="text" th:field="*{u_id}" />
-					flg_id<input type="text" th:field="*{flg_id}" />
-					sfl_id<input type="text" th:field="*{sl_id}" />
-					t_id<input type="text" th:field="*{t_id}" />
-					fi_id<input type="text" th:field="*{fi_id}" />
-					record_date<input type="date" name="today" id="today" th:field="*{record_date}" />
-					co_id<input type="text" th:field="*{co_id}" />
-					quantity<input type="text" th:field="*{quantity}" />
-					p_id<input type="text" th:field="*{p_id}" />
+					<select name="journal">
+						<option value="">---</option>
+						<option th:each="lists : ${list}">
+							<th:text="${lists}">[[${lists}]]</th></option>
+					</select>
+
+					j_id<input type="text" th:field="*{j_id}" /> st_id<input
+						type="text" th:field="*{st_id}" /> ag_id<input type="text"
+						th:field="*{ag_id}" /> sl_id<input type="text"
+						th:field="*{sl_id}" /> u_id<input type="text" th:field="*{u_id}" />
+					flg_id<input type="text" th:field="*{flg_id}" /> sfl_id<input
+						type="text" th:field="*{sl_id}" /> t_id<input type="text"
+						th:field="*{t_id}" /> fi_id<input type="text" th:field="*{fi_id}" />
+					record_date<input type="date" name="today" id="today"
+						th:field="*{record_date}" /> co_id<input type="text"
+						th:field="*{co_id}" /> quantity<input type="text"
+						th:field="*{quantity}" /> p_id<input type="text"
+						th:field="*{p_id}" />
 
 					<button type="submit" class="btn btn-warning">更新</button>
-
 				</form>
 
 				<p>
-				<a href="/book" class="btn btn-info">一覧画面へ</a>
+					<a href="/book" class="btn btn-info">一覧画面へ</a>
 				</p>
 
 			</tbody>
 		</table>
 
-<script type="text/javascript">
+		<script type="text/javascript">
 function () {
     var today = new Date();
     today.setDate(today.getDate());
@@ -86,8 +94,6 @@ function () {
     document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
 }
 
-
 </script>
-
 </body>
 </html>

@@ -16,14 +16,14 @@ import com.example.demo.repository.JournalRepository;
 public class JournalService {
 
 	@Autowired
-	JournalRepository repository;
+	JournalRepository journalrepository;
 
 	public List<Journal> findAll() {
-		return repository.findAll();
+		return journalrepository.findAll();
 	}
 
 	public Journal findOne(Integer id) {
-		Optional<Journal> journal = repository.findById(id);
+		Optional<Journal> journal = journalrepository.findById(id);
 		if (journal.isPresent()) {
 			return journal.get();
 		} else {
@@ -32,10 +32,10 @@ public class JournalService {
 	}
 
 	public Journal save(Journal journal) {
-		return repository.save(journal);
+		return journalrepository.save(journal);
 	}
 
 	public void delete(Integer id) {
-		repository.deleteById(id);
+		journalrepository.deleteById(id);
 	}
 }
