@@ -55,6 +55,7 @@
 				<form th:action="@{/book/{id}/edit(id=*{id})}" th:method="post"
 					th:object="${book}">
 
+<!-- 					journal選択ドロップダウン -->
 					<select id="journal">
 						<option value="">---</option>
 						<option th:each="lists : ${list}" th:value="${lists.name}"

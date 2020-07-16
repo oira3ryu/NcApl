@@ -19,8 +19,10 @@ import com.example.demo.service.JournalService;
 @Controller
 @RequestMapping("/book")
 public class BookController {
+
 	@Autowired
 	private BookService bookService;
+
 	@Autowired
 	private JournalService journalService;
 
@@ -41,13 +43,7 @@ public class BookController {
 		Book book = bookService.findOne(id);
 		model.addAttribute("book",book);
 		List<Journal> journals = journalService.findAll();
-//		model.addAttribute("list", Arrays.asList(1, 2, 3));
-
-//		if (journals.isEmpty()) {
-//			model.addAttribute("list", Arrays.asList(1, 2, 3));
-//		} else {
-			model.addAttribute("list", journals);
-//		}
+		model.addAttribute("list", journals);
 		return "bookEdit";
 	}
 
