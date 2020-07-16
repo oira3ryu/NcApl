@@ -55,10 +55,10 @@
 				<form th:action="@{/book/{id}/edit(id=*{id})}" th:method="post"
 					th:object="${book}">
 
-					<select name="journal">
+					<select id="journal">
 						<option value="">---</option>
-						<option th:each="lists : ${list}">
-							<th:text="${lists}">[[${lists}]]</th></option>
+						<option th:each="lists : ${list}" th:value="${lists.name}"
+							th:selected="${lists.name == select}">[[${lists.name}]]</option>
 					</select>
 
 					j_id<input type="text" th:field="*{j_id}" /> st_id<input
