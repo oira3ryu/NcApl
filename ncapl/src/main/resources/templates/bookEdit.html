@@ -26,6 +26,70 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+
+	<script language="JavaScript">
+	function setJ_id(txt)
+	{
+		document.book.j_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSt_id(txt)
+	{
+		document.book.st_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setAg_id(txt)
+	{
+		document.book.ag_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSl_id(txt)
+	{
+		document.book.sl_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setU_id(txt)
+	{
+		document.book.u_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlg_id(txt)
+	{
+		document.book.flg_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setCo_id(txt)
+	{
+		document.book.co_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setT_id(txt)
+	{
+		document.book.t_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFi_id(txt)
+	{
+		document.book.fi_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setP_id(txt)
+	{
+		document.book.p_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	</script>
+
 	<h1 class="my-3 ml-3">単位 編集</h1>
 
 	<div class="col-5 ml-3">
@@ -39,44 +103,120 @@
 					<th>sl_id</th>
 					<th>u_id</th>
 					<th>flg_id</th>
-					<th>sl_id</th>
+					<th>co_id</th>
 					<th>t_id</th>
 					<th>fi_id</th>
 					<th>record_date</th>
-					<th>co_id</th>
+					<th>c_id</th>
 					<th>quantity</th>
 					<th>p_id</th>
 				</tr>
 			</thead>
 			<tbody>
 
-
-
 				<form th:action="@{/book/{id}/edit(id=*{id})}" th:method="post"
-					th:object="${book}">
+					th:object="${book}" id="form" name="form">
 
-<!-- 					journal選択ドロップダウン -->
-					<select id="journal">
+
+					<!-- type選択ドロップダウン  -->
+					t_id<input type="hidden" th:field="*{t_id}" />
+					<select id="type"
+						onChange="setT_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="lists : ${list}" th:value="${lists.name}"
-							th:selected="${lists.name == select}">[[${lists.name}]]</option>
+						<option th:each="typelists : ${typelist}" th:value="${typelists.value}"
+							th:selected="${typelists.id}==${book.t_id}">[[${typelists.value}]]</option>
 					</select>
 
-					j_id<input type="text" th:field="*{j_id}" /> st_id<input
-						type="text" th:field="*{st_id}" /> ag_id<input type="text"
-						th:field="*{ag_id}" /> sl_id<input type="text"
-						th:field="*{sl_id}" /> u_id<input type="text" th:field="*{u_id}" />
-					flg_id<input type="text" th:field="*{flg_id}" /> sfl_id<input
-						type="text" th:field="*{sl_id}" /> t_id<input type="text"
-						th:field="*{t_id}" /> fi_id<input type="text" th:field="*{fi_id}" />
-					record_date<input type="date" name="today" id="today"
-						th:field="*{record_date}" /> co_id<input type="text"
-						th:field="*{co_id}" /> quantity<input type="text"
-						th:field="*{quantity}" /> p_id<input type="text"
-						th:field="*{p_id}" />
+					<!-- plant選択ドロップダウン  -->
+					p_id<input type="hidden" th:field="*{p_id}" />
+					<select id="plant"
+						onChange="setP_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="plantlists : ${plantlist}" th:value="${plantlists.name}"
+							th:selected="${plantlists.id}==${book.p_id}">[[${plantlists.name}]]</option>
+					</select>
+
+					<!-- journal選択ドロップダウン  -->
+					j_id<input type="hidden" th:field="*{j_id}" />
+					<select id="journal"
+						onChange="setJ_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="journallists : ${journallist}" th:value="${journallists.name}"
+							th:selected="${journallists.id}==${book.j_id}">[[${journallists.name}]]</option>
+					</select>
+
+					<!-- strength選択ドロップダウン  -->
+ 					st_id<input type="hidden" th:field="*{st_id}" />
+ 					<select id="strength"
+						onChange="setSt_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="strengthlists : ${strengthlist}" th:value="${strengthlists.value}"
+							th:selected="${strengthlists.id}==${book.st_id}">[[${strengthlists.value}]]</option>
+					</select>
+
+					<!-- aggregate選択ドロップダウン  -->
+ 					ag_id<input	type="hidden" th:field="*{ag_id}" />
+					<select id="aggregate"
+						onChange="setAg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="aggregatelists : ${aggregatelist}" th:value="${aggregatelists.value}"
+							th:selected="${aggregatelists.id}==${book.ag_id}">[[${aggregatelists.value}]]</option>
+					</select>
+
+					<!-- slump選択ドロップダウン  -->
+ 					sl_id<input type="hidden" th:field="*{sl_id}" />
+					<select id="slump"
+						onChange="setSl_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="slumplists : ${slumplist}" th:value="${slumplists.value}"
+							th:selected="${slumplists.id}==${book.sl_id}">[[${slumplists.value}]]</option>
+					</select>
+
+					<!-- unit選択ドロップダウン  -->
+					u_id<input type="hidden" th:field="*{u_id}" />
+					<select id="unit"
+						onChange="setU_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="unitlists : ${unitlist}" th:value="${unitlists.value}"
+							th:selected="${unitlists.id}==${book.u_id}">[[${unitlists.value}]]</option>
+					</select>
+
+					<!-- field選択ドロップダウン  -->
+					fi_id<input type="hidden" th:field="*{fi_id}" />
+					<select id="field"
+						onChange="setFi_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="fieldlists : ${fieldlist}" th:value="${fieldlists.name}"
+							th:selected="${fieldlists.id}==${book.fi_id}">[[${fieldlists.name}]]</option>
+					</select>
+
+					<!-- 日時選択ドロップダウン  -->
+					record_date<input type="date" name="today" id="today" th:field="*{record_date}" />
+
+					<!-- company選択ドロップダウン  -->
+					co_id<input type="hidden" th:field="*{co_id}" />
+					<select id="composition"
+						onChange="setCo_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="compositionlists : ${compositionlist}" th:value="${compositionlists.value}"
+							th:selected="${compositionlists.id}==${book.co_id}">[[${compositionlists.value}]]</option>
+					</select>
+
+					<!-- 数量インプットボックス  -->
+					quantity<input type="text" th:field="*{quantity}" />
+
+					<!-- flug選択ドロップダウン  -->
+					flg_id<input type="hidden" th:field="*{flg_id}" />
+					<select id="flg"
+						onChange="setFlg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="flglists : ${flglist}" th:value="${flglists.value}"
+							th:selected="${flglists.id}==${book.flg_id}">[[${flglists.value}]]</option>
+					</select>
 
 					<button type="submit" class="btn btn-warning">更新</button>
-				</form>
+
+					</form>
 
 				<p>
 					<a href="/book" class="btn btn-info">一覧画面へ</a>
@@ -86,15 +226,76 @@
 		</table>
 
 		<script type="text/javascript">
-function () {
-    var today = new Date();
-    today.setDate(today.getDate());
-    var yyyy = today.getFullYear();
-    var mm = ("0"+(today.getMonth()+1)).slice(-2);
-    var dd = ("0"+today.getDate()).slice(-2);
-    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
-}
+		//select要素の取得
+		var select = document.querySelector("#journal");
 
-</script>
+		//option要素の取得（配列）
+		var options = document.querySelectorAll("#journal option");
+
+		//select要素のchangeイベントの登録
+		select.addEventListener('change', function(){
+
+		        //選択されたoption番号を取得
+		        var index =  this.selectedIndex;
+		        //options[ index ].value にoption要素のvalue属性値
+		        //options[ index ].innerHTML にoption要素内の文字列
+		});
+		</script>
+		<script type="text/javascript">
+		//select要素の取得
+		var select = document.querySelector("#strength");
+
+		//option要素の取得（配列）
+		var options = document.querySelectorAll("#strength option");
+
+		//select要素のchangeイベントの登録
+		select.addEventListener('change', function(){
+
+		        //選択されたoption番号を取得
+		        var index =  this.selectedIndex;
+		        //options[ index ].value にoption要素のvalue属性値
+		        //options[ index ].innerHTML にoption要素内の文字列
+		});
+		</script>
+
+		<script type="text/javascript">
+		//select要素の取得
+		var select = document.querySelector("#aggregate");
+
+		//option要素の取得（配列）
+		var options = document.querySelectorAll("#aggregate option");
+
+		//select要素のchangeイベントの登録
+		select.addEventListener('change', function(){
+
+		        //選択されたoption番号を取得
+		        var index =  this.selectedIndex;
+		        //options[ index ].value にoption要素のvalue属性値
+		        //options[ index ].innerHTML にoption要素内の文字列
+		});
+		</script>
+
+		<script type="text/javascript">
+		function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+		</script>
+		<script>
+		var forms = document.getElementsByClassNamed("form-control");
+		var alerts = document.getElementsByClassName("alert");
+		for (var i = 0; i < forms.length; i++) {
+			forms[i].addEventListener("focus", function() {
+				for (var j = 0; j < alerts.length; j++) {
+					alerts[j].style.display = "none";
+				}
+			});
+		}
+		</script>
+
 </body>
 </html>
