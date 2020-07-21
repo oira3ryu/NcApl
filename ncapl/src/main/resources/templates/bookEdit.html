@@ -88,28 +88,34 @@
 		select.selectedIndex = index;
 	}
 
+	function setC_id(txt)
+	{
+		document.book.c_id.value = txt;
+		select.selectedIndex = index;
+	}
+
 	</script>
 
-	<h1 class="my-3 ml-3">単位 編集</h1>
+	<h1 class="my-3 ml-3">日報 編集</h1>
 
 	<div class="col-5 ml-3">
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>j_id</th>
-					<th>st_id</th>
-					<th>ag_id</th>
-					<th>sl_id</th>
-					<th>u_id</th>
-					<th>flg_id</th>
-					<th>co_id</th>
-					<th>t_id</th>
-					<th>fi_id</th>
-					<th>record_date</th>
-					<th>c_id</th>
-					<th>quantity</th>
-					<th>p_id</th>
+					<th>日時</th>
+					<th>種類</th>
+					<th>工場</th>
+					<th>仕訳</th>
+					<th>施工者</th>
+					<th>現場名</th>
+					<th>呼び強度</th>
+					<th>骨材</th>
+					<th>スランプ</th>
+					<th>比率</th>
+					<th>数量</th>
+					<th>単位</th>
+					<th>可／否</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -118,105 +124,118 @@
 					th:object="${book}" id="form" name="form">
 
 
-					<!-- type選択ドロップダウン  -->
-					t_id<input type="hidden" th:field="*{t_id}" />
-					<select id="type"
+					<!-- 日時選択ドロップダウン  -->
+					日時<input type="date" name="today" id="today"
+						th:field="*{record_date}" />
+
+					<!-- 種類選択ドロップダウン  -->
+					<label>t_id</label>
+					種類<input type="hidden" th:field="*{t_id}" /><select id="type"
 						onChange="setT_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="typelists : ${typelist}" th:value="${typelists.value}"
+						<option th:each="typelists : ${typelist}"
+							th:value="${typelists.value}"
 							th:selected="${typelists.id}==${book.t_id}">[[${typelists.value}]]</option>
 					</select>
 
-					<!-- plant選択ドロップダウン  -->
-					p_id<input type="hidden" th:field="*{p_id}" />
-					<select id="plant"
+					<!-- 工場選択ドロップダウン  -->
+					工場<input type="hidden" th:field="*{p_id}" /> <select id="plant"
 						onChange="setP_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="plantlists : ${plantlist}" th:value="${plantlists.name}"
+						<option th:each="plantlists : ${plantlist}"
+							th:value="${plantlists.name}"
 							th:selected="${plantlists.id}==${book.p_id}">[[${plantlists.name}]]</option>
 					</select>
 
-					<!-- journal選択ドロップダウン  -->
-					j_id<input type="hidden" th:field="*{j_id}" />
-					<select id="journal"
-						onChange="setJ_id(this[this.selectedIndex].value)">
+					<!-- 仕訳選択ドロップダウン  -->
+					仕訳<input type="hidden" th:field="*{j_id}" /> <select
+						id="journal" onChange="setJ_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="journallists : ${journallist}" th:value="${journallists.name}"
+						<option th:each="journallists : ${journallist}"
+							th:value="${journallists.name}"
 							th:selected="${journallists.id}==${book.j_id}">[[${journallists.name}]]</option>
 					</select>
 
-					<!-- strength選択ドロップダウン  -->
- 					st_id<input type="hidden" th:field="*{st_id}" />
- 					<select id="strength"
-						onChange="setSt_id(this[this.selectedIndex].value)">
+					<!-- 施工者選択ドロップダウン  -->
+					施工者<input type="hidden" th:field="*{c_id}" /> <select
+						id="company"
+						onChange="setC_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="strengthlists : ${strengthlist}" th:value="${strengthlists.value}"
-							th:selected="${strengthlists.id}==${book.st_id}">[[${strengthlists.value}]]</option>
+						<option th:each="companylists : ${companylist}"
+							th:value="${companylists.name}"
+							th:selected="${companylists.id}==${book.c_id}">[[${companylists.name}]]</option>
 					</select>
 
-					<!-- aggregate選択ドロップダウン  -->
- 					ag_id<input	type="hidden" th:field="*{ag_id}" />
-					<select id="aggregate"
-						onChange="setAg_id(this[this.selectedIndex].value)">
+					<!-- 現場名選択ドロップダウン  -->
+					現場名<input type="hidden" th:field="*{fi_id}" /> <select
+						id="field" onChange="setFi_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="aggregatelists : ${aggregatelist}" th:value="${aggregatelists.value}"
-							th:selected="${aggregatelists.id}==${book.ag_id}">[[${aggregatelists.value}]]</option>
-					</select>
-
-					<!-- slump選択ドロップダウン  -->
- 					sl_id<input type="hidden" th:field="*{sl_id}" />
-					<select id="slump"
-						onChange="setSl_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="slumplists : ${slumplist}" th:value="${slumplists.value}"
-							th:selected="${slumplists.id}==${book.sl_id}">[[${slumplists.value}]]</option>
-					</select>
-
-					<!-- unit選択ドロップダウン  -->
-					u_id<input type="hidden" th:field="*{u_id}" />
-					<select id="unit"
-						onChange="setU_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="unitlists : ${unitlist}" th:value="${unitlists.value}"
-							th:selected="${unitlists.id}==${book.u_id}">[[${unitlists.value}]]</option>
-					</select>
-
-					<!-- field選択ドロップダウン  -->
-					fi_id<input type="hidden" th:field="*{fi_id}" />
-					<select id="field"
-						onChange="setFi_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="fieldlists : ${fieldlist}" th:value="${fieldlists.name}"
+						<option th:each="fieldlists : ${fieldlist}"
+							th:value="${fieldlists.name}"
 							th:selected="${fieldlists.id}==${book.fi_id}">[[${fieldlists.name}]]</option>
 					</select>
 
-					<!-- 日時選択ドロップダウン  -->
-					record_date<input type="date" name="today" id="today" th:field="*{record_date}" />
+					<!-- 呼び強度選択ドロップダウン  -->
+					呼び強度<input type="hidden" th:field="*{st_id}" /> <select
+						id="strength" onChange="setSt_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="strengthlists : ${strengthlist}"
+							th:value="${strengthlists.value}"
+							th:selected="${strengthlists.id}==${book.st_id}">[[${strengthlists.value}]]</option>
+					</select>
 
-					<!-- company選択ドロップダウン  -->
-					co_id<input type="hidden" th:field="*{co_id}" />
-					<select id="composition"
+					<!-- 骨材選択ドロップダウン  -->
+					骨材<input type="hidden" th:field="*{ag_id}" /> <select
+						id="aggregate" onChange="setAg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="aggregatelists : ${aggregatelist}"
+							th:value="${aggregatelists.value}"
+							th:selected="${aggregatelists.id}==${book.ag_id}">[[${aggregatelists.value}]]</option>
+					</select>
+
+					<!-- スランプ選択ドロップダウン  -->
+					スランプ<input type="hidden" th:field="*{sl_id}" /> <select
+						id="slump" onChange="setSl_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="slumplists : ${slumplist}"
+							th:value="${slumplists.value}"
+							th:selected="${slumplists.id}==${book.sl_id}">[[${slumplists.value}]]</option>
+					</select>
+
+					<!-- 比率選択ドロップダウン  -->
+					比率<input type="hidden" th:field="*{co_id}" /> <select
+						id="composition"
 						onChange="setCo_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="compositionlists : ${compositionlist}" th:value="${compositionlists.value}"
+						<option th:each="compositionlists : ${compositionlist}"
+							th:value="${compositionlists.value}"
 							th:selected="${compositionlists.id}==${book.co_id}">[[${compositionlists.value}]]</option>
 					</select>
 
 					<!-- 数量インプットボックス  -->
-					quantity<input type="text" th:field="*{quantity}" />
+					数量<input type="text" th:field="*{quantity}" />
 
-					<!-- flug選択ドロップダウン  -->
-					flg_id<input type="hidden" th:field="*{flg_id}" />
-					<select id="flg"
-						onChange="setFlg_id(this[this.selectedIndex].value)">
+					<!-- 単位選択ドロップダウン  -->
+					単位<input type="hidden" th:field="*{u_id}" /> <select id="unit"
+						onChange="setU_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="flglists : ${flglist}" th:value="${flglists.value}"
+						<option th:each="unitlists : ${unitlist}"
+							th:value="${unitlists.value}"
+							th:selected="${unitlists.id}==${book.u_id}">[[${unitlists.value}]]</option>
+					</select>
+
+					<!-- フラグ選択ドロップダウン  -->
+					可／否<input type="hidden" th:field="*{flg_id}" /> <select
+						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="flglists : ${flglist}"
+							th:value="${flglists.value}"
 							th:selected="${flglists.id}==${book.flg_id}">[[${flglists.value}]]</option>
 					</select>
 
 					<button type="submit" class="btn btn-warning">更新</button>
 
-					</form>
+				</form>
 
 				<p>
 					<a href="/book" class="btn btn-info">一覧画面へ</a>
@@ -296,6 +315,5 @@
 			});
 		}
 		</script>
-
 </body>
 </html>

@@ -115,8 +115,8 @@ public class BookController {
 		List<Field> fields = fieldService.findAll();
 		model.addAttribute("fieldlist", fields);
 
-		List<Flg> flgs = flgService.findAll();
-		model.addAttribute("flglist", flgs);
+		List<Flg> flags = flgService.findAll();
+		model.addAttribute("flglist", flags);
 
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);

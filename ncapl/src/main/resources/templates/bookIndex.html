@@ -33,19 +33,19 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>j_id</th>
-					<th>st_id</th>
-					<th>ag_id</th>
-					<th>sl_id</th>
-					<th>u_id</th>
-					<th>flg_id</th>
-					<th>sl_id</th>
-					<th>t_id</th>
-					<th>fi_id</th>
-					<th>record_date</th>
-					<th>co_id</th>
-					<th>quantity</th>
-					<th>p_id</th>
+					<th>日付</th>
+					<th>種類</th>
+					<th>工場</th>
+					<th>仕訳</th>
+					<th>施工者</th>
+					<th>現場名</th>
+					<th>呼び強度</th>
+					<th>骨材</th>
+					<th>スランプ</th>
+					<th>比率</th>
+					<th>数量</th>
+					<th>単位</th>
+					<th>可／否</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -54,19 +54,20 @@
 
 				<tr th:each="book : ${books}" th:object="${book}">
 					<td th:text="*{id}"></td>
+					<td th:text="*{record_date}"></td>
+					<td th:text="*{t_id}"></td>
+					<td th:text="*{p_id}"></td>
 					<td th:text="*{j_id}"></td>
+					<td th:text="*{c_id}"></td>
+					<td th:text="*{fi_id}"></td>
 					<td th:text="*{st_id}"></td>
 					<td th:text="*{ag_id}"></td>
 					<td th:text="*{sl_id}"></td>
-					<td th:text="*{u_id}"></td>
-					<td th:text="*{flg_id}"></td>
-					<td th:text="*{sl_id}"></td>
-					<td th:text="*{t_id}"></td>
-					<td th:text="*{fi_id}"></td>
-					<td th:text="*{record_date}"></td>
 					<td th:text="*{co_id}"></td>
 					<td th:text="*{quantity}"></td>
-					<td th:text="*{p_id}"></td>
+					<td th:text="*{u_id}"></td>
+					<td th:text="*{flg_id}"></td>
+
 					<td><a th:href="@{/book/{id}/edit(id=*{id})}"
 						class="btn btn-primary">編集</a></td>
 					<td>

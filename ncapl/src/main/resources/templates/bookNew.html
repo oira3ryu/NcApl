@@ -26,46 +26,45 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-	<h1 class="my-3 ml-3">単位 新規入力</h1>
+	<h1 class="my-3 ml-3">日報 新規入力</h1>
 
 	<div class="col-5 ml-3">
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>j_id</th>
-					<th>st_id</th>
-					<th>ag_id</th>
-					<th>sl_id</th>
-					<th>u_id</th>
-					<th>flg_id</th>
-					<th>sl_id</th>
-					<th>t_id</th>
-					<th>fi_id</th>
-					<th>record_date</th>
-					<th>co_id</th>
-					<th>quantity</th>
-					<th>p_id</th>
+					<th>日付</th>
+					<th>種類</th>
+					<th>工場</th>
+					<th>仕訳</th>
+					<th>施工者</th>
+					<th>現場名</th>
+					<th>呼び強度</th>
+					<th>骨材</th>
+					<th>スランプ</th>
+					<th>比率</th>
+					<th>数量</th>
+					<th>単位</th>
+					<th>可／否</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<form th:action="@{/book}" th:method="post">
 
-					j_id<input type="text" name="j_id" />
-					st_id<input type="text" name="st_id" />
-					ag_id<input type="text" name="ag_id" />
-					sl_id<input type="text" name="sl_id" />
-					u_id<input type="text" name="u_id" />
-					fig_id<input type="text" name="flg_id" />
-					sl_id<input type="text" name="sl_id" />
-					t_id<input type="text" name="t_id" />
-					fi_id<input type="text" name="fi_id" />
-					record_date<input type="text" name="record_date" />
-					co_id<input type="text" name="co_id" />
-					u_id<input type="text" name="u_id" />
-					quantity<input type="text" name="quantity" />
-					p_id<input type="text" name="p_id" />
+					日付<input type="text" name="record_date" />
+					種類<input type="text" name="t_id" />
+					工場<input type="text" name="p_id" />
+					仕訳<input type="text" name="j_id" />
+					施工者<input type="text" name="c_id" />
+					現場名<input type="text" name="fi_id" />
+					呼び強度<input type="text" name="st_id" />
+					骨材<input type="text" name="ag_id" />
+					スランプ<input type="text" name="sl_id" />
+					比率<input type="text" name="co_id" />
+					数量<input type="text" name="quantity" />
+					単位<input type="text" name="u_id" />
+					可／否<input type="text" name="flg_id" />
 
 					<input type="submit"
 						class="btn btn-warning" value="作成" />

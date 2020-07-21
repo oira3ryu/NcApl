@@ -45,6 +45,8 @@ public class Book {
 
 	private Integer co_id;
 
+	private Integer c_id;
+
 	private String quantity;
 
 	private Integer p_id;
