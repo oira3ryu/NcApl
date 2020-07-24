@@ -86,6 +86,40 @@ public class BookController {
 
 	@GetMapping("bookNew")
 	public String newbook(Model model) {
+
+		List<Plant> plants = plantService.findAll();
+		model.addAttribute("plantlist", plants);
+
+		List<Journal> journals = journalService.findAll();
+		model.addAttribute("journallist", journals);
+
+		List<Strength> strengths = strengthService.findAll();
+		model.addAttribute("strengthlist", strengths);
+
+		List<Aggregate> aggregates = aggregateService.findAll();
+		model.addAttribute("aggregatelist", aggregates);
+
+		List<Composition> compositions = compositionService.findAll();
+		model.addAttribute("compositionlist", compositions);
+
+		List<Company> companys = companyService.findAll();
+		model.addAttribute("companylist", companys);
+
+		List<Field> fields = fieldService.findAll();
+		model.addAttribute("fieldlist", fields);
+
+		List<Flg> flags = flgService.findAll();
+		model.addAttribute("flglist", flags);
+
+		List<Slump> slumps = slumpService.findAll();
+		model.addAttribute("slumplist", slumps);
+
+		List<Type> types = typeService.findAll();
+		model.addAttribute("typelist", types);
+
+		List<Unit> units = unitService.findAll();
+		model.addAttribute("unitlist", units);
+
 		return "bookNew";
 	}
 

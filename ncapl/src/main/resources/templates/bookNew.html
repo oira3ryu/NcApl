@@ -26,6 +26,83 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+
+	<script language="JavaScript">
+	function setRecord_date(txt)
+	{
+		document.book.record_date.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setT_id(txt)
+	{
+		document.book.t_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setP_id(txt)
+	{
+		document.book.p_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setJ_id(txt)
+	{
+		document.book.j_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setC_id(txt)
+	{
+		document.book.c_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFi_id(txt)
+	{
+		document.book.fi_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSt_id(txt)
+	{
+		document.book.st_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setAg_id(txt)
+	{
+		document.book.ag_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSl_id(txt)
+	{
+		document.book.sl_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setCo_id(txt)
+	{
+		document.book.co_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setU_id(txt)
+	{
+		document.book.u_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlg_id(txt)
+	{
+		document.book.flg_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+
+	</script>
+
 	<h1 class="my-3 ml-3">日報 新規入力</h1>
 
 	<div class="col-5 ml-3">
@@ -50,21 +127,102 @@
 			</thead>
 			<tbody>
 
-				<form th:action="@{/book}" th:method="post">
+				<form th:action="@{/book}" th:object="${book}" th:method="post" name="book">
 
-					日付<input type="text" name="record_date" />
-					種類<input type="text" name="t_id" />
-					工場<input type="text" name="p_id" />
-					仕訳<input type="text" name="j_id" />
-					施工者<input type="text" name="c_id" />
-					現場名<input type="text" name="fi_id" />
-					呼び強度<input type="text" name="st_id" />
-					骨材<input type="text" name="ag_id" />
-					スランプ<input type="text" name="sl_id" />
-					比率<input type="text" name="co_id" />
+ 					日付<input type="hidden" name="record_date" />
+					<!-- 日時選択ドロップダウン  -->
+					日時<input type="date" name="today" onChange="setRecord_date(this.value)" />
+
+					<!-- 種類選択ドロップダウン  -->
+					種類<input type="hidden" name="t_id" /><select id="type"
+						onChange="setT_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="typelists : ${typelist}"
+							th:value="${typelists.id}">[[${typelists.value}]]</option>
+					</select>
+
+					<!-- 工場選択ドロップダウン  -->
+					工場<input type="hidden" name="p_id" /><select id="plant"
+						onChange="setP_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="plantlists : ${plantlist}"
+							th:value="${plantlists.id}">[[${plantlists.name}]]</option>
+					</select>
+
+					<!-- 仕訳選択ドロップダウン  -->
+					仕訳<input type="hidden" name="j_id" /><select
+						id="journal" onChange="setJ_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="journallists : ${journallist}"
+							th:value="${journallists.id}">[[${journallists.name}]]</option>
+					</select>
+
+					<!-- 施工者選択ドロップダウン  -->
+					施工者<input type="hidden" name="c_id" /><select
+						id="company"
+						onChange="setC_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="companylists : ${companylist}"
+							th:value="${companylists.id}">[[${companylists.name}]]</option>
+					</select>
+
+					<!-- 現場名選択ドロップダウン  -->
+					現場名<input type="hidden" name="fi_id" /><select
+						id="field" onChange="setFi_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="fieldlists : ${fieldlist}"
+							th:value="${fieldlists.id}">[[${fieldlists.name}]]</option>
+					</select>
+
+					<!-- 呼び強度選択ドロップダウン  -->
+					呼び強度<input type="hidden" name="st_id" /><select
+						id="strength" onChange="setSt_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="strengthlists : ${strengthlist}"
+							th:value="${strengthlists.id}">[[${strengthlists.value}]]</option>
+					</select>
+
+					<!-- 骨材選択ドロップダウン  -->
+					骨材<input type="hidden" name="ag_id" /><select
+						id="aggregate" onChange="setAg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="aggregatelists : ${aggregatelist}"
+							th:value="${aggregatelists.id}">[[${aggregatelists.value}]]</option>
+					</select>
+
+					<!-- スランプ選択ドロップダウン  -->
+					スランプ<input type="hidden" name="sl_id" /><select
+						id="slump" onChange="setSl_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="slumplists : ${slumplist}"
+							th:value="${slumplists.id}">[[${slumplists.value}]]</option>
+					</select>
+
+					<!-- 比率選択ドロップダウン  -->
+					比率<input type="hidden" name="co_id" /><select
+						id="composition"
+						onChange="setCo_id(this[this.selectedIndex].value)">
+						<option th:each="compositionlists : ${compositionlist}"
+							th:value="${compositionlists.id}">[[${compositionlists.value}]]</option>
+					</select>
+
 					数量<input type="text" name="quantity" />
-					単位<input type="text" name="u_id" />
-					可／否<input type="text" name="flg_id" />
+
+					<!-- 単位選択ドロップダウン  -->
+					単位<input type="hidden" name="u_id" /><select id="unit"
+						onChange="setU_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="unitlists : ${unitlist}"
+							th:value="${unitlists.id}">[[${unitlists.value}]]</option>
+					</select>
+
+					<!-- フラグ選択ドロップダウン  -->
+					可／否<input type="hidden" name="flg_id" /><select
+						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="flglists : ${flglist}"
+							th:value="${flglists.id}">[[${flglists.value}]]</option>
+					</select>
 
 					<input type="submit"
 						class="btn btn-warning" value="作成" />
@@ -75,5 +233,16 @@
 				</p>
 			</tbody>
 		</table>
+
+		<script type="text/javascript">
+		function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+		</script>
 </body>
 </html>
