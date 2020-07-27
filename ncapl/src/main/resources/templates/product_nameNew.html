@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	<script language="JavaScript">
+	function setStart_date(txt)
+	{
+		document.product_name.start_date.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setEnd_date(txt)
+	{
+		document.product_name.end_date.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlg_id(txt)
+	{
+		document.product_name.flg_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	</script>
+
+	<h1 class="my-3 ml-3">製品 新規入力</h1>
+
+	<div class="col-5 ml-3">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>製品名</th>
+					<th>呼び強度</th>
+					<th>骨材寸法</th>
+					<th>スランプ</th>
+					<th>適用開始日</th>
+					<th>適用終了日</th>
+					<th>可／否</th>
+					<th>記録日</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<form th:action="@{/product_name}" th:object="${product_name}" th:method="post" name="product_name">
+
+					製品名<input type="text" name="product_name" />
+
+					呼び強度<input type="text" name="strength" />
+
+					骨材寸法<input type="text" name="aggregate" />
+
+					スランプ<input type="text" name="slump" />
+
+ 					適用開始日<input type="hidden" name="start_date" />
+					<!-- 適用開始日選択ドロップダウン  -->
+					適用開始日<input type="date" name="today" onChange="setStart_date(this.value)" />
+
+ 					適用終了日<input type="hidden" name="start_date" />
+					<!-- 適用終了日選択ドロップダウン  -->
+					適用終了日<input type="date" name="today" onChange="setEnd_date(this.value)" />
+
+					<!-- フラグ選択ドロップダウン  -->
+					可／否<input type="hidden" name="flg_id" /><select
+						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="flglists : ${flglist}"
+							th:value="${flglists.id}">[[${flglists.value}]]</option>
+					</select>
+
+					タイムスタンプ<input type="text" name="create_at" />
+
+					<input type="submit"
+						class="btn btn-warning" value="作成" />
+
+				</form>
+				<p>
+					<a href="/product_name" class="btn btn-info">一覧画面へ</a>
+				</p>
+			</tbody>
+		</table>
+
+		<script type="text/javascript">
+		function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+		</script>
+</body>
+</html>

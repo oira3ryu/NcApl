@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	<script language="JavaScript">
+
+	function setPn_id(txt)
+	{
+		document.product_master.pn_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlg_id(txt)
+	{
+		document.product_master.flg_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	</script>
+
+	<h1 class="my-3 ml-3">製品構成 編集</h1>
+
+	<div class="col-5 ml-3">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>製品名</th>
+					<th>セメント</th>
+					<th>砂</th>
+					<th>砕石</th>
+					<th>設計単価</th>
+					<th>標準単価</th>
+					<th>適用開始日</th>
+					<th>適用終了日</th>
+					<th>可／否</th>
+					<th>記録日</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<form th:action="@{/product_master/{id}/edit(id=*{pm_id})}" th:method="post"
+					th:object="${product_master}" id="product_master" name="product_master">
+
+					<!-- 製品名選択ドロップダウン  -->
+					製品名<input type="hidden" name="pn_id" th:field="*{pn_id}" /> <select
+						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="product_namelists : ${product_namelist}"
+							th:value="${product_namelists.id}"
+							th:selected="${product_namelists.id}==${product_master.pn_id}">[[${product_namelists.product_name}]]</option>
+					</select>
+
+					<!-- セメント量インプットボックス  -->
+					セメント<input type="text" name="cement_adjv" th:field="*{cement_adjv}" />
+
+					<!-- 砂量インプットボックス  -->
+					砂量<input type="text" name="sand_adjv" th:field="*{sand_adjv}" />
+
+					<!-- 砕石量インプットボックス  -->
+					砕石量<input type="text" name="stone_adjv" th:field="*{stone_adjv}" />
+
+					<!-- 設計単価インプットボックス  -->
+					設計単価<input type="text" name="sp_price" th:field="*{sp_price}" />
+
+					<!-- 標準単価インプットボックス  -->
+					標準単価<input type="text" name="std_price" th:field="*{std_price}" />
+
+					<!-- 適用開始日ドロップダウン  -->
+					適用開始日<input type="date" name="start_date" id="today" th:field="*{start_date}" />
+
+					<!-- 適用終了日ドロップダウン  -->
+					適用終了日<input type="date" name="end_date" id="today" th:field="*{end_date}" />
+
+					<!-- フラグ選択ドロップダウン  -->
+					可／否<input type="hidden" name="flg_id" th:field="*{flg_id}" /> <select
+						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="flglists : ${flglist}"
+							th:value="${flglists.id}"
+							th:selected="${flglists.id}==${product_master.flg_id}">[[${flglists.value}]]</option>
+					</select>
+
+					<!-- タイムスタンプ用インプットボックス  -->
+					タイムスタンプ<input type="text" name="create_at" th:field="*{create_at}" />
+
+					<button type="submit" class="btn btn-warning">更新</button>
+
+				</form>
+
+				<p>
+					<a href="/product_master" class="btn btn-info">一覧画面へ</a>
+				</p>
+
+			</tbody>
+		</table>
+
+		<script type="text/javascript">
+		//select要素の取得
+		var select = document.querySelector("#journal");
+
+		//option要素の取得（配列）
+		var options = document.querySelectorAll("#journal option");
+
+		//select要素のchangeイベントの登録
+		select.addEventListener('change', function(){
+
+		        //選択されたoption番号を取得
+		        var index =  this.selectedIndex;
+		        //options[ index ].value にoption要素のvalue属性値
+		        //options[ index ].innerHTML にoption要素内の文字列
+		});
+		</script>
+		<script type="text/javascript">
+		//select要素の取得
+		var select = document.querySelector("#strength");
+
+		//option要素の取得（配列）
+		var options = document.querySelectorAll("#strength option");
+
+		//select要素のchangeイベントの登録
+		select.addEventListener('change', function(){
+
+		        //選択されたoption番号を取得
+		        var index =  this.selectedIndex;
+		        //options[ index ].value にoption要素のvalue属性値
+		        //options[ index ].innerHTML にoption要素内の文字列
+		});
+		</script>
+
+		<script type="text/javascript">
+		//select要素の取得
+		var select = document.querySelector("#aggregate");
+
+		//option要素の取得（配列）
+		var options = document.querySelectorAll("#aggregate option");
+
+		//select要素のchangeイベントの登録
+		select.addEventListener('change', function(){
+
+		        //選択されたoption番号を取得
+		        var index =  this.selectedIndex;
+		        //options[ index ].value にoption要素のvalue属性値
+		        //options[ index ].innerHTML にoption要素内の文字列
+		});
+		</script>
+
+		<script type="text/javascript">
+		function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+		</script>
+		<script>
+		var forms = document.getElementsByClassNamed("form-control");
+		var alerts = document.getElementsByClassName("alert");
+		for (var i = 0; i < forms.length; i++) {
+			forms[i].addEventListener("focus", function() {
+				for (var j = 0; j < alerts.length; j++) {
+					alerts[j].style.display = "none";
+				}
+			});
+		}
+		</script>
+</body>
+</html>

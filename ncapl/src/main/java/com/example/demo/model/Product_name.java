@@ -15,37 +15,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_product_master")
+@Table(name = "t_product_name")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 
-public class Product_master {
+public class Product_name {
 	@Id
-	@Column(name = "pm_id")
+	@Column(name = "pn_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pm_id;
-
-	private Integer st_id;
-
-	private Integer ag_id;
-
-	private Integer sl_id;
-
 	private Integer pn_id;
 
-	private String product_name;
+	private String strength;
 
-	private String cement_adjv;
+	private String aggregate;
 
-	private String sand_adjv;
+	private String slump;
 
-	private String stone_adjv;
-
-	private String sp_price;
-
-	private String std_price;
+	private String name;
 
 	private String start_date;
 
