@@ -72,8 +72,8 @@
 						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="product_namelists : ${product_namelist}"
-							th:value="${product_namelists.id}"
-							th:selected="${product_namelists.id}==${product_master.pn_id}">[[${product_namelists.product_name}]]</option>
+							th:value="${product_namelists.pn_id}"
+							th:selected="${product_namelists.pn_id}==${product_master.pn_id}">[[${product_namelists.name}]]</option>
 					</select>
 
 					<!-- セメント量インプットボックス  -->
