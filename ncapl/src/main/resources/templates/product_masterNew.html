@@ -28,6 +28,12 @@
 		crossorigin="anonymous"></script>
 
 	<script language="JavaScript">
+	function setPn_id(txt)
+	{
+		document.product_master.pn_id.value = txt;
+		select.selectedIndex = index;
+	}
+
 	function setStart_date(txt)
 	{
 		document.product_master.start_date.value = txt;
@@ -71,7 +77,13 @@
 
 				<form th:action="@{/product_master}" th:object="${product_master}" th:method="post" name="product_master">
 
-					製品名<input type="text" name="product_name" />
+					製品名<input type="hidden" name="pn_id" /><select
+						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="product_namelists : ${product_namelist}"
+							th:value="${product_namelists.pn_id}">[[${product_namelists.name}]]
+						</option>
+					</select>
 
 					セメント<input type="text" name="cement_adjv" />
 

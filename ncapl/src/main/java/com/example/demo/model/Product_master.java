@@ -27,15 +27,15 @@ public class Product_master {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pm_id;
 
-	private Integer st_id;
+	//private Integer st_id;
 
-	private Integer ag_id;
+	//private Integer ag_id;
 
-	private Integer sl_id;
+	//private Integer sl_id;
 
 	private Integer pn_id;
 
-	private String product_name;
+	//private String product_name;
 
 	private String cement_adjv;
 
@@ -52,6 +52,8 @@ public class Product_master {
 	private String end_date;
 
 	private Integer flg_id;
+
+	//private String value;
 
 	private Timestamp create_at;
 
