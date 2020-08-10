@@ -91,6 +91,10 @@ public class Product_masterController {
 	  public String product_masterIndex(Model model) {
 	    List<Product_master> product_masters = product_masterService.findAll();
 	    model.addAttribute("product_masters",product_masters);
+	    
+		List<Product_name> product_names = product_nameService.findAll();
+		model.addAttribute("product_namelist", product_names);
+	    
 	    return "product_masterIndex";
 	}
 

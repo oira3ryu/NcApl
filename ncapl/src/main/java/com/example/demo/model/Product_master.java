@@ -27,15 +27,7 @@ public class Product_master {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pm_id;
 
-	//private Integer st_id;
-
-	//private Integer ag_id;
-
-	//private Integer sl_id;
-
 	private Integer pn_id;
-
-	//private String product_name;
 
 	private String cement_adjv;
 
@@ -53,18 +45,6 @@ public class Product_master {
 
 	private Integer flg_id;
 
-	//private String value;
-
 	private Timestamp create_at;
 
-//	private String selectedValue;
-
-//	public void setSelectedValue(String selectedValue) {
-//		this.selectedValue = selectedValue;
-//	}
-//
-//	public String getSelectedValue() {
-//		// TODO 自動生成されたメソッド・スタブ
-//		return selectedValue;
-//	}
 }
