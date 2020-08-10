@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Product_master;
@@ -18,7 +19,7 @@ public class Product_masterService {
 	@Autowired
 	Product_masterRepository repository;
 
-	public List<Product_master> findAll() {
+	public List<Product_master> findAll(Sort sort) {
 		return repository.findAll();
 	}
 

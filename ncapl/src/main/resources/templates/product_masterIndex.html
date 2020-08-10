@@ -51,7 +51,6 @@
 
 				<tr th:each="product_master : ${product_masters}" th:object="${product_master}">
 					<td th:text="*{pm_id}"></td>
-
 					<td><select id="product_name" style="pointer-events: none;" tabindex="-1">
   							<option th:each="product_namelists : ${product_namelist}"
   							th:value="${product_namelists.pn_id}"
