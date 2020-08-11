@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_product_master")
+@Table(name = "t_product_master_view")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

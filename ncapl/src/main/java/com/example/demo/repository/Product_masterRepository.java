@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Product_master;
 @Repository
-	public interface Product_masterRepository extends JpaRepository<Product_master, Integer> {}
+	public interface Product_masterRepository extends JpaRepository<Product_master, Integer> {
+	
+	}

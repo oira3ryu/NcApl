@@ -3,7 +3,6 @@ package com.example.demo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -90,7 +89,7 @@ public class Product_masterController {
 
 	@GetMapping
 	  public String product_masterIndex(Model model) {
-	    List<Product_master> product_masters = product_masterService.findAll(Sort.by(Sort.Direction.ASC, "pm_id"));
+	    List<Product_master> product_masters = product_masterService.findAll();
 	    model.addAttribute("product_masters",product_masters);
 
 		List<Product_name> product_names = product_nameService.findAll();

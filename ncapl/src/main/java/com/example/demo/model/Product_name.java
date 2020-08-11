@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_product_name")
+@Table(name = "t_product_name_view")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -43,14 +43,4 @@ public class Product_name {
 
 	private Timestamp create_at;
 
-//	private String selectedValue;
-
-//	public void setSelectedValue(String selectedValue) {
-//		this.selectedValue = selectedValue;
-//	}
-//
-//	public String getSelectedValue() {
-//		// TODO 自動生成されたメソッド・スタブ
-//		return selectedValue;
-//	}
 }
