@@ -89,11 +89,15 @@ public class Product_masterController {
 
 	@GetMapping
 	  public String product_masterIndex(Model model) {
-	    List<Product_master> product_masters = product_masterService.findAll();
+
+		List<Product_master> product_masters = product_masterService.findAll();
 	    model.addAttribute("product_masters",product_masters);
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Flg> flags = flgService.findAll();
+		model.addAttribute("flglist", flags);
 
 	    return "product_masterIndex";
 	}

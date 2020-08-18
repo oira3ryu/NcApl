@@ -63,7 +63,12 @@
 					<td th:text="*{std_price}"></td>
 					<td th:text="*{start_date}"></td>
 					<td th:text="*{end_date}"></td>
-					<td th:text="*{flg_id}"></td>
+					<!-- <td th:text="*{flg_id}"></td> -->
+					<td><select id="flg_id" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="flglists : ${flglist}"
+  							th:value="${flglists.id}"
+  							th:selected="${flglists.id} == *{flg_id}">[[${flglists.value}]]</option>
+					</select></td>
 					<td th:text="*{create_at}"></td>
 
 					<td><a th:href="@{/product_master/{id}/edit(id=*{pm_id})}"
