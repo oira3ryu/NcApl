@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	<script language="JavaScript">
+
+	function setCo_id(txt)
+	{
+		document.production_daily_report.co_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFi_id(txt)
+	{
+		document.production_daily_report.fi_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSt_id(txt)
+	{
+		document.production_daily_report.st_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setAg_id(txt)
+	{
+		document.production_daily_report.ag_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSl_id(txt)
+	{
+		document.production_daily_report.sl_id.value = txt;
+		select.selectedIndex = index;
+	}
+	function setRecord_date(txt)
+	{
+		document.production_daily_report.record_date.value = txt;
+		select.selectedIndex = index;
+	}
+
+	</script>
+
+	<h1 class="my-3 ml-3">売掛 新規入力</h1>
+
+	<div class="col-5 ml-3">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>施工者</th>
+					<th>現場名</th>
+					<th>呼び強度</th>
+					<th>骨材寸法</th>
+					<th>スランプ</th>
+					<th>数量</th>
+					<th>記録日</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<form th:action="@{/production_daily_report}" th:object="${production_daily_report}" th:method="post" name="production_daily_report">
+
+					施工者<input type="hidden" name="co_id" /><select
+						id="co_id" onChange="setCo_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="companylists : ${companylist}"
+							th:value="${companylists.id}">[[${companylists.name}]]
+						</option>
+					</select>
+
+					現場名<input type="hidden" name="fi_id" /><select
+						id="fi_id" onChange="setFi_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="fieldlists : ${fieldlist}"
+							th:value="${fieldlists.id}">[[${fieldlists.name}]]
+						</option>
+					</select>
+
+					呼び強度<input type="hidden" name="st_id" /><select
+						id="st_id" onChange="setSt_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="strengthlists : ${strengthlist}"
+							th:value="${strengthlists.id}">[[${strengthlists.value}]]
+						</option>
+					</select>
+
+					骨材寸法<input type="hiddent" name="ag_id" /><select
+						id="ag_id" onChange="setAg_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="aggregatelists : ${aggregatelist}"
+							th:value="${aggregatelists.id}">[[${aggregatelists.value}]]
+						</option>
+					</select>
+
+					スランプ<input type="hidden" name="sl_id" /><select
+						id="sl_id" onChange="setSl_id(this[this.selectedIndex].value)">
+						<option value="">---</option>
+						<option th:each="slumplists : ${slumplist}"
+							th:value="${slumplists.id}">[[${slumplists.value}]]
+						</option>
+					</select>
+
+					数量<input type="text" name="quantity" />
+
+ 					記録日<input type="hidden" name="record_date" />
+					<!-- 記録日選択ドロップダウン  -->
+					<input type="date" name="today" onChange="setRecord_date(this.value)" />
+
+					<input type="submit"
+						class="btn btn-warning" value="作成" />
+
+				</form>
+				<p>
+					<a href="/production_daily_report" class="btn btn-info">一覧画面へ</a>
+				</p>
+			</tbody>
+		</table>
+
+		<script type="text/javascript">
+		function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+		</script>
+</body>
+</html>
