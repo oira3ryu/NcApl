@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.Aggregate;
-import com.example.demo.model.Book;
 import com.example.demo.model.Company;
 import com.example.demo.model.Composition;
 import com.example.demo.model.Field;
@@ -25,7 +24,6 @@ import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
 import com.example.demo.model.Unit;
 import com.example.demo.service.AggregateService;
-import com.example.demo.service.BookService;
 import com.example.demo.service.CompanyService;
 import com.example.demo.service.CompositionService;
 import com.example.demo.service.FieldService;
@@ -44,9 +42,6 @@ public class Production_daily_reportController {
 
 	@Autowired
 	private Production_daily_reportService production_daily_reportService;
-
-	@Autowired
-	private BookService bookService;
 
 	@Autowired
 	private PlantService plantService;
@@ -88,6 +83,9 @@ public class Production_daily_reportController {
 	    List<Production_daily_report> production_daily_reports = production_daily_reportService.findAll();
 	    model.addAttribute("production_daily_reports",production_daily_reports);
 
+		List<Plant> plants = plantService.findAll();
+		model.addAttribute("plantlist", plants);
+
 		List<Company> companys = companyService.findAll();
 		model.addAttribute("companylist", companys);
 
@@ -108,9 +106,6 @@ public class Production_daily_reportController {
 
 	@GetMapping("production_daily_reportNew")
 	public String newproduction_daily_report(Model model) {
-
-		List<Book> books = bookService.findAll();
-		model.addAttribute("booklist", books);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
@@ -152,9 +147,6 @@ public class Production_daily_reportController {
 	public String edit(@PathVariable Integer id,Model model) {
 		Production_daily_report production_daily_report = production_daily_reportService.findOne(id);
 		model.addAttribute("production_daily_report",production_daily_report);
-
-		List<Book> books = bookService.findAll();
-		model.addAttribute("booklist", books);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);

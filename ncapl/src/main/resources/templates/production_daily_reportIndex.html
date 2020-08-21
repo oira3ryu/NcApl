@@ -50,6 +50,7 @@ select {
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>工場</th>
 					<th>施工者</th>
 					<th>現場名</th>
 					<th>呼び強度</th>
@@ -65,6 +66,11 @@ select {
 
 				<tr th:each="production_daily_report : ${production_daily_reports}" th:object="${production_daily_report}">
 					<td th:text="*{pdr_id}"></td>
+					<td><select id="p_id" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="plantlists : ${plantlist}"
+  							th:value="${plantlists.id}"
+  							th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
+					</select></td>
 					<td><select id="co_id" style="pointer-events: none;" tabindex="-1">
   							<option th:each="companylists : ${companylist}"
   							th:value="${companylists.id}"
