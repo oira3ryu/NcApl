@@ -38,4 +38,9 @@ public class FlgService {
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
+
+	public List<Flg> findByAll() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }
