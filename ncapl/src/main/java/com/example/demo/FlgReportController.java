@@ -33,13 +33,12 @@ public class FlgReportController {
 	@ResponseBody
     public void getPdf(@PathVariable String jrxml ,HttpServletResponse response) throws Exception {
 		//Get JRXML template from resources folder
-		Resource resource = context.getResource("classpath:report/"+jrxml+".jrxml");
+		Resource resource = context.getResource("classpath:jasperreports/"+jrxml+".jrxml");
         //Compile to jasperReport
         InputStream inputStream = resource.getInputStream();
         JasperReport report=JasperCompileManager.compileReport(inputStream);
 		//Parameters Set
         Map<String, Object> params = new HashMap<>();
-
         //Data source Set
         JRDataSource dataSource = new JREmptyDataSource();
         //Make jasperPrint

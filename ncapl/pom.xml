@@ -73,12 +73,6 @@
 			<version>6.14.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>5.2.6.RELEASE</version>
-		</dependency>
-
 		<!-- Jasper Report -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
