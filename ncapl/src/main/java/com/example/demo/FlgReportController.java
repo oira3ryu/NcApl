@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRMapCollectionDataSource;
 
 @RestController
 public class FlgReportController {
@@ -33,20 +34,36 @@ public class FlgReportController {
 	@ResponseBody
     public void getPdf(@PathVariable String jrxml ,HttpServletResponse response) throws Exception {
 		//Get JRXML template from resources folder
-		Resource resource = context.getResource("classpath:report/"+jrxml+".jrxml");
+		Resource resource = context.getResource("classpath:jasperreports/"+jrxml+".jrxml");
         //Compile to jasperReport
         InputStream inputStream = resource.getInputStream();
         JasperReport report=JasperCompileManager.compileReport(inputStream);
 		//Parameters Set
         Map<String, Object> params = new HashMap<>();
 
+        Collection<Map<String, ?>> source = new ArrayList<>();
+
+        Map<String, Object> row1 = new HashMap<>();
+        row1.put("id", 1);
+        row1.put("value", "100");
+        source.add(row1);
+        Map<String, Object> row2 = new HashMap<>();
+        row2.put("id", 2);
+        row2.put("value", "200");
+        source.add(row2);
+        Map<String, Object> row3 = new HashMap<>();
+        row3.put("id", 3);
+        row3.put("value", "300");
+        source.add(row3);
+
         //Data source Set
-        JRDataSource dataSource = new JREmptyDataSource();
+        //JRDataSource dataSource = new JREmptyDataSource();
+        JasperPrint print = JasperFillManager.fillReport(report, params, new JRMapCollectionDataSource(source));
         //Make jasperPrint
-        JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, dataSource);
+        //JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, source);
         //Media Type
         response.setContentType(MediaType.APPLICATION_PDF_VALUE);
         //Export PDF Stream
-        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());
     }
 }
