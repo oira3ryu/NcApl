@@ -56,6 +56,7 @@ public class FlgReportController {
         row3.put("value", "300");
         source.add(row3);
 
+
         //Data source Set
         //JRDataSource dataSource = new JREmptyDataSource();
         JasperPrint print = JasperFillManager.fillReport(report, params, new JRMapCollectionDataSource(source));
