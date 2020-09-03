@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Flg;
-import com.example.demo.service.FlgService;
+import com.example.demo.model.Field;
+import com.example.demo.service.FieldService;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -27,15 +27,15 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @RestController
-public class FlgReportController {
+public class FieldReportController {
 
 	@Autowired
     ApplicationContext context;
 
 	@Autowired
-	FlgService flgService;
+	FieldService fieldService;
 
-	@GetMapping(path = "flg/{jrxml}")
+	@GetMapping(path = "field/{jrxml}")
 	@ResponseBody
     public void getPdf(@PathVariable String jrxml ,HttpServletResponse response) throws Exception {
 
@@ -49,13 +49,14 @@ public class FlgReportController {
         //Parameters Set
         Map<String, Object> params = new HashMap<>();
 
-        List<Flg> source = flgService.findAll();
+        List<Field> source = fieldService.findAll();
 
         //Data source Set
         JasperPrint print = JasperFillManager.fillReport(report, params, new JRBeanCollectionDataSource(source));
 
         //Media Type
         response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+        response.setHeader("Content-Disposition", "inline;");
         //Export PDF Stream
         JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());
     }
