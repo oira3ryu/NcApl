@@ -57,9 +57,9 @@
 	<title>
 		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="30" uuid="d8fe81d6-c718-45c8-889b-99986bcde91f"/>
-				<textElement>
-					<font size="16"/>
+				<reportElement mode="Opaque" x="0" y="0" width="100" height="30" uuid="d8fe81d6-c718-45c8-889b-99986bcde91f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ipaexg" size="16"/>
 				</textElement>
 				<text><![CDATA[日報]]></text>
 			</staticText>
@@ -71,7 +71,7 @@
 	<columnHeader>
 		<band height="31" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="50" height="30" uuid="d562b28a-fde0-4185-ba29-55aee43eed40">
+				<reportElement x="0" y="0" width="30" height="30" uuid="d562b28a-fde0-4185-ba29-55aee43eed40">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -87,7 +87,7 @@
 				<textFieldExpression><![CDATA["ID"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="50" y="0" width="100" height="30" uuid="3b29b9b9-dee9-464e-9eeb-23a2bd1632c4">
+				<reportElement x="30" y="0" width="100" height="30" uuid="3b29b9b9-dee9-464e-9eeb-23a2bd1632c4">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -103,7 +103,7 @@
 				<textFieldExpression><![CDATA["施工者"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="0" width="100" height="30" uuid="79a48c7b-0ebd-40b8-90e0-aaba26ea3ac8">
+				<reportElement x="130" y="0" width="150" height="30" uuid="79a48c7b-0ebd-40b8-90e0-aaba26ea3ac8">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -119,7 +119,7 @@
 				<textFieldExpression><![CDATA["現場名"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="250" y="0" width="50" height="30" uuid="fa39e0bd-b7af-4ce1-af7f-130970f8deb2">
+				<reportElement x="280" y="0" width="40" height="30" uuid="fa39e0bd-b7af-4ce1-af7f-130970f8deb2">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -135,7 +135,7 @@
 				<textFieldExpression><![CDATA["ST"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="0" width="50" height="30" uuid="b4410ffb-b0fc-4625-98aa-54199d18385c">
+				<reportElement x="320" y="0" width="40" height="30" uuid="b4410ffb-b0fc-4625-98aa-54199d18385c">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -151,7 +151,7 @@
 				<textFieldExpression><![CDATA["AG"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="350" y="0" width="50" height="30" uuid="788c5f33-0d36-48db-8c57-74f73238a191">
+				<reportElement x="360" y="0" width="40" height="30" uuid="788c5f33-0d36-48db-8c57-74f73238a191">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -167,7 +167,7 @@
 				<textFieldExpression><![CDATA["SL"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="0" width="50" height="30" uuid="008f0db6-7539-4abb-8e84-3072f3fde38c">
+				<reportElement x="400" y="0" width="60" height="30" uuid="008f0db6-7539-4abb-8e84-3072f3fde38c">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -183,7 +183,7 @@
 				<textFieldExpression><![CDATA["数量"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="450" y="0" width="50" height="30" uuid="8c6e16e7-c52e-4c0a-903a-72108a1e0e64">
+				<reportElement x="460" y="0" width="60" height="30" uuid="8c6e16e7-c52e-4c0a-903a-72108a1e0e64">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -199,7 +199,7 @@
 				<textFieldExpression><![CDATA["記録日"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="0" width="40" height="30" uuid="dc9004be-9051-4b3c-ba89-d7ffe65d8564">
+				<reportElement x="520" y="0" width="50" height="30" uuid="dc9004be-9051-4b3c-ba89-d7ffe65d8564">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -219,7 +219,7 @@
 	<detail>
 		<band height="31" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="50" height="30" uuid="f917b455-f974-41ef-85f4-cf25fdc07378">
+				<reportElement x="0" y="0" width="30" height="30" uuid="f917b455-f974-41ef-85f4-cf25fdc07378">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -235,7 +235,7 @@
 				<textFieldExpression><![CDATA[$F{pdr_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="50" y="0" width="100" height="30" uuid="89e51d89-6430-483c-9920-c99a9f6401e0">
+				<reportElement x="30" y="0" width="100" height="30" uuid="89e51d89-6430-483c-9920-c99a9f6401e0">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -251,7 +251,7 @@
 				<textFieldExpression><![CDATA[$F{company}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="0" width="100" height="30" uuid="71557b6e-d5cf-4d6b-9ecd-1e61f6c94387">
+				<reportElement x="130" y="0" width="150" height="30" uuid="71557b6e-d5cf-4d6b-9ecd-1e61f6c94387">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -267,7 +267,7 @@
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="250" y="0" width="50" height="30" uuid="a73470c6-6457-4fd4-8c68-fb2ff4a4ec4b">
+				<reportElement x="280" y="0" width="40" height="30" uuid="a73470c6-6457-4fd4-8c68-fb2ff4a4ec4b">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -283,7 +283,7 @@
 				<textFieldExpression><![CDATA[$F{strength}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="0" width="50" height="30" uuid="ae050b44-86b7-47ab-b48c-062930a94b4a">
+				<reportElement x="320" y="0" width="40" height="30" uuid="ae050b44-86b7-47ab-b48c-062930a94b4a">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -299,7 +299,7 @@
 				<textFieldExpression><![CDATA[$F{aggregate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="350" y="0" width="50" height="30" uuid="e4ccacf5-7494-41a3-8bde-556fb4502053">
+				<reportElement x="360" y="0" width="40" height="30" uuid="e4ccacf5-7494-41a3-8bde-556fb4502053">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -315,7 +315,7 @@
 				<textFieldExpression><![CDATA[$F{slump}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="0" width="50" height="30" uuid="4dcfd8b5-a794-408f-998a-0d51f741aa46">
+				<reportElement x="400" y="0" width="60" height="30" uuid="4dcfd8b5-a794-408f-998a-0d51f741aa46">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -331,7 +331,7 @@
 				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="450" y="0" width="50" height="30" uuid="59d86611-e9cc-44fb-9ac7-b3f487b4c75f">
+				<reportElement x="460" y="0" width="60" height="30" uuid="59d86611-e9cc-44fb-9ac7-b3f487b4c75f">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -347,7 +347,7 @@
 				<textFieldExpression><![CDATA[$F{record_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="0" width="40" height="30" uuid="89e9cff5-a2f1-479e-bce6-c39f7c44eb3f">
+				<reportElement x="520" y="0" width="50" height="30" uuid="89e9cff5-a2f1-479e-bce6-c39f7c44eb3f">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>

@@ -13,32 +13,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_production_daily_report")
+@Table(name = "t_production_daily_report_view")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 
-public class Production_daily_report {
+public class Production_daily_report_view {
 	@Id
 	@Column(name = "pdr_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pdr_id;
 
-	private Integer p_id;
+	private String company;
 
-	private Integer co_id;
+	private String field;
 
-	private Integer fi_id;
+	private String strength;
 
-	private Integer st_id;
+	private String aggregate;
 
-	private Integer ag_id;
-
-	private Integer sl_id;
+	private String slump;
 
 	private String quantity;
 
 	private String record_date;
 
+	private String plant;
 }

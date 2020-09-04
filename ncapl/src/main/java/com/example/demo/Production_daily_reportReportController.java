@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Production_daily_report;
-import com.example.demo.service.Production_daily_reportService;
+import com.example.demo.model.Production_daily_report_view;
+import com.example.demo.service.Production_daily_report_viewService;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -33,7 +33,7 @@ public class Production_daily_reportReportController {
     ApplicationContext context;
 
 	@Autowired
-	Production_daily_reportService production_daily_reportService;
+	Production_daily_report_viewService production_daily_report_viewService;
 
 	@GetMapping(path = "production_daily_report/{jrxml}")
 	@ResponseBody
@@ -49,7 +49,7 @@ public class Production_daily_reportReportController {
         //Parameters Set
         Map<String, Object> params = new HashMap<>();
 
-        List<Production_daily_report> source = production_daily_reportService.findAll();
+        List<Production_daily_report_view> source = production_daily_report_viewService.findAll();
 
         //Data source Set
         JasperPrint print = JasperFillManager.fillReport(report, params, new JRBeanCollectionDataSource(source));
