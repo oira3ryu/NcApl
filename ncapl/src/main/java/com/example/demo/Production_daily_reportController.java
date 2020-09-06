@@ -11,28 +11,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.model.Aggregate;
 import com.example.demo.model.Company;
 import com.example.demo.model.Composition;
 import com.example.demo.model.Field;
 import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
+import com.example.demo.model.Product_name;
 import com.example.demo.model.Production_daily_report;
-import com.example.demo.model.Slump;
-import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
 import com.example.demo.model.Unit;
-import com.example.demo.service.AggregateService;
 import com.example.demo.service.CompanyService;
 import com.example.demo.service.CompositionService;
 import com.example.demo.service.FieldService;
 import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
+import com.example.demo.service.Product_nameService;
 import com.example.demo.service.Production_daily_reportService;
-import com.example.demo.service.SlumpService;
-import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
 import com.example.demo.service.UnitService;
 
@@ -47,13 +43,10 @@ public class Production_daily_reportController {
 	private PlantService plantService;
 
 	@Autowired
+	private Product_nameService product_nameService;
+
+	@Autowired
 	private JournalService journalService;
-
-	@Autowired
-	private StrengthService strengthService;
-
-	@Autowired
-	private AggregateService aggregateService;
 
 	@Autowired
 	private CompositionService compositionService;
@@ -66,9 +59,6 @@ public class Production_daily_reportController {
 
 	@Autowired
 	private FlgService flgService;
-
-	@Autowired
-	private SlumpService slumpService;
 
 	@Autowired
 	private TypeService typeService;
@@ -86,20 +76,14 @@ public class Production_daily_reportController {
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 
+	    List<Product_name> product_names = product_nameService.findAll();
+	    model.addAttribute("product_namelist", product_names);
+
 		List<Company> companys = companyService.findAll();
 		model.addAttribute("companylist", companys);
 
 		List<Field> fields = fieldService.findAll();
 		model.addAttribute("fieldlist", fields);
-
-		List<Strength> strengths = strengthService.findAll();
-		model.addAttribute("strengthlist", strengths);
-
-		List<Aggregate> aggregates = aggregateService.findAll();
-		model.addAttribute("aggregatelist", aggregates);
-
-		List<Slump> slumps = slumpService.findAll();
-		model.addAttribute("slumplist", slumps);
 
 	    return "production_daily_reportIndex";
 	}
@@ -110,14 +94,11 @@ public class Production_daily_reportController {
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 
+	    List<Product_name> product_names = product_nameService.findAll();
+	    model.addAttribute("product_namelist", product_names);
+
 		List<Journal> journals = journalService.findAll();
 		model.addAttribute("journallist", journals);
-
-		List<Strength> strengths = strengthService.findAll();
-		model.addAttribute("strengthlist", strengths);
-
-		List<Aggregate> aggregates = aggregateService.findAll();
-		model.addAttribute("aggregatelist", aggregates);
 
 		List<Composition> compositions = compositionService.findAll();
 		model.addAttribute("compositionlist", compositions);
@@ -130,9 +111,6 @@ public class Production_daily_reportController {
 
 		List<Flg> flags = flgService.findAll();
 		model.addAttribute("flglist", flags);
-
-		List<Slump> slumps = slumpService.findAll();
-		model.addAttribute("slumplist", slumps);
 
 		List<Type> types = typeService.findAll();
 		model.addAttribute("typelist", types);
@@ -151,14 +129,11 @@ public class Production_daily_reportController {
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 
+	    List<Product_name> product_names = product_nameService.findAll();
+	    model.addAttribute("product_namelist", product_names);
+
 		List<Journal> journals = journalService.findAll();
 		model.addAttribute("journallist", journals);
-
-		List<Strength> strengths = strengthService.findAll();
-		model.addAttribute("strengthlist", strengths);
-
-		List<Aggregate> aggregates = aggregateService.findAll();
-		model.addAttribute("aggregatelist", aggregates);
 
 		List<Composition> compositions = compositionService.findAll();
 		model.addAttribute("compositionlist", compositions);
@@ -171,9 +146,6 @@ public class Production_daily_reportController {
 
 		List<Flg> flags = flgService.findAll();
 		model.addAttribute("flglist", flags);
-
-		List<Slump> slumps = slumpService.findAll();
-		model.addAttribute("slumplist", slumps);
 
 		List<Type> types = typeService.findAll();
 		model.addAttribute("typelist", types);

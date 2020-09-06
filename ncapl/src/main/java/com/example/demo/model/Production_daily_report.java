@@ -29,13 +29,9 @@ public class Production_daily_report {
 
 	private Integer co_id;
 
+	private Integer pn_id;
+
 	private Integer fi_id;
-
-	private Integer st_id;
-
-	private Integer ag_id;
-
-	private Integer sl_id;
 
 	private String quantity;
 

@@ -53,9 +53,7 @@ select {
 					<th>工場</th>
 					<th>施工者</th>
 					<th>現場名</th>
-					<th>呼び強度</th>
-					<th>骨材寸法</th>
-					<th>スランプ</th>
+					<th>製品名</th>
 					<th>数量</th>
 					<th>記録日</th>
 					<th></th>
@@ -81,20 +79,10 @@ select {
   							th:value="${fieldlists.id}"
   							th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
 					</select></td>
-					<td><select id="st_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="strengthlists : ${strengthlist}"
-  							th:value="${strengthlists.id}"
-  							th:selected="${strengthlists.id} == *{st_id}">[[${strengthlists.value}]]</option>
-					</select></td>
-					<td><select id="ag_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="aggregatelists : ${aggregatelist}"
-  							th:value="${aggregatelists.id}"
-  							th:selected="${aggregatelists.id} == *{ag_id}">[[${aggregatelists.value}]]</option>
-					</select></td>
-					<td><select id="sl_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="slumplists : ${aggregatelist}"
-  							th:value="${slumplists.id}"
-  							th:selected="${slumplists.id} == *{sl_id}">[[${slumplists.value}]]</option>
+					<td><select id="pn_id" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="product_namelists : ${product_namelist}"
+  							th:value="${product_namelists.pn_id}"
+  							th:selected="${product_namelists.pn_id} == *{pn_id}">[[${product_namelists.name}]]</option>
 					</select></td>
 					<td th:text="*{quantity}"></td>
 					<td th:text="*{record_date}"></td>

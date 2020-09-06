@@ -29,11 +29,7 @@ public class Production_daily_report_view {
 
 	private String field;
 
-	private String strength;
-
-	private String aggregate;
-
-	private String slump;
+	private String product_name;
 
 	private String quantity;
 

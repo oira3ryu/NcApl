@@ -47,23 +47,12 @@
 		select.selectedIndex = index;
 	}
 
-	function setSt_id(txt)
+	function setPn_id(txt)
 	{
-		document.production_daily_report.st_id.value = txt;
+		document.production_daily_report.pn_id.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setAg_id(txt)
-	{
-		document.production_daily_report.ag_id.value = txt;
-		select.selectedIndex = index;
-	}
-
-	function setSl_id(txt)
-	{
-		document.production_daily_report.sl_id.value = txt;
-		select.selectedIndex = index;
-	}
 	</script>
 
 	<h1 class="my-3 ml-3">製品 編集</h1>
@@ -76,9 +65,7 @@
 					<th>工場名</th>
 					<th>施工者</th>
 					<th>現場名</th>
-					<th>呼び強度</th>
-					<th>骨材寸法</th>
-					<th>スランプ</th>
+					<th>製品名</th>
 					<th>数量</th>
 					<th>記録日</th>
 				</tr>
@@ -93,7 +80,7 @@
 					<!-- 工場名インプットボックス  -->
 					工場名<input type="hidden" name="p_id" th:field="*{p_id}" />
 					 <select
-						id="p_id" onChange="setP_id(this[this.selectedIndex].value)">
+						id="plant" onChange="setP_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="plantlists : ${plantlist}"
 							th:value="${plantlists.id}"
@@ -103,7 +90,7 @@
 					<!-- 施工者インプットボックス  -->
 					施工者<input type="hidden" name="co_id" th:field="*{co_id}" />
 					 <select
-						id="co_id" onChange="setCo_id(this[this.selectedIndex].value)">
+						id="company" onChange="setCo_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="companylists : ${companylist}"
 							th:value="${companylists.id}"
@@ -113,41 +100,21 @@
 					<!-- 現場名インプットボックス  -->
 					現場名<input type="hidden" name="fi_id" th:field="*{fi_id}" />
 					 <select
-						id="fi_id" onChange="setFi_id(this[this.selectedIndex].value)">
+						id="field" onChange="setFi_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="fieldlists : ${fieldlist}"
 							th:value="${fieldlists.id}"
 							th:selected="${fieldlists.id}==${production_daily_report.fi_id}">[[${fieldlists.name}]]</option>
 					</select>
 
-					<!-- セメント量インプットボックス  -->
-					呼び強度<input type="hidden" name="st_id" th:field="*{st_id}" />
+					<!-- 製品名インプットボックス  -->
+					製品名<input type="text" name="pn_id" th:field="*{pn_id}" />
 					 <select
-						id="st_id" onChange="setSt_id(this[this.selectedIndex].value)">
+						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
-						<option th:each="strengthlists : ${strengthlist}"
-							th:value="${strengthlists.id}"
-							th:selected="${strengthlists.id}==${production_daily_report.st_id}">[[${strengthlists.value}]]</option>
-					</select>
-
-					<!-- 砂量インプットボックス  -->
-					骨材寸法<input type="hidden" name="ag_id" th:field="*{ag_id}" />
-					 <select
-						id="ag_id" onChange="setAg_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="aggregatelists : ${aggregatelist}"
-							th:value="${aggregatelists.id}"
-							th:selected="${aggregatelists.id}==${production_daily_report.ag_id}">[[${aggregatelists.value}]]</option>
-					</select>
-
-					<!-- 砕石量インプットボックス  -->
-					スランプ<input type="hidden" name="sl_id" th:field="*{sl_id}" />
-					<select
-						id="sl_id" onChange="setSl_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="slumplists : ${slumplist}"
-							th:value="${slumplists.id}"
-							th:selected="${slumplists.id}==${production_daily_report.sl_id}">[[${slumplists.value}]]</option>
+						<option th:each="product_namelists : ${product_namelist}"
+							th:value="${product_namelists.pn_id}"
+							th:selected="${product_namelists.pn_id}==${production_daily_report.pn_id}">[[${product_namelists.name}]]</option>
 					</select>
 
 					<!-- 数量インプットボックス  -->
