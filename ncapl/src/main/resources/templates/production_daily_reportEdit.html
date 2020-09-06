@@ -108,7 +108,7 @@
 					</select>
 
 					<!-- 製品名インプットボックス  -->
-					製品名<input type="text" name="pn_id" th:field="*{pn_id}" />
+					製品名<input type="hidden" name="pn_id" th:field="*{pn_id}" />
 					 <select
 						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
