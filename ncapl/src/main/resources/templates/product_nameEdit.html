@@ -43,72 +43,122 @@
 
 	</script>
 
-	<h1 class="my-3 ml-3">製品 編集</h1>
+	<div class="container">
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>製品名</th>
-					<th>呼び強度</th>
-					<th>骨材寸法</th>
-					<th>スランプ</th>
-					<th>適用開始日</th>
-					<th>適用終了日</th>
-					<th>可／否</th>
-					<th>記録日</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="navbar">
+			<h1>製品 編集</h1>
+		</div>
 
-				<form th:action="@{/product_name/{id}/edit(id=*{pn_id})}" th:method="post"
-					th:object="${product_name}" id="product_name" name="product_name">
+		<form th:action="@{/product_name/{id}/edit(id=*{pn_id})}"
+			th:method="post" th:object="${product_name}" id="product_name"
+			name="product_name">
 
-					ID<input type="text" name="pn_id" th:field="*{pn_id}" />
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> ID<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="pn_id" th:field="*{pn_id}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 製品名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="name" th:field="*{name}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 呼び強度<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="strength" th:field="*{strength}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 骨材寸法<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="aggregate" th:field="*{aggregate}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> スランプ<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="slump" th:field="*{slump}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 適用開始日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="date" name="start_date" id="today"
+							th:field="*{start_date}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 適用終了日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="date" name="end_date" id="today"
+							th:field="*{end_date}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 可／否<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="flg_id" th:field="*{flg_id}" /> <select
+							id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
+								th:selected="${flglists.id}==${product_name.flg_id}">[[${flglists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> タイムスタンプ<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="create_at" th:field="*{create_at}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+						<button type="submit" class="btn btn-warning">更新</button>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+						<a href="/product_name" class="btn btn-info">一覧画面へ</a>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
 
-					<!-- 製品名インプットボックス  -->
-					製品名<input type="text" name="name" th:field="*{name}" />
-
-					<!-- セメント量インプットボックス  -->
-					呼び強度<input type="text" name="strength" th:field="*{strength}" />
-
-					<!-- 砂量インプットボックス  -->
-					骨材寸法<input type="text" name="aggregate" th:field="*{aggregate}" />
-
-					<!-- 砕石量インプットボックス  -->
-					スランプ<input type="text" name="slump" th:field="*{slump}" />
-
-					<!-- 適用開始日ドロップダウン  -->
-					適用開始日<input type="date" name="start_date" id="today" th:field="*{start_date}" />
-
-					<!-- 適用終了日ドロップダウン  -->
-					適用終了日<input type="date" name="end_date" id="today" th:field="*{end_date}" />
-
-					<!-- フラグ選択ドロップダウン  -->
-					可／否<input type="hidden" name="flg_id" th:field="*{flg_id}" /> <select
-						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="flglists : ${flglist}"
-							th:value="${flglists.id}"
-							th:selected="${flglists.id}==${product_name.flg_id}">[[${flglists.value}]]</option>
-					</select>
-
-					<!-- タイムスタンプ用インプットボックス  -->
-					タイムスタンプ<input type="text" name="create_at" th:field="*{create_at}" />
-
-					<button type="submit" class="btn btn-warning">更新</button>
-
-				</form>
-
-				<p>
-					<a href="/product_name" class="btn btn-info">一覧画面へ</a>
-				</p>
-
-			</tbody>
-		</table>
-
-		<script type="text/javascript">
+	<script type="text/javascript">
 		//select要素の取得
 		var select = document.querySelector("#journal");
 
@@ -124,7 +174,7 @@
 		        //options[ index ].innerHTML にoption要素内の文字列
 		});
 		</script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		//select要素の取得
 		var select = document.querySelector("#strength");
 
@@ -141,7 +191,7 @@
 		});
 		</script>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 		//select要素の取得
 		var select = document.querySelector("#aggregate");
 
@@ -158,7 +208,7 @@
 		});
 		</script>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function () {
 		    var today = new Date();
 		    today.setDate(today.getDate());
@@ -168,7 +218,7 @@
 		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
 		}
 		</script>
-		<script>
+	<script>
 		var forms = document.getElementsByClassNamed("form-control");
 		var alerts = document.getElementsByClassName("alert");
 		for (var i = 0; i < forms.length; i++) {
