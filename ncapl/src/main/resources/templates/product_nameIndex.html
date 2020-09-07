@@ -12,6 +12,23 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<style>
+.select-wrapper {
+    width: 200px;
+    overflow: hidden;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    margin: 0;
+    border: 0;
+    outline: none;
+    padding: 0;
+    background: transparent;
+}
+</style>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -41,10 +58,13 @@
 					<th>適用終了日</th>
 					<th>可／否</th>
 					<th>記録日</th>
+ 					<th></th>
 					<th></th>
-					<th></th>
+					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
+
 			</thead>
+
 			<tbody>
 
 				<tr th:each="product_name : ${product_names}" th:object="${product_name}">
@@ -55,7 +75,12 @@
 					<td th:text="*{slump}"></td>
 					<td th:text="*{start_date}"></td>
 					<td th:text="*{end_date}"></td>
-					<td th:text="*{flg_id}"></td>
+					<!-- <td th:text="*{flg_id}"></td> -->
+					<td><select id="flg_id" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="flglists : ${flglist}"
+  							th:value="${flglists.id}"
+  							th:selected="${flglists.id} == *{flg_id}">[[${flglists.value}]]</option>
+					</select></td>
 					<td th:text="*{create_at}"></td>
 
 					<td><a th:href="@{/product_name/{id}/edit(id=*{pn_id})}"

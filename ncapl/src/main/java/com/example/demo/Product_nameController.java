@@ -84,9 +84,15 @@ public class Product_nameController {
 
 	@GetMapping
 	  public String product_nameIndex(Model model) {
-	    List<Product_name> product_names = product_nameService.findAll();
+
+		List<Product_name> product_names = product_nameService.findAll();
 	    model.addAttribute("product_names",product_names);
-	    return "product_nameIndex";
+
+	    List<Flg> flags = flgService.findAll();
+		model.addAttribute("flglist", flags);
+
+		return "product_nameIndex";
+
 	}
 
 	@GetMapping("product_nameNew")
