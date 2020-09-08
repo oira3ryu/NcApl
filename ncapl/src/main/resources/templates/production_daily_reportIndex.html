@@ -45,7 +45,7 @@ select {
 		crossorigin="anonymous"></script>
 	<h1 class="my-3 ml-3">売掛</h1>
 
-	<div class="col-5 ml-3">
+	<div class="ml-3">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -54,8 +54,8 @@ select {
 					<th>施工者</th>
 					<th>現場名</th>
 					<th>製品名</th>
-					<th>数量</th>
 					<th>単価</th>
+					<th>数量</th>
 					<th>記録日</th>
 					<th></th>
 					<th></th>
@@ -64,40 +64,20 @@ select {
 			</thead>
 			<tbody>
 
-				<tr th:each="production_daily_report : ${production_daily_reports}" th:object="${production_daily_report}">
+				<tr th:each="production_daily_report_view : ${production_daily_report_views}" th:object="${production_daily_report_view}">
 					<td th:text="*{pdr_id}"></td>
-					<td><select id="p_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="plantlists : ${plantlist}"
-  							th:value="${plantlists.id}"
-  							th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
-					</select></td>
-					<td><select id="co_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="companylists : ${companylist}"
-  							th:value="${companylists.id}"
-  							th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
-					</select></td>
-					<td><select id="fi_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="fieldlists : ${fieldlist}"
-  							th:value="${fieldlists.id}"
-  							th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
-					</select></td>
-					<td><select id="pn_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="product_namelists : ${product_namelist}"
-  							th:value="${product_namelists.pn_id}"
-  							th:selected="${product_namelists.pn_id} == *{pn_id}">[[${product_namelists.name}]]</option>
-					</select></td>
-					<td><select id="sp_price" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
-  							th:value="${production_daily_report_viewlists.pn_id}"
-  							th:selected="${production_daily_report_viewlists.pn_id} == *{pn_id}">[[${production_daily_report_viewlists.sp_price}]]</option>
-					</select></td>
+					<td th:text="*{plant}"></td>
+					<td th:text="*{company}"></td>
+					<td th:text="*{field}"></td>
+					<td th:text="*{product_name}"></td>
+					<td th:text="*{sp_price}"></td>
 					<td th:text="*{quantity}"></td>
 					<td th:text="*{record_date}"></td>
 
-					<td><a th:href="@{/production_daily_report/{id}/edit(id=*{pdr_id})}"
+					<td><a th:href="@{/production_daily_report_view/{id}/edit(id=*{pdr_id})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/production_daily_report/{id}(id=*{pdr_id})}" th:method="post" onSubmit="return delcheck()">
+						<form th:action="@{/production_daily_report_view/{id}(id=*{pdr_id})}" th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
 					</td>
@@ -106,10 +86,9 @@ select {
 		</table>
 		<a href="/" class="btn btn-info">メニュー</a>
 		<span>
-			<a href="/production_daily_report/production_daily_reportNew" class="btn btn-primary">新規作成</a>
+			<a href="/production_daily_report/production_daily_report_viewNew" class="btn btn-primary">新規作成</a>
 		</span>
-		</tbody>
-		</table>
+		</div>
 
 	<!-- jqueryの場合 -->
 

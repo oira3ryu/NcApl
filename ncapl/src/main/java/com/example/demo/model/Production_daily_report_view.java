@@ -25,6 +25,8 @@ public class Production_daily_report_view {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pdr_id;
 
+	private Integer pn_id;
+
 	private String company;
 
 	private String field;
