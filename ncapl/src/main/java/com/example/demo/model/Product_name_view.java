@@ -15,25 +15,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_product_name")
+@Table(name = "t_product_name_view")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 
-public class Product_name {
+public class Product_name_view {
 	@Id
 	@Column(name = "pn_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pn_id;
 
-	private Integer j_id;
+	private String journal;
 
-	private Integer st_id;
+	private String strength;
 
-	private Integer ag_id;
+	private String aggregate;
 
-	private Integer sl_id;
+	private String slump;
 
 	private String name;
 
@@ -41,7 +41,7 @@ public class Product_name {
 
 	private String end_date;
 
-	private Integer flg_id;
+	private String flag;
 
 	private Timestamp create_at;
 

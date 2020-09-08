@@ -19,7 +19,7 @@ import com.example.demo.model.Field;
 import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
-import com.example.demo.model.Product_name;
+import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
@@ -32,18 +32,18 @@ import com.example.demo.service.FieldService;
 import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
-import com.example.demo.service.Product_nameService;
+import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
 import com.example.demo.service.UnitService;
 
 @Controller
-@RequestMapping("/product_name")
-public class Product_nameController {
+@RequestMapping("/product_name_view")
+public class Product_name_viewController {
 
 	@Autowired
-	private Product_nameService product_nameService;
+	private Product_name_viewService product_name_viewService;
 
 	@Autowired
 	private BookService bookService;
@@ -83,10 +83,10 @@ public class Product_nameController {
 
 
 	@GetMapping
-	  public String product_nameIndex(Model model) {
+	  public String product_name_viewIndex(Model model) {
 
-		List<Product_name> product_names = product_nameService.findAll();
-	    model.addAttribute("product_names",product_names);
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+	    model.addAttribute("product_name_viewlist",product_name_views);
 
 	    List<Flg> flags = flgService.findAll();
 		model.addAttribute("flglist", flags);
@@ -107,8 +107,8 @@ public class Product_nameController {
 
 	}
 
-	@GetMapping("product_nameNew")
-	public String newproduct_name(Model model) {
+	@GetMapping("product_name_viewNew")
+	public String newproduct_name_view(Model model) {
 
 		List<Book> books = bookService.findAll();
 		model.addAttribute("booklist", books);
@@ -146,13 +146,13 @@ public class Product_nameController {
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
 
-		return "product_nameNew";
+		return "product_name_viewNew";
 	}
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Integer id,Model model) {
-		Product_name product_name = product_nameService.findOne(id);
-		model.addAttribute("product_name",product_name);
+		Product_name_view product_name_view = product_name_viewService.findOne(id);
+		model.addAttribute("product_name_viewlist",product_name_view);
 
 		List<Book> books = bookService.findAll();
 		model.addAttribute("booklist", books);
@@ -194,21 +194,21 @@ public class Product_nameController {
 	}
 
 	@PostMapping
-	public String create(@ModelAttribute Product_name product_name) {
-		product_nameService.save(product_name);
-		return "redirect:/product_name";
+	public String create(@ModelAttribute Product_name_view product_name_view) {
+		product_name_viewService.save(product_name_view);
+		return "redirect:/product_name_view";
 	}
 
 	@PostMapping("{id}/edit")
-    public String update(@PathVariable Integer id, @ModelAttribute Product_name product_name) {
-        product_name.setPn_id(id);
-        product_nameService.save(product_name);
-        return "redirect:/product_name";
+    public String update(@PathVariable Integer id, @ModelAttribute Product_name_view product_name_view) {
+        product_name_view.setPn_id(id);
+        product_name_viewService.save(product_name_view);
+        return "redirect:/product_name_view";
     }
 
     @PostMapping("{id}")
     public String destroy(@PathVariable Integer id) {
-        product_nameService.delete(id);
-        return "redirect:/product_name";
+        product_name_viewService.delete(id);
+        return "redirect:/product_name_view";
     }
 }

@@ -43,84 +43,140 @@
 
 	</script>
 
-	<h1 class="my-3 ml-3">製品構成 編集</h1>
+	<div class="container">
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>製品名</th>
-					<th>セメント</th>
-					<th>砂</th>
-					<th>砕石</th>
-					<th>設計単価</th>
-					<th>標準単価</th>
-					<th>適用開始日</th>
-					<th>適用終了日</th>
-					<th>可／否</th>
-					<th>記録日</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="navbar">
+			<h1>製品構成 編集</h1>
+		</div>
 
-				<form th:action="@{/product_master/{id}/edit(id=*{pm_id})}" th:method="post"
-					th:object="${product_master}" id="product_master" name="product_master">
+		<form th:action="@{/product_master/{id}/edit(id=*{pm_id})}"
+			th:method="post" th:object="${product_master}" id="product_master"
+			name="product_master">
 
-					<!-- 製品名選択ドロップダウン  -->
-					製品名<input type="hidden" name="pn_id" th:field="*{pn_id}" /> <select
-						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="product_namelists : ${product_namelist}"
-							th:value="${product_namelists.pn_id}"
-							th:selected="${product_namelists.pn_id}==${product_master.pn_id}">[[${product_namelists.name}]]</option>
-					</select>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 製品名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="pn_id" th:field="*{pn_id}" /> <select
+							id="product_name"
+							onChange="setPn_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="product_namelists : ${product_namelist}"
+								th:value="${product_namelists.pn_id}"
+								th:selected="${product_namelists.pn_id}==${product_master.pn_id}">[[${product_namelists.name}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> セメント<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="cement_adjv" th:field="*{cement_adjv}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 砂量<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="sand_adjv" th:field="*{sand_adjv}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 砕石量<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="stone_adjv" th:field="*{stone_adjv}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 設計単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="sp_price" th:field="*{sp_price}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 標準単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="std_price" th:field="*{std_price}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 適用開始日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="date" name="start_date" id="today"
+							th:field="*{start_date}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 適用終了日<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="date" name="end_date" id="today"
+							th:field="*{end_date}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 可／否<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="flg_id" th:field="*{flg_id}" /> <select
+							id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
+								th:selected="${flglists.id}==${product_master.flg_id}">[[${flglists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> タイムスタンプ<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="create_at" th:field="*{create_at}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+						<button type="submit" class="btn btn-warning">更新</button>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
 
-					<!-- セメント量インプットボックス  -->
-					セメント<input type="text" name="cement_adjv" th:field="*{cement_adjv}" />
 
-					<!-- 砂量インプットボックス  -->
-					砂量<input type="text" name="sand_adjv" th:field="*{sand_adjv}" />
+					<p>
+						<a href="/product_master" class="btn btn-info">一覧画面へ</a>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
 
-					<!-- 砕石量インプットボックス  -->
-					砕石量<input type="text" name="stone_adjv" th:field="*{stone_adjv}" />
-
-					<!-- 設計単価インプットボックス  -->
-					設計単価<input type="text" name="sp_price" th:field="*{sp_price}" />
-
-					<!-- 標準単価インプットボックス  -->
-					標準単価<input type="text" name="std_price" th:field="*{std_price}" />
-
-					<!-- 適用開始日ドロップダウン  -->
-					適用開始日<input type="date" name="start_date" id="today" th:field="*{start_date}" />
-
-					<!-- 適用終了日ドロップダウン  -->
-					適用終了日<input type="date" name="end_date" id="today" th:field="*{end_date}" />
-
-					<!-- フラグ選択ドロップダウン  -->
-					可／否<input type="hidden" name="flg_id" th:field="*{flg_id}" /> <select
-						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="flglists : ${flglist}"
-							th:value="${flglists.id}"
-							th:selected="${flglists.id}==${product_master.flg_id}">[[${flglists.value}]]</option>
-					</select>
-
-					<!-- タイムスタンプ用インプットボックス  -->
-					タイムスタンプ<input type="text" name="create_at" th:field="*{create_at}" />
-
-					<button type="submit" class="btn btn-warning">更新</button>
-
-				</form>
-
-				<p>
-					<a href="/product_master" class="btn btn-info">一覧画面へ</a>
-				</p>
-
-			</tbody>
-		</table>
-
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function () {
 		    var today = new Date();
 		    today.setDate(today.getDate());
@@ -130,7 +186,7 @@
 		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
 		}
 		</script>
-		<script>
+	<script>
 		var forms = document.getElementsByClassNamed("form-control");
 		var alerts = document.getElementsByClassName("alert");
 		for (var i = 0; i < forms.length; i++) {

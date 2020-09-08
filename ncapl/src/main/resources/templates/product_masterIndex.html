@@ -69,9 +69,9 @@ select {
 				<tr th:each="product_master : ${product_masters}" th:object="${product_master}">
 					<td th:text="*{pm_id}"></td>
 					<td><select id="product_name" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="product_namelists : ${product_namelist}"
-  							th:value="${product_namelists.pn_id}"
-  							th:selected="${product_namelists.pn_id} == *{pn_id}">[[${product_namelists.name}]]</option>
+  							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+  							th:value="${product_name_viewlists.pn_id}"
+  							th:selected="${product_name_viewlists.pn_id} == *{pn_id}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
 					<td th:text="*{cement_adjv}"></td>
 					<td th:text="*{sand_adjv}"></td>

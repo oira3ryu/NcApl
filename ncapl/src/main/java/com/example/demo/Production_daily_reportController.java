@@ -19,6 +19,7 @@ import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
 import com.example.demo.model.Production_daily_report;
+import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.model.Type;
 import com.example.demo.model.Unit;
 import com.example.demo.service.CompanyService;
@@ -29,6 +30,7 @@ import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
 import com.example.demo.service.Production_daily_reportService;
+import com.example.demo.service.Production_daily_report_viewService;
 import com.example.demo.service.TypeService;
 import com.example.demo.service.UnitService;
 
@@ -38,6 +40,9 @@ public class Production_daily_reportController {
 
 	@Autowired
 	private Production_daily_reportService production_daily_reportService;
+
+	@Autowired
+	private Production_daily_report_viewService production_daily_report_viewService;
 
 	@Autowired
 	private PlantService plantService;
@@ -72,6 +77,9 @@ public class Production_daily_reportController {
 
 	    List<Production_daily_report> production_daily_reports = production_daily_reportService.findAll();
 	    model.addAttribute("production_daily_reports",production_daily_reports);
+
+	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
+	    model.addAttribute("production_daily_report_views",production_daily_report_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
@@ -123,8 +131,12 @@ public class Production_daily_reportController {
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Integer id,Model model) {
+
 		Production_daily_report production_daily_report = production_daily_reportService.findOne(id);
 		model.addAttribute("production_daily_report",production_daily_report);
+
+	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
+	    model.addAttribute("production_daily_report_views",production_daily_report_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);

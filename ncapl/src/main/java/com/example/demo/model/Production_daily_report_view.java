@@ -33,6 +33,16 @@ public class Production_daily_report_view {
 
 	private String quantity;
 
+	private Integer std_price;
+
+	private Integer sp_price;
+
+	private String std_sales_amount;
+
+	private String sp_sales_amount;
+
+	private String start_date;
+
 	private String record_date;
 
 	private String plant;

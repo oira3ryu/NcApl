@@ -69,10 +69,26 @@ select {
 
 				<tr th:each="product_name : ${product_names}" th:object="${product_name}">
 					<td th:text="*{pn_id}"></td>
-					<td th:text="*{name}"></td>
-					<td th:text="*{strength}"></td>
-					<td th:text="*{aggregate}"></td>
-					<td th:text="*{slump}"></td>
+					<td><select id="journal" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="journallists : ${journallist}"
+  							th:value="${journallists.id}"
+  							th:selected="${journallists.id} == *{j_id}">[[${journallists.name}]]</option>
+					</select></td>
+					<td><select id="strength" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="strengthlists : ${strengthlist}"
+  							th:value="${strengthlists.id}"
+  							th:selected="${strengthlists.id} == *{st_id}">[[${strengthlists.value}]]</option>
+					</select></td>
+					<td><select id="aggregate" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="aggregatelists : ${aggregatelist}"
+  							th:value="${aggregatelists.id}"
+  							th:selected="${aggregatelists.id} == *{ag_id}">[[${aggregatelists.value}]]</option>
+					</select></td>
+					<td><select id="slump" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="slumplists : ${slumplist}"
+  							th:value="${slumplists.id}"
+  							th:selected="${slumplists.id} == *{sl_id}">[[${slumplists.value}]]</option>
+					</select></td>
 					<td th:text="*{start_date}"></td>
 					<td th:text="*{end_date}"></td>
 					<!-- <td th:text="*{flg_id}"></td> -->

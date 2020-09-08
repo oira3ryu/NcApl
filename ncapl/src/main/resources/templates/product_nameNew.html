@@ -28,6 +28,31 @@
 		crossorigin="anonymous"></script>
 
 	<script language="JavaScript">
+
+	function setJ_id(txt)
+	{
+		document.product_name.j_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSt_id(txt)
+	{
+		document.product_name.st_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setAg_id(txt)
+	{
+		document.product_name.ag_id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSl_id(txt)
+	{
+		document.product_name.sl_id.value = txt;
+		select.selectedIndex = index;
+	}
+
 	function setStart_date(txt)
 	{
 		document.product_name.start_date.value = txt;
@@ -71,12 +96,62 @@
 
 					製品名<input type="text" name="product_name" />
 
-					呼び強度<input type="text" name="strength" />
-
-					骨材寸法<input type="text" name="aggregate" />
-
-					スランプ<input type="text" name="slump" />
-
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 製品名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="j_id" th:field="*{j_id}" /> <select
+							id="journal" onChange="setJ_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="journallists : ${journallist}" th:value="${journallists.id}"
+								th:selected="${journallists.id}==${product_name.j_id}">[[${journallists.name}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 呼び強度<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="st_id" th:field="*{st_id}" /> <select
+							id="strength" onChange="setSt_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="strengthlists : ${strengthlist}" th:value="${strengthlists.id}"
+								th:selected="${strengthlists.id}==${product_name.st_id}">[[${strengthlists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 骨材寸法<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="ag_id" th:field="*{ag_id}" /> <select
+							id="aggregate" onChange="setAg_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="aggregatelists : ${aggregatelist}" th:value="${aggregatelists.id}"
+								th:selected="${aggregatelists.id}==${product_name.ag_id}">[[${aggregatelists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> スランプ<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="al_id" th:field="*{sl_id}" /> <select
+							id="slump" onChange="setSl_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="slumplists : ${slumplist}" th:value="${slumplists.id}"
+								th:selected="${slumplists.id}==${product_name.sl_id}">[[${slumplists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
  					適用開始日<input type="hidden" name="start_date" />
 					<!-- 適用開始日選択ドロップダウン  -->
 					適用開始日<input type="date" name="today" onChange="setStart_date(this.value)" />

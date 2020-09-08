@@ -21,6 +21,7 @@ import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_master;
 import com.example.demo.model.Product_name;
+import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
@@ -35,6 +36,7 @@ import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_masterService;
 import com.example.demo.service.Product_nameService;
+import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
@@ -49,7 +51,9 @@ public class Product_masterController {
 
 	@Autowired
 	private Product_nameService product_nameService;
+	@Autowired
 
+	private Product_name_viewService product_name_viewService;
 	@Autowired
 	private BookService bookService;
 
@@ -95,6 +99,9 @@ public class Product_masterController {
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
 
 		List<Flg> flags = flgService.findAll();
 		model.addAttribute("flglist", flags);
