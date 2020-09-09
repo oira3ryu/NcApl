@@ -38,13 +38,13 @@
 
 	function setCo_id(txt)
 	{
-		document.production_daily_report.co_id.value = txt;
+		document.getElementById( "co_id" ).value = txt;
 		select.selectedIndex = index;
 	}
 
 	function setFi_id(txt)
 	{
-		document.production_daily_report.fi_id.value = txt;
+		document.getElementById( "fi_id" ).value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -56,7 +56,7 @@
 	</script>
 
 	<h1 class="my-3 ml-3">売掛</h1>
-				<tr th:each="production_daily_report : ${production_daily_reports}" th:object="${production_daily_report}">
+
 		<div class="container">
 
 			<div class="form-row">
@@ -65,19 +65,20 @@
 
 					<label class="col-sm-3 col-form-label">施工者<span
 					class="badge badge-danger">選択</span></label>
-					<input type="text" id="hcompany" name="co_id" />
+					<input type="text" id="co_id" name="co_id" />
 					<select id="search_company" onChange="setCo_id(this[this.selectedIndex].value)">
   							<option th:each="companylists : ${companylist}"
   							th:value="${companylists.id}"
   							th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
 					</select>
+
 					</p>
 				</div>
 				<div class="col-sm-9">
 					<p>
 					<label class="col-sm-3 col-form-label">現場名<span
 					class="badge badge-danger">選択</span></label>
-					<input type="text" id="hfield" name="fi_id" />
+					<input type="text" id="fi_id" name="fi_id" />
 					<select id="search_field" onChange="setFi_id(this[this.selectedIndex].value)">
   							<option th:each="fieldlists : ${fieldlist}"
   							th:value="${fieldlists.id}"
@@ -88,7 +89,7 @@
 			</div>
 
 		</div>
-				</tr>
+
 	<div class="ml-3">
 		<table class="table table-striped">
 
