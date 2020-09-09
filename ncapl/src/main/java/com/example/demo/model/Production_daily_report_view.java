@@ -27,7 +27,11 @@ public class Production_daily_report_view {
 
 	private Integer pn_id;
 
+	private Integer co_id;
+
 	private String company;
+
+	private Integer fi_id;
 
 	private String field;
 
@@ -46,6 +50,8 @@ public class Production_daily_report_view {
 	private String start_date;
 
 	private String record_date;
+
+	private Integer p_id;
 
 	private String plant;
 }

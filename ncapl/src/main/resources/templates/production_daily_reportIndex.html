@@ -10,26 +10,11 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+
+	<link href="/css/style.css" rel="stylesheet"></link>
+
 </head>
 <body>
-<style>
-.select-wrapper {
-    width: 200px;
-    overflow: hidden;
-}
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    margin: 0;
-    border: 0;
-    outline: none;
-    padding: 0;
-    background: transparent;
-}
-</style>
-
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -43,10 +28,39 @@ select {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+
 	<h1 class="my-3 ml-3">売掛</h1>
+
+		<div class="container">
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+					<label class="col-sm-3 col-form-label">施工者<span
+					class="badge badge-danger">選択</span></label>
+					<select id="search_company">
+  							<option th:each="companylists : ${companylist}"
+  							th:value="${companylists.id}"
+  							th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
+					</select>
+					</p>
+				</div>
+				<div class="col-sm-9">
+					<p>
+					<label class="col-sm-3 col-form-label">現場名<span
+					class="badge badge-danger">選択</span></label>
+					<select id="search_field">
+  							<option th:each="fieldlists : ${fieldlist}"
+  							th:value="${fieldlists.id}"
+  							th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
+					</select>
+					</p>
+				</div>
+			</div>
+	</div>
 
 	<div class="ml-3">
 		<table class="table table-striped">
+
 			<thead>
 				<tr>
 					<th>#</th>
@@ -56,6 +70,7 @@ select {
 					<th>製品名</th>
 					<th>単価</th>
 					<th>数量</th>
+					<th>売上金額</th>
 					<th>記録日</th>
 					<th></th>
 					<th></th>
@@ -64,20 +79,45 @@ select {
 			</thead>
 			<tbody>
 
-				<tr th:each="production_daily_report_view : ${production_daily_report_views}" th:object="${production_daily_report_view}">
+				<tr th:each="production_daily_report : ${production_daily_reports}" th:object="${production_daily_report}">
 					<td th:text="*{pdr_id}"></td>
-					<td th:text="*{plant}"></td>
-					<td th:text="*{company}"></td>
-					<td th:text="*{field}"></td>
-					<td th:text="*{product_name}"></td>
-					<td th:text="*{sp_price}"></td>
+					<td><select id="plant" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="plantlists : ${plantlist}"
+  							th:value="${plantlists.id}"
+  							th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
+					</select></td>
+					<td><select id="company" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="companylists : ${companylist}"
+  							th:value="${companylists.id}"
+  							th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
+					</select></td>
+					<td><select id="field" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="fieldlists : ${fieldlist}"
+  							th:value="${fieldlists.id}"
+  							th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
+					</select></td>
+					<td><select id="product_name" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="product_namelists : ${product_namelist}"
+  							th:value="${product_namelists.pn_id}"
+  							th:selected="${product_namelists.pn_id} == *{pn_id}">[[${product_namelists.name}]]</option>
+					</select></td>
+					<td><select id="sp_price" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+  							th:value="${production_daily_report_viewlists.pdr_id}"
+  							th:selected="${production_daily_report_viewlists.pdr_id} == *{pdr_id}">[[${production_daily_report_viewlists.sp_price}]]</option>
+					</select></td>
 					<td th:text="*{quantity}"></td>
+					<td><select id="sp_sales_amount" style="pointer-events: none;" tabindex="-1">
+  							<option th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+  							th:value="${production_daily_report_viewlists.pdr_id}"
+  							th:selected="${production_daily_report_viewlists.pdr_id} == *{pdr_id}">[[${production_daily_report_viewlists.sp_sales_amount}]]</option>
+					</select></td>
 					<td th:text="*{record_date}"></td>
 
-					<td><a th:href="@{/production_daily_report_view/{id}/edit(id=*{pdr_id})}"
+					<td><a th:href="@{/production_daily_report/{id}/edit(id=*{pdr_id})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/production_daily_report_view/{id}(id=*{pdr_id})}" th:method="post" onSubmit="return delcheck()">
+						<form th:action="@{/production_daily_report/{id}(id=*{pdr_id})}" th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
 					</td>
@@ -86,7 +126,7 @@ select {
 		</table>
 		<a href="/" class="btn btn-info">メニュー</a>
 		<span>
-			<a href="/production_daily_report/production_daily_report_viewNew" class="btn btn-primary">新規作成</a>
+			<a href="/production_daily_report/production_daily_reportNew" class="btn btn-primary">新規作成</a>
 		</span>
 		</div>
 

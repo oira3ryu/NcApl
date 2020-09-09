@@ -1,18 +1,15 @@
 .select-wrapper {
     width: 200px;
     overflow: hidden;
-    border: #999999 1px solid;
-    border-radius: 5px;
-    background: url(arrow.png) right center no-repeat;
 }
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 230px;
+
     margin: 0;
     border: 0;
     outline: none;
-    padding: 5px;
+    padding: 0;
     background: transparent;
 }

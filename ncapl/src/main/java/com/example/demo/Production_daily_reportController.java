@@ -79,7 +79,7 @@ public class Production_daily_reportController {
 	    model.addAttribute("production_daily_reports",production_daily_reports);
 
 	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
-	    model.addAttribute("production_daily_report_views",production_daily_report_views);
+	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);

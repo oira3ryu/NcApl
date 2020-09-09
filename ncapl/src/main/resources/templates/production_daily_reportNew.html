@@ -61,73 +61,112 @@
 
 	</script>
 
-	<h1 class="my-3 ml-3">売掛 新規入力</h1>
+	<div class="container">
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>工場名</th>
-					<th>施工者</th>
-					<th>現場名</th>
-					<th>製品名</th>
-					<th>数量</th>
-					<th>記録日</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="navbar">
+		<h1>売掛 新規入力</h1>
+		</div>
 
 				<form th:action="@{/production_daily_report}" th:object="${production_daily_report}" th:method="post" name="production_daily_report">
 
-					工場名<input type="hidden" name="p_id" /><select
-						id="p_id" onChange="setP_id(this[this.selectedIndex].value)">
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">工場名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="hidden" name="p_id" /><select
+						id="plant" onChange="setP_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="plantlists : ${plantlist}"
 							th:value="${plantlists.id}">[[${plantlists.name}]]
 						</option>
 					</select>
-
-					施工者<input type="hidden" name="co_id" /><select
-						id="co_id" onChange="setCo_id(this[this.selectedIndex].value)">
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">施工者<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="hidden" name="co_id" /><select
+						id="company" onChange="setCo_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="companylists : ${companylist}"
 							th:value="${companylists.id}">[[${companylists.name}]]
 						</option>
 					</select>
-
-					現場名<input type="hidden" name="fi_id" /><select
-						id="fi_id" onChange="setFi_id(this[this.selectedIndex].value)">
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">現場名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="hidden" name="fi_id" /><select
+						id="field" onChange="setFi_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="fieldlists : ${fieldlist}"
 							th:value="${fieldlists.id}">[[${fieldlists.name}]]
 						</option>
 					</select>
-
-					製品名<input type="hidden" name="pn_id" /><select
-						id="pn_id" onChange="setPn_id(this[this.selectedIndex].value)">
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">製品名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="hidden" name="pn_id" /><select
+						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="product_namelists : ${product_namelist}"
 							th:value="${product_namelists.pn_id}">[[${product_namelists.name}]]
 						</option>
 					</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">数量<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="text" name="quantity" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">記録日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="hidden" name="record_date" />
 
-
-					数量<input type="text" name="quantity" />
-
- 					記録日<input type="hidden" name="record_date" />
 					<!-- 記録日選択ドロップダウン  -->
 					<input type="date" name="today" onChange="setRecord_date(this.value)" />
-
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
 					<input type="submit"
 						class="btn btn-warning" value="作成" />
-
-				</form>
-				<p>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
 					<a href="/production_daily_report" class="btn btn-info">一覧画面へ</a>
-				</p>
-			</tbody>
-		</table>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
 
 		<script type="text/javascript">
 		function () {
