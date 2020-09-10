@@ -36,5 +36,5 @@ public class Production_daily_report {
 	private String quantity;
 
 	private String record_date;
-
+	
 }
