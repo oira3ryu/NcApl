@@ -9,6 +9,4 @@ import com.example.demo.model.Production_daily_report;
 public interface Production_daily_reportRepository
 		extends JpaRepository<Production_daily_report, Integer> {
 
-//	public Production_daily_report findByCo_id(Integer co_id);
-
 }

@@ -168,6 +168,7 @@ public class Production_daily_reportController {
 		return "production_daily_reportEdit";
 	}
 
+
 	@PostMapping
 	public String create(@ModelAttribute Production_daily_report production_daily_report) {
 		production_daily_reportService.save(production_daily_report);
