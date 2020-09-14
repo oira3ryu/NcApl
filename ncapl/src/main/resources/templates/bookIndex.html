@@ -12,21 +12,21 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<style>
+	<style>
 .select-wrapper {
-    width: 200px;
-    overflow: hidden;
+	width: 200px;
+	overflow: hidden;
 }
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
 
-    margin: 0;
-    border: 0;
-    outline: none;
-    padding: 0;
-    background: transparent;
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
+	border: 0;
+	outline: none;
+	padding: 0;
+	background: transparent;
 }
 </style>
 	<!-- Optional JavaScript -->
@@ -65,6 +65,7 @@ select {
 					<th></th>
 					<th></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
+					<th><a href="/book/bookNew" class="btn btn-primary">新規作成</a></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,101 +73,111 @@ select {
 				<tr th:each="book : ${books}" th:object="${book}">
 					<td th:text="*{id}"></td>
 					<td th:text="*{record_date}"></td>
-					<td><select id="t_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="typelists : ${typelist}"
-  							th:value="${typelists.id}"
-  							th:selected="${typelists.id} == *{t_id}">[[${typelists.value}]]</option>
+					<td><select id="t_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="typelists : ${typelist}"
+								th:value="${typelists.id}"
+								th:selected="${typelists.id} == *{t_id}">[[${typelists.value}]]</option>
 					</select></td>
-					<td><select id="p_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="plantlists : ${plantlist}"
-  							th:value="${plantlists.id}"
-  							th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
+					<td><select id="p_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="plantlists : ${plantlist}"
+								th:value="${plantlists.id}"
+								th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
 					</select></td>
-					<td><select id="j_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="journallists : ${journallist}"
-  							th:value="${journallists.id}"
-  							th:selected="${journallists.id} == *{j_id}">[[${journallists.name}]]</option>
+					<td><select id="j_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="journallists : ${journallist}"
+								th:value="${journallists.id}"
+								th:selected="${journallists.id} == *{j_id}">[[${journallists.name}]]</option>
 					</select></td>
-					<td><select id="c_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="companylists : ${companylist}"
-  							th:value="${companylists.id}"
-  							th:selected="${companylists.id} == *{c_id}">[[${companylists.name}]]</option>
+					<td><select id="c_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="companylists : ${companylist}"
+								th:value="${companylists.id}"
+								th:selected="${companylists.id} == *{c_id}">[[${companylists.name}]]</option>
 					</select></td>
-					<td><select id="fi_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="fieldlists : ${fieldlist}"
-  							th:value="${fieldlists.id}"
-  							th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
+					<td><select id="fi_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="fieldlists : ${fieldlist}"
+								th:value="${fieldlists.id}"
+								th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
 					</select></td>
-					<td><select id="st_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="strengthlists : ${strengthlist}"
-  							th:value="${strengthlists.id}"
-  							th:selected="${strengthlists.id} == *{st_id}">[[${strengthlists.value}]]</option>
+					<td><select id="st_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="strengthlists : ${strengthlist}"
+								th:value="${strengthlists.id}"
+								th:selected="${strengthlists.id} == *{st_id}">[[${strengthlists.value}]]</option>
 					</select></td>
-					<td><select id="ag_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="aggregatelists : ${aggregatelist}"
-  							th:value="${aggregatelists.id}"
-  							th:selected="${aggregatelists.id} == *{ag_id}">[[${aggregatelists.value}]]</option>
+					<td><select id="ag_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="aggregatelists : ${aggregatelist}"
+								th:value="${aggregatelists.id}"
+								th:selected="${aggregatelists.id} == *{ag_id}">[[${aggregatelists.value}]]</option>
 					</select></td>
-					<td><select id="sl_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="slumplists : ${slumplist}"
-  							th:value="${slumplists.id}"
-  							th:selected="${slumplists.id} == *{sl_id}">[[${slumplists.value}]]</option>
+					<td><select id="sl_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="slumplists : ${slumplist}"
+								th:value="${slumplists.id}"
+								th:selected="${slumplists.id} == *{sl_id}">[[${slumplists.value}]]</option>
 					</select></td>
-					<td><select id="co_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="compositionlists : ${compositionlist}"
-  							th:value="${compositionlists.id}"
-  							th:selected="${compositionlists.id} == *{co_id}">[[${compositionlists.value}]]</option>
+					<td><select id="co_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="compositionlists : ${compositionlist}"
+								th:value="${compositionlists.id}"
+								th:selected="${compositionlists.id} == *{co_id}">[[${compositionlists.value}]]</option>
 					</select></td>
 					<td th:text="*{quantity}"></td>
-					<td><select id="u_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="unitlists : ${unitlist}"
-  							th:value="${unitlists.id}"
-  							th:selected="${unitlists.id} == *{u_id}">[[${unitlists.value}]]</option>
+					<td><select id="u_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="unitlists : ${unitlist}"
+								th:value="${unitlists.id}"
+								th:selected="${unitlists.id} == *{u_id}">[[${unitlists.value}]]</option>
 					</select></td>
-					<td><select id="flg_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="flglists : ${flglist}"
-  							th:value="${flglists.id}"
-  							th:selected="${flglists.id} == *{flg_id}">[[${flglists.value}]]</option>
+					<td><select id="flg_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
+								th:selected="${flglists.id} == *{flg_id}">[[${flglists.value}]]</option>
 					</select></td>
 
 					<td><a th:href="@{/book/{id}/edit(id=*{id})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/book/{id}(id=*{id})}" th:method="post" onSubmit="return delcheck()">
+						<form th:action="@{/book/{id}(id=*{id})}" th:method="post"
+							onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="/" class="btn btn-info">メニュー</a>
-		<span>
-			<a href="/book/bookNew" class="btn btn-primary">新規作成</a>
+		<a href="/" class="btn btn-info">メニュー</a> <span> <a
+			href="/book/bookNew" class="btn btn-primary">新規作成</a>
 		</span>
 		</tbody>
 		</table>
 
-	<!-- jqueryの場合 -->
+		<!-- jqueryの場合 -->
 
-	<script>
-		//formタグにサブミット時イベントを設定
+		<script>
+			//formタグにサブミット時イベントを設定
 
-		$('form').submit(function(event) {
+			$('form').submit(function(event) {
 
-			// 確認メッセージ表示
-			// 戻り値を変数resultに代入(trueまたはfalse)
-			var result = window.confirm('本当に削除してよろしいですか？');
+				// 確認メッセージ表示
+				// 戻り値を変数resultに代入(trueまたはfalse)
+				var result = window.confirm('本当に削除してよろしいですか？');
 
-			// キャンセルボタンが押された場合
-			if (result == false) {
+				// キャンセルボタンが押された場合
+				if (result == false) {
 
-				// サブミットを中止する
-				return false;
-			}
-		});
-	</script>
+					// サブミットを中止する
+					return false;
+				}
+			});
+		</script>
 
-	<!-- javascriptの場合
+		<!-- javascriptの場合
 
 		<script type="text/javascript">
 
@@ -185,6 +196,5 @@ select {
 		}
 
 	</script> -->
-
 </body>
 </html>

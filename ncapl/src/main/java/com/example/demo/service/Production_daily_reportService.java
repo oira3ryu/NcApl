@@ -24,11 +24,9 @@ public class Production_daily_reportService {
 	}
 
     public List<Production_daily_report> findByForm(Production_daily_report searchParam) {
-
         if (searchParam == null) {
             return findAll();
         }
-
         return repository.findAll(Example.of(searchParam));
     }
 

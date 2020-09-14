@@ -30,28 +30,30 @@
 		crossorigin="anonymous"></script>
 	<h1 class="my-3 ml-3">売掛</h1>
 
-	<form name="search" action="#" th:action="@{/production_daily_report/search}" th:object="${searchParam}" method="post">
+	<form name="search" action="#"
+		th:action="@{/production_daily_report/search}"
+		th:object="${searchParam}" method="post">
 		<div class="container">
 			<div class="form-row">
 				<div class="col-sm-9">
 					<p>
 						<label class="col-sm-3 col-form-label">施工者<span
-							class="badge badge-danger">選択</span></label>
-						<select style="border: black 1px solid; appearance: auto; width: 350px"
+							class="badge badge-danger">選択</span></label> <select
+							style="border: black 1px solid; appearance: auto; width: 350px"
 							id="co_id" name="co_id"
 							onChange="setCo_id(this[this.selectedIndex].value)">
 							<option value=""></option>
 							<option th:each="companylists : ${companylist}"
 								th:value="${companylists.id}"
 								th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
-			 			</select>
+						</select>
 					</p>
 				</div>
 				<div class="col-sm-9">
 					<p>
 						<label class="col-sm-3 col-form-label">現場名<span
-							class="badge badge-danger">選択</span></label>
-						<select style="border: black 1px solid; appearance: auto; width: 350px"
+							class="badge badge-danger">選択</span></label> <select
+							style="border: black 1px solid; appearance: auto; width: 350px"
 							id="fi_id" name="fi_id"
 							onChange="setFi_id(this[this.selectedIndex].value)">
 							<option value=""></option>
@@ -81,72 +83,90 @@
 					<th>工場</th>
 					<th>施工者</th>
 					<th>現場名</th>
+					<th>製品名</th>
 					<th>数量</th>
 					<th>記録日</th>
 					<th></th>
 					<th></th>
+					<th><a href="/" class="btn btn-info">メニュー</a></th>
+					<th> <a
+						href="/production_daily_report/production_daily_reportNew"
+						class="btn btn-primary">新規作成</a>
+					</th>
 				</tr>
 			</thead>
 			<tbody>
 
-				<tr th:each="production_daily_report : ${production_daily_reports}" th:object="${production_daily_report}">
+				<tr th:each="production_daily_report : ${production_daily_reports}"
+					th:object="${production_daily_report}">
 					<td th:text="*{pdr_id}"></td>
-					<td><select id="p_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="plantlists : ${plantlist}"
-  							th:value="${plantlists.id}"
-  							th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
+					<td><select id="p_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="plantlists : ${plantlist}"
+								th:value="${plantlists.id}"
+								th:selected="${plantlists.id} == *{p_id}">[[${plantlists.name}]]</option>
 					</select></td>
-					<td><select id="co_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="companylists : ${companylist}"
-  							th:value="${companylists.id}"
-  							th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
+					<td><select id="co_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="companylists : ${companylist}"
+								th:value="${companylists.id}"
+								th:selected="${companylists.id} == *{co_id}">[[${companylists.name}]]</option>
 					</select></td>
-					<td><select id="fi_id" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="fieldlists : ${fieldlist}"
-  							th:value="${fieldlists.id}"
-  							th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
+					<td><select id="fi_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="fieldlists : ${fieldlist}"
+								th:value="${fieldlists.id}"
+								th:selected="${fieldlists.id} == *{fi_id}">[[${fieldlists.name}]]</option>
+					</select></td>
+					<td><select id="pn_id" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="product_namelists : ${product_namelist}"
+								th:value="${product_namelists.pn_id}"
+								th:selected="${product_namelists.pn_id} == *{pn_id}">[[${product_namelists.name}]]</option>
 					</select></td>
 					<td th:text="*{quantity}"></td>
 					<td th:text="*{record_date}"></td>
 
-					<td><a th:href="@{/production_daily_report/{id}/edit(id=*{pdr_id})}"
+					<td><a
+						th:href="@{/production_daily_report/{id}/edit(id=*{pdr_id})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/production_daily_report/{id}(id=*{pdr_id})}" th:method="post" onSubmit="return delcheck()">
+						<form th:action="@{/production_daily_report/{id}(id=*{pdr_id})}"
+							th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="/" class="btn btn-info">メニュー</a>
-		<span>
-			<a href="/production_daily_report/production_daily_reportNew" class="btn btn-primary">新規作成</a>
+		<a href="/" class="btn btn-info">メニュー</a> <span> <a
+			href="/production_daily_report/production_daily_reportNew"
+			class="btn btn-primary">新規作成</a>
 		</span>
 		</tbody>
 		</table>
 
-	<!-- jqueryの場合 -->
+		<!-- jqueryの場合 -->
 
-	<script>
-		//formタグにサブミット時イベントを設定
+		<script>
+			//formタグにサブミット時イベントを設定
 
-		$('form[name!="search"]').submit(function(event) {
+			$('form[name!="search"]').submit(function(event) {
 
-			// 確認メッセージ表示
-			// 戻り値を変数resultに代入(trueまたはfalse)
-			var result = window.confirm('本当に削除してよろしいですか？');
+				// 確認メッセージ表示
+				// 戻り値を変数resultに代入(trueまたはfalse)
+				var result = window.confirm('本当に削除してよろしいですか？');
 
-			// キャンセルボタンが押された場合
-			if (result == false) {
+				// キャンセルボタンが押された場合
+				if (result == false) {
 
-				// サブミットを中止する
-				return false;
-			}
-		});
-	</script>
+					// サブミットを中止する
+					return false;
+				}
+			});
+		</script>
 
-	<!-- javascriptの場合
+		<!-- javascriptの場合
 
 		<script type="text/javascript">
 
@@ -165,6 +185,5 @@
 		}
 
 	</script> -->
-
 </body>
 </html>
