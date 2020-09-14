@@ -73,28 +73,14 @@
 
 	</script>
 
-	<h1 class="my-3 ml-3">製品 新規入力</h1>
+	<div class="container">
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>製品名</th>
-					<th>呼び強度</th>
-					<th>骨材寸法</th>
-					<th>スランプ</th>
-					<th>適用開始日</th>
-					<th>適用終了日</th>
-					<th>可／否</th>
-					<th>記録日</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="navbar">
+			<h1>製品 新規入力</h1>
+		</div>
 
-				<form th:action="@{/product_name}" th:object="${product_name}" th:method="post" name="product_name">
-
-					製品名<input type="text" name="product_name" />
+		<form th:action="@{/product_name}" th:object="${product_name}"
+			th:method="post" name="product_name">
 
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label"> 製品名<span
@@ -104,7 +90,8 @@
 						<input type="hidden" name="j_id" th:field="*{j_id}" /> <select
 							id="journal" onChange="setJ_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="journallists : ${journallist}" th:value="${journallists.id}"
+							<option th:each="journallists : ${journallist}"
+								th:value="${journallists.id}"
 								th:selected="${journallists.id}==${product_name.j_id}">[[${journallists.name}]]</option>
 						</select>
 					</p>
@@ -118,7 +105,8 @@
 						<input type="hidden" name="st_id" th:field="*{st_id}" /> <select
 							id="strength" onChange="setSt_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="strengthlists : ${strengthlist}" th:value="${strengthlists.id}"
+							<option th:each="strengthlists : ${strengthlist}"
+								th:value="${strengthlists.id}"
 								th:selected="${strengthlists.id}==${product_name.st_id}">[[${strengthlists.value}]]</option>
 						</select>
 					</p>
@@ -130,9 +118,11 @@
 				<div class="col-sm-9">
 					<p>
 						<input type="hidden" name="ag_id" th:field="*{ag_id}" /> <select
-							id="aggregate" onChange="setAg_id(this[this.selectedIndex].value)">
+							id="aggregate"
+							onChange="setAg_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="aggregatelists : ${aggregatelist}" th:value="${aggregatelists.id}"
+							<option th:each="aggregatelists : ${aggregatelist}"
+								th:value="${aggregatelists.id}"
 								th:selected="${aggregatelists.id}==${product_name.ag_id}">[[${aggregatelists.value}]]</option>
 						</select>
 					</p>
@@ -146,41 +136,78 @@
 						<input type="hidden" name="al_id" th:field="*{sl_id}" /> <select
 							id="slump" onChange="setSl_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="slumplists : ${slumplist}" th:value="${slumplists.id}"
+							<option th:each="slumplists : ${slumplist}"
+								th:value="${slumplists.id}"
 								th:selected="${slumplists.id}==${product_name.sl_id}">[[${slumplists.value}]]</option>
 						</select>
 					</p>
 				</div>
 			</div>
- 					適用開始日<input type="hidden" name="start_date" />
-					<!-- 適用開始日選択ドロップダウン  -->
-					適用開始日<input type="date" name="today" onChange="setStart_date(this.value)" />
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 適用開始日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="start_date" />
+						<!-- 適用開始日選択ドロップダウン  -->
+						<input type="date" name="today"
+							onChange="setStart_date(this.value)" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 適用終了日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="start_date" />
+						<!-- 適用終了日選択ドロップダウン  -->
+						<input type="date" name="today" onChange="setEnd_date(this.value)" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> <!-- フラグ選択ドロップダウン  -->
+					可／否<span class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="flg_id" /><select id="flg"
+							onChange="setFlg_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> タイムスタンプ<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="create_at" /> </select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="submit" class="btn btn-warning" value="作成" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+						<a href="/product_name" class="btn btn-info">一覧画面へ</a>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
 
- 					適用終了日<input type="hidden" name="start_date" />
-					<!-- 適用終了日選択ドロップダウン  -->
-					適用終了日<input type="date" name="today" onChange="setEnd_date(this.value)" />
-
-					<!-- フラグ選択ドロップダウン  -->
-					可／否<input type="hidden" name="flg_id" /><select
-						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="flglists : ${flglist}"
-							th:value="${flglists.id}">[[${flglists.value}]]</option>
-					</select>
-
-					タイムスタンプ<input type="text" name="create_at" />
-
-					<input type="submit"
-						class="btn btn-warning" value="作成" />
-
-				</form>
-				<p>
-					<a href="/product_name" class="btn btn-info">一覧画面へ</a>
-				</p>
-			</tbody>
-		</table>
-
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function () {
 		    var today = new Date();
 		    today.setDate(today.getDate());

@@ -151,6 +151,7 @@ public class Product_nameController {
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Integer id,Model model) {
+
 		Product_name product_name = product_nameService.findOne(id);
 		model.addAttribute("product_name",product_name);
 
