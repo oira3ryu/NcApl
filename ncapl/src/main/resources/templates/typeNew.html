@@ -26,28 +26,36 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-	<h1 class="my-3 ml-3">仕訳 新規入力</h1>
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>値</th>
-				</tr>
-			</thead>
-			<tbody>
+	<div class="container">
+
+		<div class="navbar">
+			<h1>仕訳 新規入力</h1>
+		</div>
 
 				<form th:action="@{/type}" th:method="post">
 
-					値<input type="text" name="value" /> <input type="submit"
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">値<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="text" name="value" /> <input type="submit"
 						class="btn btn-warning" value="作成" />
-
-				</form>
-				<p>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
 					<a href="/type" class="btn btn-info">一覧画面へ</a>
-				</p>
-			</tbody>
-		</table>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
+
 </body>
 </html>

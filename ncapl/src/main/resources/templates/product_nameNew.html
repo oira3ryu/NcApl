@@ -83,16 +83,15 @@
 			th:method="post" name="product_name">
 
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> 製品名<span
+				<label class="col-sm-3 col-form-label"> 製品種別<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="j_id" th:field="*{j_id}" /> <select
-							id="journal" onChange="setJ_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="j_id" /> <select id="journal"
+							onChange="setJ_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
-								th:value="${journallists.id}"
-								th:selected="${journallists.id}==${product_name.j_id}">[[${journallists.name}]]</option>
+								th:value="${journallists.id}">[[${journallists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -102,12 +101,11 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="st_id" th:field="*{st_id}" /> <select
-							id="strength" onChange="setSt_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="st_id" /> <select id="strength"
+							onChange="setSt_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="strengthlists : ${strengthlist}"
-								th:value="${strengthlists.id}"
-								th:selected="${strengthlists.id}==${product_name.st_id}">[[${strengthlists.value}]]</option>
+								th:value="${strengthlists.id}">[[${strengthlists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -117,13 +115,11 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="ag_id" th:field="*{ag_id}" /> <select
-							id="aggregate"
+						<input type="hidden" name="ag_id" /> <select id="aggregate"
 							onChange="setAg_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="aggregatelists : ${aggregatelist}"
-								th:value="${aggregatelists.id}"
-								th:selected="${aggregatelists.id}==${product_name.ag_id}">[[${aggregatelists.value}]]</option>
+								th:value="${aggregatelists.id}">[[${aggregatelists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -133,18 +129,17 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="al_id" th:field="*{sl_id}" /> <select
-							id="slump" onChange="setSl_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="al_id" /> <select id="slump"
+							onChange="setSl_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="slumplists : ${slumplist}"
-								th:value="${slumplists.id}"
-								th:selected="${slumplists.id}==${product_name.sl_id}">[[${slumplists.value}]]</option>
+								th:value="${slumplists.id}">[[${slumplists.value}]]</option>
 						</select>
 					</p>
 				</div>
 			</div>
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> 適用開始日<span
+				<label class="col-sm-3 col-form-label">適用開始日<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
@@ -156,19 +151,20 @@
 				</div>
 			</div>
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> 適用終了日<span
-					class="badge badge-danger">必須</span></label>
+				<label class="col-sm-3 col-form-label">適用終了日<span
+					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
 						<input type="hidden" name="start_date" />
 						<!-- 適用終了日選択ドロップダウン  -->
-						<input type="date" name="today" onChange="setEnd_date(this.value)" />
+						<input type="date" name="today"
+							onChange="setEnd_date(this.value)" />
 					</p>
 				</div>
 			</div>
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> <!-- フラグ選択ドロップダウン  -->
-					可／否<span class="badge badge-danger">必須</span></label>
+				<label class="col-sm-3 col-form-label">可／否<span
+					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
 						<input type="hidden" name="flg_id" /><select id="flg"
@@ -179,15 +175,15 @@
 					</p>
 				</div>
 			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> タイムスタンプ<span
-					class="badge badge-danger"></span></label>
-				<div class="col-sm-9">
+<!-- 			<div class="form-row"> -->
+<!-- 				<label class="col-sm-3 col-form-label">タイムスタンプ<span -->
+<!-- 					class="badge badge-danger"></span></label> -->
+<!-- 				<div class="col-sm-9"> -->
 					<p>
-						<input type="text" name="create_at" /> </select>
+						<input type="hidden" name="create_at" />
 					</p>
-				</div>
-			</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label"><span
 					class="badge badge-danger"></span></label>
@@ -198,6 +194,8 @@
 				</div>
 			</div>
 			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
 						<a href="/product_name" class="btn btn-info">一覧画面へ</a>

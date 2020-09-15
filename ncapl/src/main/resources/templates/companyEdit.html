@@ -26,30 +26,54 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-	<h1 class="my-3 ml-3">施工者 編集</h1>
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>施工者</th>
-				</tr>
-			</thead>
-			<tbody>
+	<div class="container">
+
+		<div class="navbar">
+			<h1>施工者 編集</h1>
+		</div>
+
 				<form th:action="@{/company/{id}/edit(id=*{id})}" th:method="post"
 					th:object="${company}">
 
-					施工者<input type="text" size="50" th:field="*{name}" />
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">ID<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="text" th:field="*{id}" disabled/>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">施工者<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+					<input type="text" size="50" th:field="*{name}" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
 					<button type="submit" class="btn btn-warning">更新</button>
-
-				</form>
-
-				<p>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
 					<a href="/company" class="btn btn-info">一覧画面へ</a>
-				</p>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
 
-			</tbody>
-		</table>
 </body>
 </html>

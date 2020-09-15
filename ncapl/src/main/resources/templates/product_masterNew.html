@@ -54,76 +54,143 @@
 
 	</script>
 
-	<h1 class="my-3 ml-3">製品構成 新規入力</h1>
+	<div class="container">
 
-	<div class="col-5 ml-3">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>製品名</th>
-					<th>セメント</th>
-					<th>砂</th>
-					<th>砕石</th>
-					<th>設計単価</th>
-					<th>標準単価</th>
-					<th>適用開始日</th>
-					<th>適用終了日</th>
-					<th>可／否</th>
-					<th>記録日</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="navbar">
+			<h1>製品構成 新規入力</h1>
+		</div>
 
-				<form th:action="@{/product_master}" th:object="${product_master}" th:method="post" name="product_master">
+		<form th:action="@{/product_master}" th:object="${product_master}"
+			th:method="post" name="product_master">
 
-					製品名<input type="hidden" name="pn_id" /><select
-						id="product_name" onChange="setPn_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="product_namelists : ${product_namelist}"
-							th:value="${product_namelists.pn_id}">[[${product_namelists.name}]]
-						</option>
-					</select>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">製品名<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="pn_id" /><select id="product_name"
+							onChange="setPn_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="product_namelists : ${product_namelist}"
+								th:value="${product_namelists.pn_id}">[[${product_namelists.name}]]
+							</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">セメント<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="cement_adjv" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">砂<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="sand_adjv" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">砕石<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="stone_adjv" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">設計単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="sp_price" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">標準単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="std_price" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">適用開始日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="start_date" />
+						<!-- 適用開始日選択ドロップダウン  -->
+						<input type="date" name="today"
+							onChange="setStart_date(this.value)" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">適用終了日<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="start_date" />
+						<!-- 適用終了日選択ドロップダウン  -->
+						適用終了日<input type="date" name="today"
+							onChange="setEnd_date(this.value)" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">可／否<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="flg_id" /><select id="flg"
+							onChange="setFlg_id(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">タイムスタンプ<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="create_at" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="submit" class="btn btn-warning" value="作成" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<a href="/product_master" class="btn btn-info">一覧画面へ</a>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
 
-					セメント<input type="text" name="cement_adjv" />
-
-					砂<input type="text" name="sand_adjv" />
-
-					砕石<input type="text" name="stone_adjv" />
-
-					設計単価<input type="text" name="sp_price" />
-
-					標準単価<input type="text" name="std_price" />
-
- 					適用開始日<input type="hidden" name="start_date" />
-					<!-- 適用開始日選択ドロップダウン  -->
-					適用開始日<input type="date" name="today" onChange="setStart_date(this.value)" />
-
- 					適用終了日<input type="hidden" name="start_date" />
-					<!-- 適用終了日選択ドロップダウン  -->
-					適用終了日<input type="date" name="today" onChange="setEnd_date(this.value)" />
-
-					<!-- フラグ選択ドロップダウン  -->
-					可／否<input type="hidden" name="flg_id" /><select
-						id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="flglists : ${flglist}"
-							th:value="${flglists.id}">[[${flglists.value}]]</option>
-					</select>
-
-					タイムスタンプ<input type="text" name="create_at" />
-
-					<input type="submit"
-						class="btn btn-warning" value="作成" />
-
-				</form>
-				<p>
-					<a href="/product_master" class="btn btn-info">一覧画面へ</a>
-				</p>
-			</tbody>
-		</table>
-
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function () {
 		    var today = new Date();
 		    today.setDate(today.getDate());
