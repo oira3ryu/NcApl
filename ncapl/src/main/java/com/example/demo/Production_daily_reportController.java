@@ -208,6 +208,9 @@ public class Production_daily_reportController {
                 production_daily_reportService.findByForm(form);
         model.addAttribute("production_daily_reports",production_daily_reports);
 
+		List<Product_name> product_names = product_nameService.findAll();
+		model.addAttribute("product_namelist", product_names);
+
         List<Plant> plants = plantService.findAll();
         model.addAttribute("plantlist", plants);
 
