@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="production_daily_report_pdf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b562c40-562f-4990-be0f-cb3784585ebc">
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[dF9wcm9kdWN0aW9uX2RhaWx5X3JlcG9ydF92aWV3ICwxNSwxNSw4ZGI1NjA4MS04MWUxLTRiNDMt
-YmRlMy05OWMyMzdjNjRmZWU7]]>
-	</property>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="src\main\resources\jasperreports\PostgresqlDataSource.xml"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT pdr_id,
+		<![CDATA[SELECT pdrid,
 	company,
 	field,
-	product_name,
+	productname,
 	quantity,
-	record_date,
+	recorddate,
 	plant
 FROM t_production_daily_report_view]]>
 	</queryString>
-	<field name="pdr_id" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="pdr_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="pdr_id"/>
+	<field name="pdrid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pdrid"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+		<property name="com.jaspersoft.studio.field.name" value="pdr_id"/>
 	</field>
 	<field name="company" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="company"/>
 		<property name="com.jaspersoft.studio.field.label" value="company"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+		<property name="com.jaspersoft.studio.field.name" value="company"/>
 	</field>
 	<field name="field" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="field"/>
 		<property name="com.jaspersoft.studio.field.label" value="field"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+		<property name="com.jaspersoft.studio.field.name" value="field"/>
+	</field>
+	<field name="productname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="productname"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
 	</field>
 	<field name="quantity" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="quantity"/>
 		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+		<property name="com.jaspersoft.studio.field.name" value="quantity"/>
 	</field>
-	<field name="product_name" class="java.lang.String"/>
-	<field name="record_date" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="record_date"/>
-		<property name="com.jaspersoft.studio.field.label" value="record_date"/>
+	<field name="recorddate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="recorddate"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+		<property name="com.jaspersoft.studio.field.name" value="record_date"/>
 	</field>
 	<field name="plant" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="plant"/>
 		<property name="com.jaspersoft.studio.field.label" value="plant"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+		<property name="com.jaspersoft.studio.field.name" value="plant"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -244,7 +244,7 @@ FROM t_production_daily_report_view]]>
 					<font fontName="ipaexg"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{productname}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="400" y="0" width="60" height="30" uuid="4dcfd8b5-a794-408f-998a-0d51f741aa46">

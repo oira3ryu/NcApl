@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>Postgresql Data Adapter</name><driver>org.postgresql.Driver</driver><username>ncadmin</username><password>nc1</password><savePassword>true</savePassword><url>jdbc:postgresql://localhost:5433/ncdb</url><database></database><serverAddress></serverAddress></jdbcDataAdapter>
