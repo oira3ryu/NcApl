@@ -28,27 +28,27 @@
 		crossorigin="anonymous"></script>
 
 	<script language="JavaScript">
-	function setPn_id(txt)
+	function setPnid(txt)
 	{
-		document.product_master.pn_id.value = txt;
+		document.product_master.pnid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setStart_date(txt)
+	function setStartdate(txt)
 	{
-		document.product_master.start_date.value = txt;
+		document.product_master.startdate.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setEnd_date(txt)
+	function setEnddate(txt)
 	{
-		document.product_master.end_date.value = txt;
+		document.product_master.enddate.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setFlg_id(txt)
+	function setFlgid(txt)
 	{
-		document.product_master.flg_id.value = txt;
+		document.product_master.flgid.value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -68,11 +68,11 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pn_id" /><select id="product_name"
-							onChange="setPn_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="pnid" /><select id="product_name"
+							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="product_namelists : ${product_namelist}"
-								th:value="${product_namelists.pn_id}">[[${product_namelists.name}]]
+								th:value="${product_namelists.pnid}">[[${product_namelists.name}]]
 							</option>
 						</select>
 					</p>
@@ -83,7 +83,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="cement_adjv" />
+						<input type="text" name="cementadjv" />
 					</p>
 				</div>
 			</div>
@@ -92,7 +92,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="sand_adjv" />
+						<input type="text" name="sandadjv" />
 					</p>
 				</div>
 			</div>
@@ -101,7 +101,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="stone_adjv" />
+						<input type="text" name="stoneadjv" />
 					</p>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="sp_price" />
+						<input type="text" name="spprice" />
 					</p>
 				</div>
 			</div>
@@ -119,7 +119,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="std_price" />
+						<input type="text" name="stdprice" />
 					</p>
 				</div>
 			</div>
@@ -128,10 +128,10 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="start_date" />
+						<input type="hidden" name="startdate" />
 						<!-- 適用開始日選択ドロップダウン  -->
 						<input type="date" name="today"
-							onChange="setStart_date(this.value)" />
+							onChange="setStartdate(this.value)" />
 					</p>
 				</div>
 			</div>
@@ -140,10 +140,10 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="start_date" />
+						<input type="hidden" name="enddate" />
 						<!-- 適用終了日選択ドロップダウン  -->
 						適用終了日<input type="date" name="today"
-							onChange="setEnd_date(this.value)" />
+							onChange="setEnddate(this.value)" />
 					</p>
 				</div>
 			</div>
@@ -152,8 +152,8 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="flg_id" /><select id="flg"
-							onChange="setFlg_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="flgid" /><select id="flg"
+							onChange="setFlgid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
 						</select>
@@ -165,7 +165,7 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="create_at" />
+						<input type="text" name="createat" />
 					</p>
 				</div>
 			</div>

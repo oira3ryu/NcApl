@@ -39,6 +39,7 @@
 					<th>呼び強度</th>
 					<th>骨材寸法</th>
 					<th>スランプ</th>
+					<th>単位</th>
 					<th>適用開始日</th>
 					<th>適用終了日</th>
 					<th>可／否</th>
@@ -58,45 +59,51 @@
 
 				<tr th:each="product_name : ${product_names}"
 					th:object="${product_name}">
-					<td th:text="*{pn_id}"></td>
+					<td th:text="*{pnid}"></td>
 					<td><select id="journal" style="pointer-events: none;"
 						tabindex="-1">
 							<option th:each="journallists : ${journallist}"
 								th:value="${journallists.id}"
-								th:selected="${journallists.id} == *{j_id}">[[${journallists.name}]]</option>
+								th:selected="${journallists.id} == *{jid}">[[${journallists.name}]]</option>
 					</select></td>
 					<td><select id="strength" style="pointer-events: none;"
 						tabindex="-1">
 							<option th:each="strengthlists : ${strengthlist}"
 								th:value="${strengthlists.id}"
-								th:selected="${strengthlists.id} == *{st_id}">[[${strengthlists.value}]]</option>
+								th:selected="${strengthlists.id} == *{stid}">[[${strengthlists.value}]]</option>
 					</select></td>
 					<td><select id="aggregate" style="pointer-events: none;"
 						tabindex="-1">
 							<option th:each="aggregatelists : ${aggregatelist}"
 								th:value="${aggregatelists.id}"
-								th:selected="${aggregatelists.id} == *{ag_id}">[[${aggregatelists.value}]]</option>
+								th:selected="${aggregatelists.id} == *{agid}">[[${aggregatelists.value}]]</option>
 					</select></td>
 					<td><select id="slump" style="pointer-events: none;"
 						tabindex="-1">
 							<option th:each="slumplists : ${slumplist}"
 								th:value="${slumplists.id}"
-								th:selected="${slumplists.id} == *{sl_id}">[[${slumplists.value}]]</option>
+								th:selected="${slumplists.id} == *{slid}">[[${slumplists.value}]]</option>
 					</select></td>
-					<td th:text="*{start_date}"></td>
-					<td th:text="*{end_date}"></td>
-					<!-- <td th:text="*{flg_id}"></td> -->
+					<td><select id="unit" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="unitlists : ${unitlist}"
+								th:value="${unitlists.id}"
+								th:selected="${unitlists.id} == *{uid}">[[${unitlists.value}]]</option>
+					</select></td>
+					<td th:text="*{startdate}"></td>
+					<td th:text="*{enddate}"></td>
+					<!-- <td th:text="*{flgid}"></td> -->
 					<td><select id="flg_id" style="pointer-events: none;"
 						tabindex="-1">
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
-								th:selected="${flglists.id} == *{flg_id}">[[${flglists.value}]]</option>
+								th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
 					</select></td>
-					<td th:text="*{create_at}"></td>
+					<td th:text="*{createat}"></td>
 
-					<td><a th:href="@{/product_name/{id}/edit(id=*{pn_id})}"
+					<td><a th:href="@{/product_name/{id}/edit(id=*{pnid})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/product_name/{id}(id=*{pn_id})}"
+						<form th:action="@{/product_name/{id}(id=*{pnid})}"
 							th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>

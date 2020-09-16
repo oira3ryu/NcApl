@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Company;
@@ -19,7 +20,7 @@ public class CompanyService {
 	CompanyRepository repository;
 
 	public List<Company> findAll() {
-		return repository.findAll();
+		return repository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
 
 	public Company findOne(Integer id) {

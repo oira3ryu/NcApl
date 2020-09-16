@@ -151,6 +151,7 @@ public class Product_name_viewController {
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Integer id,Model model) {
+
 		Product_name_view product_name_view = product_name_viewService.findOne(id);
 		model.addAttribute("product_name_viewlist",product_name_view);
 
@@ -201,7 +202,7 @@ public class Product_name_viewController {
 
 	@PostMapping("{id}/edit")
     public String update(@PathVariable Integer id, @ModelAttribute Product_name_view product_name_view) {
-        product_name_view.setPn_id(id);
+        product_name_view.setPnid(id);
         product_name_viewService.save(product_name_view);
         return "redirect:/product_name_view";
     }

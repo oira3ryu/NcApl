@@ -23,28 +23,28 @@ import lombok.Setter;
 
 public class Product_master {
 	@Id
-	@Column(name = "pm_id")
+	@Column(name = "pmid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pm_id;
+	private Integer pmid;
 
-	private Integer pn_id;
+	private Integer pnid;
 
-	private String cement_adjv;
+	private String cementadjv;
 
-	private String sand_adjv;
+	private String sandadjv;
 
-	private String stone_adjv;
+	private String stoneadjv;
 
-	private String sp_price;
+	private String spprice;
 
-	private String std_price;
+	private String stdprice;
 
-	private String start_date;
+	private String startdate;
 
-	private String end_date;
+	private String enddate;
 
-	private Integer flg_id;
+	private Integer flgid;
 
-	private Timestamp create_at;
+	private Timestamp createat;
 
 }

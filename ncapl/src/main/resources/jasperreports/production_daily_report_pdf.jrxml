@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="production_daily_report_pdf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b562c40-562f-4990-be0f-cb3784585ebc">
 	<property name="com.jaspersoft.studio.data.sql.tables">
 		<![CDATA[dF9wcm9kdWN0aW9uX2RhaWx5X3JlcG9ydF92aWV3ICwxNSwxNSw4ZGI1NjA4MS04MWUxLTRiNDMt
@@ -196,7 +196,7 @@ FROM t_production_daily_report_view]]>
 					<font fontName="ipaexg"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pdr_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pdrid}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="30" y="0" width="100" height="30" uuid="89e51d89-6430-483c-9920-c99a9f6401e0">
@@ -276,7 +276,7 @@ FROM t_production_daily_report_view]]>
 					<font fontName="ipaexg"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{record_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{recorddate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="520" y="0" width="50" height="30" uuid="89e9cff5-a2f1-479e-bce6-c39f7c44eb3f">

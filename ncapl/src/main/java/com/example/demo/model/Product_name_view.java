@@ -23,9 +23,9 @@ import lombok.Setter;
 
 public class Product_name_view {
 	@Id
-	@Column(name = "pn_id")
+	@Column(name = "pnid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pn_id;
+	private Integer pnid;
 
 	private String journal;
 
@@ -37,12 +37,12 @@ public class Product_name_view {
 
 	private String name;
 
-	private String start_date;
+	private String startdate;
 
-	private String end_date;
+	private String enddate;
 
 	private String flag;
 
-	private Timestamp create_at;
+	private Timestamp createat;
 
 }

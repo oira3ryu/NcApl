@@ -23,26 +23,28 @@ import lombok.Setter;
 
 public class Product_name {
 	@Id
-	@Column(name = "pn_id")
+	@Column(name = "pnid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pn_id;
+	private Integer pnid;
 
-	private Integer j_id;
+	private Integer jid;
 
-	private Integer st_id;
+	private Integer stid;
 
-	private Integer ag_id;
+	private Integer agid;
 
-	private Integer sl_id;
+	private Integer slid;
+
+	private Integer uid;
 
 	private String name;
 
-	private String start_date;
+	private String startdate;
 
-	private String end_date;
+	private String enddate;
 
-	private Integer flg_id;
+	private Integer flgid;
 
-	private Timestamp create_at;
+	private Timestamp createat;
 
 }

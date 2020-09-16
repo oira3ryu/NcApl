@@ -28,69 +28,69 @@
 		crossorigin="anonymous"></script>
 
 	<script language="JavaScript">
-	function setJ_id(txt)
+	function setJid(txt)
 	{
-		document.book.j_id.value = txt;
+		document.book.jid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setSt_id(txt)
+	function setStid(txt)
 	{
-		document.book.st_id.value = txt;
+		document.book.stid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setAg_id(txt)
+	function setAgid(txt)
 	{
-		document.book.ag_id.value = txt;
+		document.book.agid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setSl_id(txt)
+	function setSlid(txt)
 	{
-		document.book.sl_id.value = txt;
+		document.book.slid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setU_id(txt)
+	function setUid(txt)
 	{
-		document.book.u_id.value = txt;
+		document.book.uid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setFlg_id(txt)
+	function setFlgid(txt)
 	{
-		document.book.flg_id.value = txt;
+		document.book.flgid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setCo_id(txt)
+	function setCoid(txt)
 	{
-		document.book.co_id.value = txt;
+		document.book.coid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setT_id(txt)
+	function setTid(txt)
 	{
-		document.book.t_id.value = txt;
+		document.book.tid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setFi_id(txt)
+	function setFiid(txt)
 	{
-		document.book.fi_id.value = txt;
+		document.book.fiid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setP_id(txt)
+	function setPid(txt)
 	{
-		document.book.p_id.value = txt;
+		document.book.pid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setC_id(txt)
+	function setCid(txt)
 	{
-		document.book.c_id.value = txt;
+		document.book.cid.value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -111,7 +111,7 @@
 				<div class="col-sm-9">
 					<p>
 						<input type="date" name="today" id="today"
-							th:field="*{record_date}" />
+							th:field="*{recorddate}" />
 					</p>
 				</div>
 			</div>
@@ -120,12 +120,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="t_id" th:field="*{t_id}" /><select
-							id="type" onChange="setT_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="t_id" th:field="*{tid}" /><select
+							id="type" onChange="setTid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="typelists : ${typelist}"
 								th:value="${typelists.id}"
-								th:selected="${typelists.id}==${book.t_id}">[[${typelists.value}]]</option>
+								th:selected="${typelists.id}==${book.tid}">[[${typelists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -135,12 +135,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="p_id" th:field="*{p_id}" /> <select
-							id="plant" onChange="setP_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="pid" th:field="*{pid}" /> <select
+							id="plant" onChange="setPid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="plantlists : ${plantlist}"
 								th:value="${plantlists.id}"
-								th:selected="${plantlists.id}==${book.p_id}">[[${plantlists.name}]]</option>
+								th:selected="${plantlists.id}==${book.pid}">[[${plantlists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -150,12 +150,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="j_id" th:field="*{j_id}" /> <select
-							id="journal" onChange="setJ_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="jid" th:field="*{jid}" /> <select
+							id="journal" onChange="setJid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
 								th:value="${journallists.id}"
-								th:selected="${journallists.id}==${book.j_id}">[[${journallists.name}]]</option>
+								th:selected="${journallists.id}==${book.jid}">[[${journallists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -165,12 +165,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="c_id" th:field="*{c_id}" /> <select
-							id="company" onChange="setC_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="cid" th:field="*{cid}" /> <select
+							id="company" onChange="setCid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="companylists : ${companylist}"
 								th:value="${companylists.id}"
-								th:selected="${companylists.id}==${book.c_id}">[[${companylists.name}]]</option>
+								th:selected="${companylists.id}==${book.cid}">[[${companylists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -180,12 +180,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="fi_id" th:field="*{fi_id}" /> <select
+						<input type="hidden" name="fiid" th:field="*{fiid}" /> <select
 							id="field" onChange="setFi_id(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id}==${book.fi_id}">[[${fieldlists.name}]]</option>
+								th:selected="${fieldlists.id}==${book.fiid}">[[${fieldlists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -195,12 +195,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="st_id" th:field="*{st_id}" /> <select
-							id="strength" onChange="setSt_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="stid" th:field="*{stid}" /> <select
+							id="strength" onChange="setStid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="strengthlists : ${strengthlist}"
 								th:value="${strengthlists.id}"
-								th:selected="${strengthlists.id}==${book.st_id}">[[${strengthlists.value}]]</option>
+								th:selected="${strengthlists.id}==${book.stid}">[[${strengthlists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -210,13 +210,13 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="ag_id" th:field="*{ag_id}" /> <select
+						<input type="hidden" name="agid" th:field="*{agid}" /> <select
 							id="aggregate"
-							onChange="setAg_id(this[this.selectedIndex].value)">
+							onChange="setAgid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="aggregatelists : ${aggregatelist}"
 								th:value="${aggregatelists.id}"
-								th:selected="${aggregatelists.id}==${book.ag_id}">[[${aggregatelists.value}]]</option>
+								th:selected="${aggregatelists.id}==${book.agid}">[[${aggregatelists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -226,12 +226,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="sl_id" th:field="*{sl_id}" /> <select
-							id="slump" onChange="setSl_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="slid" th:field="*{slid}" /> <select
+							id="slump" onChange="setSlid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="slumplists : ${slumplist}"
 								th:value="${slumplists.id}"
-								th:selected="${slumplists.id}==${book.sl_id}">[[${slumplists.value}]]</option>
+								th:selected="${slumplists.id}==${book.slid}">[[${slumplists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -241,13 +241,13 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="co_id" th:field="*{co_id}" /> <select
+						<input type="hidden" name="coid" th:field="*{coid}" /> <select
 							id="composition"
-							onChange="setCo_id(this[this.selectedIndex].value)">
+							onChange="setCoid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="compositionlists : ${compositionlist}"
 								th:value="${compositionlists.id}"
-								th:selected="${compositionlists.id}==${book.co_id}">[[${compositionlists.value}]]</option>
+								th:selected="${compositionlists.id}==${book.coid}">[[${compositionlists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -267,12 +267,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="u_id" th:field="*{u_id}" /> <select
-							id="unit" onChange="setU_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="uid" th:field="*{uid}" /> <select
+							id="unit" onChange="setUid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="unitlists : ${unitlist}"
 								th:value="${unitlists.id}"
-								th:selected="${unitlists.id}==${book.u_id}">[[${unitlists.value}]]</option>
+								th:selected="${unitlists.id}==${book.uid}">[[${unitlists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -283,11 +283,11 @@
 				<div class="col-sm-9">
 					<p>
 					<input
-					type="hidden" name="flg_id" th:field="*{flg_id}" /> <select
+					type="hidden" name="flgid" th:field="*{flgid}" /> <select
 					id="flg" onChange="setFlg_id(this[this.selectedIndex].value)">
 						<option value="">---</option>
 						<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
-							th:selected="${flglists.id}==${book.flg_id}">[[${flglists.value}]]</option>
+							th:selected="${flglists.id}==${book.flgid}">[[${flglists.value}]]</option>
 				</select>
 					</p>
 			</div>
@@ -308,56 +308,6 @@
 	</div>
 	</form>
 	</div>
-
-	<script type="text/javascript">
-		//select要素の取得
-		var select = document.querySelector("#journal");
-
-		//option要素の取得（配列）
-		var options = document.querySelectorAll("#journal option");
-
-		//select要素のchangeイベントの登録
-		select.addEventListener('change', function(){
-
-		        //選択されたoption番号を取得
-		        var index =  this.selectedIndex;
-		        //options[ index ].value にoption要素のvalue属性値
-		        //options[ index ].innerHTML にoption要素内の文字列
-		});
-		</script>
-	<script type="text/javascript">
-		//select要素の取得
-		var select = document.querySelector("#strength");
-
-		//option要素の取得（配列）
-		var options = document.querySelectorAll("#strength option");
-
-		//select要素のchangeイベントの登録
-		select.addEventListener('change', function(){
-
-		        //選択されたoption番号を取得
-		        var index =  this.selectedIndex;
-		        //options[ index ].value にoption要素のvalue属性値
-		        //options[ index ].innerHTML にoption要素内の文字列
-		});
-		</script>
-
-	<script type="text/javascript">
-		//select要素の取得
-		var select = document.querySelector("#aggregate");
-
-		//option要素の取得（配列）
-		var options = document.querySelectorAll("#aggregate option");
-
-		//select要素のchangeイベントの登録
-		select.addEventListener('change', function(){
-
-		        //選択されたoption番号を取得
-		        var index =  this.selectedIndex;
-		        //options[ index ].value にoption要素のvalue属性値
-		        //options[ index ].innerHTML にoption要素内の文字列
-		});
-		</script>
 
 	<script type="text/javascript">
 		function () {

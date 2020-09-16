@@ -21,20 +21,20 @@ import lombok.Setter;
 
 public class Production_daily_report {
 	@Id
-	@Column(name = "pdr_id")
+	@Column(name = "pdrid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pdr_id;
+	private Integer pdrid;
 
-	private Integer p_id;
+	private Integer pid;
 
-	private Integer co_id;
+	private Integer coid;
 
-	private Integer pn_id;
+	private Integer pnid;
 
-	private Integer fi_id;
+	private Integer fiid;
 
 	private String quantity;
 
-	private String record_date;
-	
+	private String recorddate;
+
 }

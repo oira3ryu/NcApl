@@ -53,31 +53,31 @@
 			<tbody>
 
 				<tr th:each="product_master : ${product_masters}" th:object="${product_master}">
-					<td th:text="*{pm_id}"></td>
+					<td th:text="*{pmid}"></td>
 					<td><select id="product_name" style="pointer-events: none;" tabindex="-1">
   							<option th:each="product_name_viewlists : ${product_name_viewlist}"
-  							th:value="${product_name_viewlists.pn_id}"
-  							th:selected="${product_name_viewlists.pn_id} == *{pn_id}">[[${product_name_viewlists.name}]]</option>
+  							th:value="${product_name_viewlists.pnid}"
+  							th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
-					<td th:text="*{cement_adjv}"></td>
-					<td th:text="*{sand_adjv}"></td>
-					<td th:text="*{stone_adjv}"></td>
-					<td th:text="*{sp_price}"></td>
-					<td th:text="*{std_price}"></td>
-					<td th:text="*{start_date}"></td>
-					<td th:text="*{end_date}"></td>
-					<!-- <td th:text="*{flg_id}"></td> -->
-					<td><select id="flg_id" style="pointer-events: none;" tabindex="-1">
+					<td th:text="*{cementadjv}"></td>
+					<td th:text="*{sandadjv}"></td>
+					<td th:text="*{stoneadjv}"></td>
+					<td th:text="*{spprice}"></td>
+					<td th:text="*{stdprice}"></td>
+					<td th:text="*{startdate}"></td>
+					<td th:text="*{enddate}"></td>
+					<!-- <td th:text="*{flgid}"></td> -->
+					<td><select id="flgid" style="pointer-events: none;" tabindex="-1">
   							<option th:each="flglists : ${flglist}"
   							th:value="${flglists.id}"
-  							th:selected="${flglists.id} == *{flg_id}">[[${flglists.value}]]</option>
+  							th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
 					</select></td>
-					<td th:text="*{create_at}"></td>
+					<td th:text="*{createat}"></td>
 
-					<td><a th:href="@{/product_master/{id}/edit(id=*{pm_id})}"
+					<td><a th:href="@{/product_master/{id}/edit(id=*{pmid})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/product_master/{id}(id=*{pm_id})}" th:method="post" onSubmit="return delcheck()">
+						<form th:action="@{/product_master/{id}(id=*{pmid})}" th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
 					</td>

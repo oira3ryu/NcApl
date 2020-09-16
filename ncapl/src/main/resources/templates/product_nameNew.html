@@ -29,45 +29,51 @@
 
 	<script language="JavaScript">
 
-	function setJ_id(txt)
+	function setJid(txt)
 	{
-		document.product_name.j_id.value = txt;
+		document.product_name.jid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setSt_id(txt)
+	function setStid(txt)
 	{
-		document.product_name.st_id.value = txt;
+		document.product_name.stid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setAg_id(txt)
+	function setAgid(txt)
 	{
-		document.product_name.ag_id.value = txt;
+		document.product_name.agid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setSl_id(txt)
+	function setSlid(txt)
 	{
-		document.product_name.sl_id.value = txt;
+		document.product_name.slid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setStart_date(txt)
+	function setUid(txt)
 	{
-		document.product_name.start_date.value = txt;
+		document.product_name.uid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setEnd_date(txt)
+	function setStartdate(txt)
 	{
-		document.product_name.end_date.value = txt;
+		document.product_name.startdate.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setFlg_id(txt)
+	function setEnddate(txt)
 	{
-		document.product_name.flg_id.value = txt;
+		document.product_name.enddate.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlgid(txt)
+	{
+		document.product_name.flgid.value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -87,8 +93,8 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="j_id" /> <select id="journal"
-							onChange="setJ_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="jid" /> <select id="journal"
+							onChange="setJid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
 								th:value="${journallists.id}">[[${journallists.name}]]</option>
@@ -101,8 +107,8 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="st_id" /> <select id="strength"
-							onChange="setSt_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="stid" /> <select id="strength"
+							onChange="setStid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="strengthlists : ${strengthlist}"
 								th:value="${strengthlists.id}">[[${strengthlists.value}]]</option>
@@ -115,8 +121,8 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="ag_id" /> <select id="aggregate"
-							onChange="setAg_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="agid" /> <select id="aggregate"
+							onChange="setAgid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="aggregatelists : ${aggregatelist}"
 								th:value="${aggregatelists.id}">[[${aggregatelists.value}]]</option>
@@ -129,11 +135,25 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="al_id" /> <select id="slump"
-							onChange="setSl_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="slid" /> <select id="slump"
+							onChange="setSlid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="slumplists : ${slumplist}"
 								th:value="${slumplists.id}">[[${slumplists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 単位<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="uid" /> <select id="unit"
+							onChange="setUid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="unitlists : ${unitlist}"
+								th:value="${unitlists.id}">[[${unitlists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -143,10 +163,10 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="start_date" />
+						<input type="hidden" name="startdate" />
 						<!-- 適用開始日選択ドロップダウン  -->
 						<input type="date" name="today"
-							onChange="setStart_date(this.value)" />
+							onChange="setStartdate(this.value)" />
 					</p>
 				</div>
 			</div>
@@ -155,10 +175,10 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="start_date" />
+						<input type="hidden" name="enddate" />
 						<!-- 適用終了日選択ドロップダウン  -->
 						<input type="date" name="today"
-							onChange="setEnd_date(this.value)" />
+							onChange="setEnddate(this.value)" />
 					</p>
 				</div>
 			</div>
@@ -167,8 +187,8 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="flg_id" /><select id="flg"
-							onChange="setFlg_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="flgid" /><select id="flg"
+							onChange="setFlgid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
 						</select>
@@ -180,7 +200,7 @@
 <!-- 					class="badge badge-danger"></span></label> -->
 <!-- 				<div class="col-sm-9"> -->
 					<p>
-						<input type="hidden" name="create_at" />
+						<input type="hidden" name="createat" />
 					</p>
 <!-- 				</div> -->
 <!-- 			</div> -->

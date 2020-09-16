@@ -103,6 +103,9 @@ public class Product_nameController {
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
 
+		List<Unit> units = unitService.findAll();
+		model.addAttribute("unitlist", units);
+
 		return "product_nameIndex";
 
 	}
@@ -202,7 +205,7 @@ public class Product_nameController {
 
 	@PostMapping("{id}/edit")
     public String update(@PathVariable Integer id, @ModelAttribute Product_name product_name) {
-        product_name.setPn_id(id);
+        product_name.setPnid(id);
         product_nameService.save(product_name);
         return "redirect:/product_name";
     }

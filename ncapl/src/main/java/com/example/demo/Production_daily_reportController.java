@@ -157,7 +157,7 @@ public class Production_daily_reportController {
 	}
 
 	@GetMapping("{id}/edit")
-	public String edit(@PathVariable Integer id,Model model) {
+	public String edit(@PathVariable Integer id, Model model) {
 
 		Production_daily_report production_daily_report = production_daily_reportService.findOne(id);
 		model.addAttribute("production_daily_report",production_daily_report);
@@ -242,7 +242,7 @@ public class Production_daily_reportController {
 
 	@PostMapping("{id}/edit")
     public String update(@PathVariable Integer id, @ModelAttribute Production_daily_report production_daily_report) {
-        production_daily_report.setPdr_id(id);
+        production_daily_report.setPdrid(id);
         production_daily_reportService.save(production_daily_report);
         return "redirect:/production_daily_report";
     }

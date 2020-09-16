@@ -123,6 +123,7 @@ public class Production_daily_report_viewController {
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Integer id,Model model) {
+
 		Production_daily_report_view production_daily_report_view = production_daily_report_viewService.findOne(id);
 		model.addAttribute("production_daily_report_view",production_daily_report_view);
 
@@ -164,7 +165,7 @@ public class Production_daily_report_viewController {
 
 	@PostMapping("{id}/edit")
     public String update(@PathVariable Integer id, @ModelAttribute Production_daily_report_view production_daily_report_view) {
-        production_daily_report_view.setPdr_id(id);
+        production_daily_report_view.setPdrid(id);
         production_daily_report_viewService.save(production_daily_report_view);
         return "redirect:/production_daily_report_view";
     }

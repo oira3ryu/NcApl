@@ -51,9 +51,10 @@ public class Product_masterController {
 
 	@Autowired
 	private Product_nameService product_nameService;
-	@Autowired
 
+	@Autowired
 	private Product_name_viewService product_name_viewService;
+
 	@Autowired
 	private BookService bookService;
 
@@ -209,7 +210,7 @@ public class Product_masterController {
 
 	@PostMapping("{id}/edit")
     public String update(@PathVariable Integer id, @ModelAttribute Product_master product_master) {
-        product_master.setPm_id(id);
+        product_master.setPmid(id);
         product_masterService.save(product_master);
         return "redirect:/product_master";
     }

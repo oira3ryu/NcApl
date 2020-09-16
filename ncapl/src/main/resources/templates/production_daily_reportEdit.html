@@ -29,27 +29,27 @@
 
 	<script language="JavaScript">
 
-	function setP_id(txt)
+	function setPid(txt)
 	{
-		document.production_daily_report.p_id.value = txt;
+		document.production_daily_report.pid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setCo_id(txt)
+	function setCoid(txt)
 	{
-		document.production_daily_report.co_id.value = txt;
+		document.production_daily_report.coid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setFi_id(txt)
+	function setFiid(txt)
 	{
-		document.production_daily_report.fi_id.value = txt;
+		document.production_daily_report.fiid.value = txt;
 		select.selectedIndex = index;
 	}
 
-	function setPn_id(txt)
+	function setPnid(txt)
 	{
-		document.production_daily_report.pn_id.value = txt;
+		document.production_daily_report.pnid.value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -61,7 +61,7 @@
 			<h1>日報 編集</h1>
 		</div>
 
-		<form th:action="@{/production_daily_report/{id}/edit(id=*{pdr_id})}"
+		<form th:action="@{/production_daily_report/{id}/edit(id=*{pdrid})}"
 			th:method="post" th:object="${production_daily_report}"
 			id="production_daily_report" name="production_daily_report">
 			<div class="form-row">
@@ -69,7 +69,7 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="pdr_id" th:field="*{pdr_id}" disabled/>
+						<input type="text" name="pdrid" th:field="*{pdrid}" disabled/>
 					</p>
 				</div>
 			</div>
@@ -78,12 +78,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="p_id" th:field="*{p_id}" /> <select
-							id="plant" onChange="setP_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="pid" th:field="*{pid}" /> <select
+							id="plant" onChange="setPid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="plantlists : ${plantlist}"
 								th:value="${plantlists.id}"
-								th:selected="${plantlists.id}==${production_daily_report.p_id}">[[${plantlists.name}]]</option>
+								th:selected="${plantlists.id}==${production_daily_report.pid}">[[${plantlists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -93,12 +93,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="co_id" th:field="*{co_id}" /> <select
-							id="company" onChange="setCo_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="coid" th:field="*{coid}" /> <select
+							id="company" onChange="setCoid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="companylists : ${companylist}"
 								th:value="${companylists.id}"
-								th:selected="${companylists.id}==${production_daily_report.co_id}">[[${companylists.name}]]</option>
+								th:selected="${companylists.id}==${production_daily_report.coid}">[[${companylists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -108,12 +108,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="fi_id" th:field="*{fi_id}" /> <select
-							id="field" onChange="setFi_id(this[this.selectedIndex].value)">
+						<input type="hidden" name="fiid" th:field="*{fiid}" /> <select
+							id="field" onChange="setFiid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id}==${production_daily_report.fi_id}">[[${fieldlists.name}]]</option>
+								th:selected="${fieldlists.id}==${production_daily_report.fiid}">[[${fieldlists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -123,13 +123,13 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pn_id" th:field="*{pn_id}" /> <select
+						<input type="hidden" name="pnid" th:field="*{pnid}" /> <select
 							id="product_name"
-							onChange="setPn_id(this[this.selectedIndex].value)">
+							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="product_namelists : ${product_namelist}"
-								th:value="${product_namelists.pn_id}"
-								th:selected="${product_namelists.pn_id}==${production_daily_report.pn_id}">[[${product_namelists.name}]]</option>
+								th:value="${product_namelists.pnid}"
+								th:selected="${product_namelists.pnid}==${production_daily_report.pnid}">[[${product_namelists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -147,8 +147,8 @@
 				<label class="col-sm-3 col-form-label"> 記録日</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="date" name="record_date" id="today"
-							th:field="*{record_date}" />
+						<input type="date" name="recorddate" id="today"
+							th:field="*{recorddate}" />
 					</p>
 				</div>
 			</div>

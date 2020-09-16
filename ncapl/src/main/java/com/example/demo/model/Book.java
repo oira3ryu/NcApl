@@ -25,31 +25,31 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Integer j_id;
+	private Integer jid;
 
-	private Integer st_id;
+	private Integer stid;
 
-	private Integer ag_id;
+	private Integer agid;
 
-	private Integer sl_id;
+	private Integer slid;
 
-	private Integer u_id;
+	private Integer uid;
 
-	private Integer flg_id;
+	private Integer flgid;
 
-	private Integer t_id;
+	private Integer tid;
 
-	private Integer fi_id;
+	private Integer fiid;
 
-	private String record_date;
+	private String recorddate;
 
-	private Integer co_id;
+	private Integer coid;
 
-	private Integer c_id;
+	private Integer cid;
 
 	private String quantity;
 
-	private Integer p_id;
+	private Integer pid;
 
 	private String selectedValue;
 

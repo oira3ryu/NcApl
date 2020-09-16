@@ -21,37 +21,37 @@ import lombok.Setter;
 
 public class Production_daily_report_view {
 	@Id
-	@Column(name = "pdr_id")
+	@Column(name = "pdrid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pdr_id;
+	private Integer pdrid;
 
-	private Integer pn_id;
+	private Integer pnid;
 
-	private Integer co_id;
+	private Integer coid;
 
 	private String company;
 
-	private Integer fi_id;
+	private Integer fiid;
 
 	private String field;
 
-	private String product_name;
+	private String productname;
 
 	private String quantity;
 
-	private Integer std_price;
+	private Integer stdprice;
 
-	private Integer sp_price;
+	private Integer spprice;
 
-	private String std_sales_amount;
+	private String stdsalesamount;
 
-	private String sp_sales_amount;
+	private String spsalesamount;
 
-	private String start_date;
+	private String startdate;
 
-	private String record_date;
+	private String recorddate;
 
-	private Integer p_id;
+	private Integer pid;
 
 	private String plant;
 }
