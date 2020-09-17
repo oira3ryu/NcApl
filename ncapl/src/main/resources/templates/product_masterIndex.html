@@ -11,7 +11,7 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 
-	<link href="/css/style.css" rel="stylesheet"></link>
+<link href="/css/style.css" rel="stylesheet"></link>
 
 </head>
 <body>
@@ -28,7 +28,40 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+
 	<h1 class="my-3 ml-3">製品構成</h1>
+
+	<!-- 選択用ドロップダウンリスト ここから -->
+	<form name="search" action="#"
+		th:action="@{/product_master/search}"
+		th:object="${searchParam}" method="post">
+		<div class="container">
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label">製品名<span
+							class="badge badge-danger">選択</span></label> <select
+							style="border: black 1px solid; appearance: auto; width: 350px"
+							id="pnid" name="pnid"
+							onChange="setPnid(this[this.selectedIndex].value)">
+							<option value=""></option>
+							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+								th:value="${product_name_viewlists.pnid}"
+								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
+						</select>
+					</p>
+				</div>
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label"><span
+							class="badge badge-danger"></span></label>
+							<input type="submit" value="実行" />
+					</p>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- 選択用ドロップダウンリスト ここまで-->
 
 	<div class="col-5 ml-3">
 		<table class="table table-striped">
@@ -45,19 +78,22 @@
 					<th>適用終了日</th>
 					<th>可／否</th>
 					<th>記録日</th>
-					<th></th>
-					<th></th>
+					<th><a href="/product_master/product_masterNew"
+						class="btn btn-primary">新規作成</a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
 			</thead>
 			<tbody>
 
-				<tr th:each="product_master : ${product_masters}" th:object="${product_master}">
+				<tr th:each="product_master : ${product_masters}"
+					th:object="${product_master}">
 					<td th:text="*{pmid}"></td>
-					<td><select id="product_name" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="product_name_viewlists : ${product_name_viewlist}"
-  							th:value="${product_name_viewlists.pnid}"
-  							th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
+					<td><select id="product_name" style="pointer-events: none;"
+						tabindex="-1">
+							<option
+								th:each="product_name_viewlists : ${product_name_viewlist}"
+								th:value="${product_name_viewlists.pnid}"
+								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
 					<td th:text="*{cementadjv}"></td>
 					<td th:text="*{sandadjv}"></td>
@@ -67,17 +103,18 @@
 					<td th:text="*{startdate}"></td>
 					<td th:text="*{enddate}"></td>
 					<!-- <td th:text="*{flgid}"></td> -->
-					<td><select id="flgid" style="pointer-events: none;" tabindex="-1">
-  							<option th:each="flglists : ${flglist}"
-  							th:value="${flglists.id}"
-  							th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
+					<td><select id="flgid" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
+								th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
 					</select></td>
 					<td th:text="*{createat}"></td>
 
 					<td><a th:href="@{/product_master/{id}/edit(id=*{pmid})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/product_master/{id}(id=*{pmid})}" th:method="post" onSubmit="return delcheck()">
+						<form th:action="@{/product_master/{id}(id=*{pmid})}"
+							th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
 					</td>
@@ -85,33 +122,31 @@
 			</tbody>
 		</table>
 		<a href="/" class="btn btn-info">メニュー</a>
-		<span>
-			<a href="/product_master/product_masterNew" class="btn btn-primary">新規作成</a>
+		<span><a href="/product_master/product_masterNew" class="btn btn-primary">新規作成</a>
 		</span>
-		</tbody>
-		</table>
+		</div>
 
-	<!-- jqueryの場合 -->
+		<!-- jqueryの場合 -->
 
-	<script>
-		//formタグにサブミット時イベントを設定
+		<script>
+			//formタグにサブミット時イベントを設定
 
-		$('form').submit(function(event) {
+			$('form[name!="search"]').submit(function(event) {
 
-			// 確認メッセージ表示
-			// 戻り値を変数resultに代入(trueまたはfalse)
-			var result = window.confirm('本当に削除してよろしいですか？');
+				// 確認メッセージ表示
+				// 戻り値を変数resultに代入(trueまたはfalse)
+				var result = window.confirm('本当に削除してよろしいですか？');
 
-			// キャンセルボタンが押された場合
-			if (result == false) {
+				// キャンセルボタンが押された場合
+				if (result == false) {
 
-				// サブミットを中止する
-				return false;
-			}
-		});
-	</script>
+					// サブミットを中止する
+					return false;
+				}
+			});
+		</script>
 
-	<!-- javascriptの場合
+		<!-- javascriptの場合
 
 		<script type="text/javascript">
 
@@ -130,6 +165,5 @@
 		}
 
 	</script> -->
-
 </body>
 </html>

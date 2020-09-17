@@ -31,6 +31,7 @@
 
 	<h1 class="my-3 ml-3">売掛</h1>
 
+	<!-- 選択用ドロップダウンリスト ここから -->
 	<form name="search" action="#"
 		th:action="@{/production_daily_report/search}"
 		th:object="${searchParam}" method="post">
@@ -74,7 +75,7 @@
 			</div>
 		</div>
 	</form>
-
+	<!-- 選択用ドロップダウンリスト ここまで-->
 
 	<div class="col-5 ml-3">
 		<table class="table table-striped">
@@ -86,19 +87,18 @@
 					<th>現場名</th>
 					<th>製品名</th>
 					<th>数量</th>
+					<th>金額</th>
 					<th>記録日</th>
-					<th></th>
-					<th></th>
-					<th><a href="/" class="btn btn-info">メニュー</a></th>
-					<th> <a
+					<th><a
 						href="/production_daily_report/production_daily_reportNew"
 						class="btn btn-primary">新規作成</a>
 					</th>
+					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
 			</thead>
 			<tbody>
 
-				<tr th:each="production_daily_report : ${production_daily_reports}"
+				<tr th:each="production_daily_report : ${production_daily_reportlist}"
 					th:object="${production_daily_report}">
 					<td th:text="*{pdrid}"></td>
 					<td><select id="pid" style="pointer-events: none;"
@@ -126,6 +126,12 @@
 								th:selected="${product_namelists.pnid} == *{pnid}">[[${product_namelists.name}]]</option>
 					</select></td>
 					<td th:text="*{quantity}"></td>
+					<td><select id="spprice" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+								th:value="${production_daily_report_viewlists.pnid}"
+								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spprice}]]</option>
+					</select></td>
 					<td th:text="*{recorddate}"></td>
 
 					<td><a
@@ -140,8 +146,8 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="/" class="btn btn-info">メニュー</a> <span> <a
-			href="/production_daily_report/production_daily_reportNew"
+		<a href="/" class="btn btn-info">メニュー</a>
+		<span> <a href="/production_daily_report/production_daily_reportNew"
 			class="btn btn-primary">新規作成</a>
 		</span>
 		</tbody>

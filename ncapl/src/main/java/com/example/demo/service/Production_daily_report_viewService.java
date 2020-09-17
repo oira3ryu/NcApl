@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Production_daily_report_view;
@@ -21,6 +22,13 @@ public class Production_daily_report_viewService {
 	public List<Production_daily_report_view> findAll() {
 		return repository.findAll();
 	}
+
+    public List<Production_daily_report_view> findByForm(Production_daily_report_view searchParam) {
+        if (searchParam == null) {
+            return findAll();
+        }
+        return repository.findAll(Example.of(searchParam));
+    }
 
 	public Production_daily_report_view findOne(Integer id) {
 		Optional<Production_daily_report_view> production_daily_report_view = repository.findById(id);

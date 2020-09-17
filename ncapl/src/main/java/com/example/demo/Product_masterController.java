@@ -107,6 +107,11 @@ public class Product_masterController {
 		List<Flg> flags = flgService.findAll();
 		model.addAttribute("flglist", flags);
 
+		List<Journal> journals = journalService.findAll();
+		model.addAttribute("journallist", journals);
+
+		model.addAttribute("searchParam", new Product_master());
+
 	    return "product_masterIndex";
 	}
 
@@ -118,6 +123,9 @@ public class Product_masterController {
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
@@ -157,6 +165,7 @@ public class Product_masterController {
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Integer id,Model model) {
+
 		Product_master product_master = product_masterService.findOne(id);
 		model.addAttribute("product_master",product_master);
 
@@ -165,6 +174,9 @@ public class Product_masterController {
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
@@ -201,6 +213,29 @@ public class Product_masterController {
 
 		return "product_masterEdit";
 	}
+
+    @PostMapping("search")
+    public String search(@ModelAttribute("searchParam") Product_master form, Model model) {
+
+    	List<Product_master> product_masters =
+                product_masterService.findByForm(form);
+        model.addAttribute("product_masters",product_masters);
+        model.addAttribute("searchParam", form);
+
+        List<Product_name> product_names = product_nameService.findAll();
+		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
+
+		List<Flg> flags = flgService.findAll();
+		model.addAttribute("flglist", flags);
+
+		List<Journal> journals = journalService.findAll();
+		model.addAttribute("journallist", journals);
+
+		return "product_masterIndex";
+    }
 
 	@PostMapping
 	public String create(@ModelAttribute Product_master product_master) {

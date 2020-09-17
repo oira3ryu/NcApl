@@ -85,6 +85,8 @@ public class Production_daily_report_viewController {
 		List<Field> fields = fieldService.findAll();
 		model.addAttribute("fieldlist", fields);
 
+		model.addAttribute("searchParam", new Production_daily_report_view());
+
 	    return "production_daily_report_viewIndex";
 	}
 
@@ -156,6 +158,30 @@ public class Production_daily_report_viewController {
 
 		return "production_daily_report_viewEdit";
 	}
+
+    @PostMapping("search")
+    public String search(@ModelAttribute("searchParam") Production_daily_report_view form, Model model) {
+
+	    List<Production_daily_report_view> production_daily_report_views =
+	    		production_daily_report_viewService.findByForm(form);
+	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
+
+        List<Product_name> product_names = product_nameService.findAll();
+		model.addAttribute("product_namelist", product_names);
+
+        List<Plant> plants = plantService.findAll();
+        model.addAttribute("plantlist", plants);
+
+        List<Company> companys = companyService.findAll();
+        model.addAttribute("companylist", companys);
+
+        List<Field> fields = fieldService.findAll();
+        model.addAttribute("fieldlist", fields);
+
+        model.addAttribute("searchParam", form);
+
+        return "production_daily_report_viewIndex";
+    }
 
 	@PostMapping
 	public String create(@ModelAttribute Production_daily_report_view production_daily_report_view) {
