@@ -47,7 +47,8 @@ public class Production_daily_reportReportController {
         JasperReport report=JasperCompileManager.compileReport(inputStream);
 
         //Parameters Set
-        Map<String, Object> params = new HashMap<>();
+//        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = getParams();
 
         List<Production_daily_report_view> source = production_daily_report_viewService.findAll();
 
@@ -60,4 +61,22 @@ public class Production_daily_reportReportController {
         //Export PDF Stream
         JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());
     }
+    /**
+     * PDF出力の際に使用するパラメータを取得
+     *
+     * @return
+     */
+    private static Map<String, Object> getParams() {
+        Map<String, Object> params = new HashMap<>();
+
+        params.put("coid", new Integer(2));
+//        params.put("amount", new BigDecimal(1000000));
+//        params.put("remarks", "保守費用");
+//        params.put("paymentDate", new Date());
+//        params.put("paymentTypeName", "現金");
+
+        return params;
+    }
+
+
 }
