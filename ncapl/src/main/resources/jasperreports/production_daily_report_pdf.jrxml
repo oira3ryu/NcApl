@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="production_daily_report_pdf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b562c40-562f-4990-be0f-cb3784585ebc">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="src\main\resources\jasperreports\PostgresqlDataSource.xml"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Postgresql Data Adapter "/>
 	<parameter name="coid" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT t_production_daily_report_view.pdrid,
@@ -15,7 +15,7 @@
 	t_production_daily_report_view.plant
 FROM t_production_daily_report_view
 WHERE
-	 t_production_daily_report_view.coid = $P{coid}]]>
+	t_production_daily_report_view.coid=$P{coid}]]>
 	</queryString>
 	<field name="pdrid" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="pdrid"/>
