@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="production_daily_report_pdf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b562c40-562f-4990-be0f-cb3784585ebc">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Postgresql Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
 	<parameter name="coid" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT t_production_daily_report_view.pdrid,
@@ -13,9 +13,7 @@
 	t_production_daily_report_view.quantity,
 	t_production_daily_report_view.recorddate,
 	t_production_daily_report_view.plant
-FROM t_production_daily_report_view
-WHERE
-	t_production_daily_report_view.coid=$P{coid}]]>
+FROM t_production_daily_report_view]]>
 	</queryString>
 	<field name="pdrid" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="pdrid"/>
@@ -61,7 +59,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="30" splitType="Stretch">
+		<band height="56" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="100" height="30" uuid="d8fe81d6-c718-45c8-889b-99986bcde91f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -72,7 +70,15 @@ WHERE
 		</band>
 	</title>
 	<pageHeader>
-		<band height="17" splitType="Stretch"/>
+		<band height="17" splitType="Stretch">
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="460" y="4" width="100" height="12" uuid="4ca6c01f-0045-444e-a504-964da1e3ece4"/>
+				<textElement>
+					<font fontName="ipaexg"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="31" splitType="Stretch">
@@ -188,6 +194,13 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA["工場"]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="360" y="-13" width="100" height="13" uuid="8ab6167f-3476-46b5-b033-4cd379cce3c2"/>
+				<textElement textAlignment="Right">
+					<font fontName="ipaexg"/>
+				</textElement>
+				<text><![CDATA[作成日：]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -303,13 +316,6 @@ WHERE
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{plant}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="30" y="1" width="100" height="12" uuid="481a4ad0-67fa-46e0-9e9f-9448b6ee7a3b"/>
-				<textElement>
-					<font fontName="ipaexg"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{coid}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -62,7 +62,7 @@
 		</div>
 
 		<form th:action="@{/production_daily_report/{id}/edit(id=*{pdrid})}"
-			th:method="post" th:object="${production_daily_report}"
+			th:method="post" th:object="${production_daily_reportlist}"
 			id="production_daily_report" name="production_daily_report">
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label"> ID<span
@@ -83,7 +83,7 @@
 							<option value="">---</option>
 							<option th:each="plantlists : ${plantlist}"
 								th:value="${plantlists.id}"
-								th:selected="${plantlists.id}==${production_daily_report.pid}">[[${plantlists.name}]]</option>
+								th:selected="${plantlists.id}==${production_daily_reportlist.pid}">[[${plantlists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -98,7 +98,7 @@
 							<option value="">---</option>
 							<option th:each="companylists : ${companylist}"
 								th:value="${companylists.id}"
-								th:selected="${companylists.id}==${production_daily_report.coid}">[[${companylists.name}]]</option>
+								th:selected="${companylists.id}==${production_daily_reportlist.coid}">[[${companylists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -113,7 +113,7 @@
 							<option value="">---</option>
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id}==${production_daily_report.fiid}">[[${fieldlists.name}]]</option>
+								th:selected="${fieldlists.id}==${production_daily_reportlist.fiid}">[[${fieldlists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -129,7 +129,7 @@
 							<option value="">---</option>
 							<option th:each="product_namelists : ${product_namelist}"
 								th:value="${product_namelists.pnid}"
-								th:selected="${product_namelists.pnid}==${production_daily_report.pnid}">[[${product_namelists.name}]]</option>
+								th:selected="${product_namelists.pnid}==${production_daily_reportlist.pnid}">[[${product_namelists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -178,7 +178,7 @@
 		    var dd = ("0"+today.getDate()).slice(-2);
 		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
 		}
-		</script>
+	</script>
 	<script>
 		var forms = document.getElementsByClassNamed("form-control");
 		var alerts = document.getElementsByClassName("alert");
@@ -189,6 +189,6 @@
 				}
 			});
 		}
-		</script>
+	</script>
 </body>
 </html>

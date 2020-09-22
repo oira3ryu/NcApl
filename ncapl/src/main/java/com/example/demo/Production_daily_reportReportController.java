@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
@@ -35,9 +36,13 @@ public class Production_daily_reportReportController {
 	@Autowired
 	Production_daily_report_viewService production_daily_report_viewService;
 
-	@GetMapping(path = "production_daily_report/{jrxml}")
+	@GetMapping(path = "production_daily_report/{jrxml}/{coid}/{fiid}")
 	@ResponseBody
-    public void getPdf(@PathVariable String jrxml ,HttpServletResponse response) throws Exception {
+    public void getPdf(
+            @PathVariable String jrxml,
+            @PathVariable String coid,
+            @PathVariable String fiid,
+            HttpServletResponse response) throws Exception {
 
 		//Get JRXML template from resources folder
 		Resource resource = context.getResource("classpath:jasperreports/"+jrxml+".jrxml");
@@ -50,7 +55,23 @@ public class Production_daily_reportReportController {
 //        Map<String, Object> params = new HashMap<>();
         Map<String, Object> params = getParams();
 
-        List<Production_daily_report_view> source = production_daily_report_viewService.findAll();
+        Production_daily_report_view param = new Production_daily_report_view();
+        if (!StringUtils.isEmpty(coid)) {
+            try {
+                param.setCoid(Integer.valueOf(coid));
+            } catch (Exception e) {
+                // エラーは握り潰す
+            }
+        }
+        if (!StringUtils.isEmpty(fiid)) {
+            try {
+                param.setFiid(Integer.valueOf(fiid));
+            } catch (Exception e) {
+                // エラーは握り潰す
+            }
+        }
+
+        List<Production_daily_report_view> source = production_daily_report_viewService.findByForm(param);
 
         //Data source Set
         JasperPrint print = JasperFillManager.fillReport(report, params, new JRBeanCollectionDataSource(source));
@@ -69,7 +90,7 @@ public class Production_daily_reportReportController {
     private static Map<String, Object> getParams() {
         Map<String, Object> params = new HashMap<>();
 
-        params.put("coid", new Integer(2));
+//        params.put("coid", new Integer(2));
 //        params.put("amount", new BigDecimal(1000000));
 //        params.put("remarks", "保守費用");
 //        params.put("paymentDate", new Date());
@@ -77,6 +98,4 @@ public class Production_daily_reportReportController {
 
         return params;
     }
-
-
 }
