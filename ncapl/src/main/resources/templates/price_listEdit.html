@@ -31,13 +31,43 @@
 
 	function setPnid(txt)
 	{
-		document.product_master.pnid.value = txt;
+		document.price_list.plid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setJid(txt)
+	{
+		document.price_list.jid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setStid(txt)
+	{
+		document.price_list.stid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setAgid(txt)
+	{
+		document.price_list.agid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSlid(txt)
+	{
+		document.price_list.slid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setUid(txt)
+	{
+		document.price_list.uid.value = txt;
 		select.selectedIndex = index;
 	}
 
 	function setFlgid(txt)
 	{
-		document.product_master.flgid.value = txt;
+		document.price_list.flgid.value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -46,53 +76,32 @@
 	<div class="container">
 
 		<div class="navbar">
-			<h1>製品構成 編集</h1>
+			<h1>製品 編集</h1>
 		</div>
 
-		<form th:action="@{/product_master/{id}/edit(id=*{pmid})}"
-			th:method="post" th:object="${product_master}" id="product_master"
-			name="product_master">
-
+		<form th:action="@{/price_list/{id}/edit(id=*{plid})}"
+			th:method="post" th:object="${price_listlist}" id="price_list"
+			name="price_list">
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> ID<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="plid" th:field="*{plid}" disabled/>
+					</p>
+				</div>
+			</div>
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label"> 製品名<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
 						<input type="hidden" name="pnid" th:field="*{pnid}" /> <select
-							id="product_name"
-							onChange="setPnid(this[this.selectedIndex].value)">
+							id="product_name" onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="product_name_viewlists : ${product_name_viewlist}"
-								th:value="${product_name_viewlists.pnid}"
-								th:selected="${product_name_viewlists.pnid}==${product_master.pnid}">[[${product_name_viewlists.name}]]</option>
+							<option th:each="product_name_viewlists : ${product_name_viewlist}" th:value="${product_name_viewlists.pnid}"
+								th:selected="${product_name_viewlists.pnid}==${price_listlist.pnid}">[[${product_name_viewlists.name}]]</option>
 						</select>
-					</p>
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> セメント<span
-					class="badge badge-danger">必須</span></label>
-				<div class="col-sm-9">
-					<p>
-						<input type="text" name="cementadjv" th:field="*{cementadjv}" />
-					</p>
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> 砂量<span
-					class="badge badge-danger">必須</span></label>
-				<div class="col-sm-9">
-					<p>
-						<input type="text" name="sandadjv" th:field="*{sandadjv}" />
-					</p>
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label"> 砕石量<span
-					class="badge badge-danger">必須</span></label>
-				<div class="col-sm-9">
-					<p>
-						<input type="text" name="stoneadjv" th:field="*{stoneadjv}" />
 					</p>
 				</div>
 			</div>
@@ -108,7 +117,7 @@
 			</div>
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label"> 適用終了日<span
-					class="badge badge-danger"></span></label>
+					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
 						<input type="date" name="enddate" id="today"
@@ -125,7 +134,7 @@
 							id="flg" onChange="setFlgid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
-								th:selected="${flglists.id}==${product_master.flgid}">[[${flglists.value}]]</option>
+								th:selected="${flglists.id}==${price_listlist.flgid}">[[${flglists.value}]]</option>
 						</select>
 					</p>
 				</div>
@@ -135,7 +144,7 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="createat" th:field="*{createat}" />
+						<input type="text" name="createat" th:field="*{createat}" disabled/>
 					</p>
 				</div>
 			</div>
@@ -148,10 +157,8 @@
 			</div>
 			<div class="form-row">
 				<div class="col-sm-9">
-
-
 					<p>
-						<a href="/product_master" class="btn btn-info">一覧画面へ</a>
+						<a href="/price_list" class="btn btn-info">一覧画面へ</a>
 					</p>
 				</div>
 			</div>

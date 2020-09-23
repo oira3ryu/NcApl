@@ -29,11 +29,11 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 
-	<h1 class="my-3 ml-3">製品構成</h1>
+	<h1 class="my-3 ml-3">製品単価マスタ</h1>
 
 	<!-- 選択用ドロップダウンリスト ここから -->
 	<form name="search" action="#"
-		th:action="@{/product_master/search}"
+		th:action="@{/price_list/search}"
 		th:object="${searchParam}" method="post">
 		<div class="container">
 			<div class="form-row">
@@ -69,25 +69,24 @@
 				<tr>
 					<th>#</th>
 					<th>製品名</th>
-					<th>セメント</th>
-					<th>砂</th>
-					<th>砕石</th>
-					<th>設計単価</th>
 					<th>標準単価</th>
+					<th>設計単価</th>
 					<th>適用開始日</th>
 					<th>適用終了日</th>
 					<th>可／否</th>
 					<th>記録日</th>
-					<th><a href="/product_master/product_masterNew"
+					<th><a href="/price_list/price_listNew"
 						class="btn btn-primary">新規作成</a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
+
 			</thead>
+
 			<tbody>
 
-				<tr th:each="product_master : ${product_masters}"
-					th:object="${product_master}">
-					<td th:text="*{pmid}"></td>
+				<tr th:each="price_listlists : ${price_listlist}"
+					th:object="${price_listlists}">
+					<td th:text="*{plid}"></td>
 					<td><select id="product_name" style="pointer-events: none;"
 						tabindex="-1">
 							<option
@@ -95,9 +94,8 @@
 								th:value="${product_name_viewlists.pnid}"
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
-					<td th:text="*{cementadjv}"></td>
-					<td th:text="*{sandadjv}"></td>
-					<td th:text="*{stoneadjv}"></td>
+					<td th:text="*{spprice}"></td>
+					<td th:text="*{stdprice}"></td>
 					<td th:text="*{startdate}"></td>
 					<td th:text="*{enddate}"></td>
 					<!-- <td th:text="*{flgid}"></td> -->
@@ -107,11 +105,10 @@
 								th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
 					</select></td>
 					<td th:text="*{createat}"></td>
-
-					<td><a th:href="@{/product_master/{id}/edit(id=*{pmid})}"
+					<td><a th:href="@{/price_list/{id}/edit(id=*{plid})}"
 						class="btn btn-primary">編集</a></td>
 					<td>
-						<form th:action="@{/product_master/{id}(id=*{pmid})}"
+						<form th:action="@{/price_list/{id}(id=*{plid})}"
 							th:method="post" onSubmit="return delcheck()">
 							<input type="submit" class="btn btn-danger" value="削除" />
 						</form>
@@ -119,13 +116,11 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="/" class="btn btn-info">メニュー</a>
-		<span><a href="/product_master/product_masterNew" class="btn btn-primary">新規作成</a>
+		<a href="/" class="btn btn-info">メニュー</a> <span> <a
+			href="/price_list/price_listNew" class="btn btn-primary">新規作成</a>
 		</span>
-		</div>
 
 		<!-- jqueryの場合 -->
-
 		<script>
 			//formタグにサブミット時イベントを設定
 

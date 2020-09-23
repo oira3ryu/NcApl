@@ -28,27 +28,34 @@
 		crossorigin="anonymous"></script>
 
 	<script language="JavaScript">
+
+	function setPlid(txt)
+	{
+		document.price_list.plid.value = txt;
+		select.selectedIndex = index;
+	}
+
 	function setPnid(txt)
 	{
-		document.product_master.pnid.value = txt;
+		document.price_list.pnid.value = txt;
 		select.selectedIndex = index;
 	}
 
 	function setStartdate(txt)
 	{
-		document.product_master.startdate.value = txt;
+		document.price_list.startdate.value = txt;
 		select.selectedIndex = index;
 	}
 
 	function setEnddate(txt)
 	{
-		document.product_master.enddate.value = txt;
+		document.price_list.enddate.value = txt;
 		select.selectedIndex = index;
 	}
 
 	function setFlgid(txt)
 	{
-		document.product_master.flgid.value = txt;
+		document.price_list.flgid.value = txt;
 		select.selectedIndex = index;
 	}
 
@@ -57,51 +64,23 @@
 	<div class="container">
 
 		<div class="navbar">
-			<h1>製品構成 新規入力</h1>
+			<h1>製品 新規入力</h1>
 		</div>
 
-		<form th:action="@{/product_master}" th:object="${product_master}"
-			th:method="post" name="product_master">
+		<form th:action="@{/price_list}" th:object="${price_listlists}"
+			th:method="post" name="price_list">
 
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label">製品名<span
+				<label class="col-sm-3 col-form-label"> 製品種別<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pnid" /><select id="product_name"
+						<input type="hidden" name="pnid" /> <select id="product_name"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="product_name_viewlists : ${product_name_viewlist}"
-								th:value="${product_name_viewlists.pnid}">[[${product_name_viewlists.name}]]
-							</option>
+								th:value="${product_name_viewlists.pnid}">[[${product_name_viewlists.name}]]</option>
 						</select>
-					</p>
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label">セメント<span
-					class="badge badge-danger">必須</span></label>
-				<div class="col-sm-9">
-					<p>
-						<input type="text" name="cementadjv" />
-					</p>
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label">砂<span
-					class="badge badge-danger">必須</span></label>
-				<div class="col-sm-9">
-					<p>
-						<input type="text" name="sandadjv" />
-					</p>
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label">砕石<span
-					class="badge badge-danger">必須</span></label>
-				<div class="col-sm-9">
-					<p>
-						<input type="text" name="stoneadjv" />
 					</p>
 				</div>
 			</div>
@@ -124,7 +103,7 @@
 					<p>
 						<input type="hidden" name="enddate" />
 						<!-- 適用終了日選択ドロップダウン  -->
-						適用終了日<input type="date" name="today"
+						<input type="date" name="today"
 							onChange="setEnddate(this.value)" />
 					</p>
 				</div>
@@ -142,15 +121,15 @@
 					</p>
 				</div>
 			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label">タイムスタンプ<span
-					class="badge badge-danger"></span></label>
-				<div class="col-sm-9">
+<!-- 			<div class="form-row"> -->
+<!-- 				<label class="col-sm-3 col-form-label">タイムスタンプ<span -->
+<!-- 					class="badge badge-danger"></span></label> -->
+<!-- 				<div class="col-sm-9"> -->
 					<p>
-						<input type="text" name="createat" />
+						<input type="hidden" name="createat" />
 					</p>
-				</div>
-			</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label"><span
 					class="badge badge-danger"></span></label>
@@ -165,7 +144,7 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<a href="/product_master" class="btn btn-info">一覧画面へ</a>
+						<a href="/price_list" class="btn btn-info">一覧画面へ</a>
 					</p>
 				</div>
 			</div>

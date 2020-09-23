@@ -91,21 +91,19 @@
 					<th>記録日</th>
 					<th><a
 						href="/production_daily_report/production_daily_reportNew"
-						class="btn btn-primary">新規作成</a>
-					</th>
-					<th>
-						<a th:href="@{'/production_daily_report/production_daily_report_pdf/'
+						class="btn btn-primary">新規作成</a></th>
+					<th><a
+						th:href="@{'/production_daily_report/production_daily_report_pdf/'
 						 + ${searchParam.coid} + '/'
 						 + ${searchParam.fiid}}"
-							class="btn btn-primary" target="_blank">日報印刷
-						</a>
-					</th>
+						class="btn btn-primary" target="_blank">日報印刷 </a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
 			</thead>
 			<tbody>
 
-				<tr th:each="production_daily_report : ${production_daily_reportlist}"
+				<tr
+					th:each="production_daily_report : ${production_daily_reportlist}"
 					th:object="${production_daily_report}">
 					<td th:text="*{pdrid}"></td>
 					<td><select id="pid" style="pointer-events: none;"
@@ -135,7 +133,8 @@
 					<td th:text="*{quantity}"></td>
 					<td><select id="spprice" style="pointer-events: none;"
 						tabindex="-1">
-							<option th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+							<option
+								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
 								th:value="${production_daily_report_viewlists.pnid}"
 								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spprice}]]</option>
 					</select></td>
@@ -152,13 +151,13 @@
 					</td>
 				</tr>
 			</tbody>
-
-		<a href="/" class="btn btn-info">メニュー</a>
-		<span> <a href="/production_daily_report/production_daily_reportNew"
+		</table>
+		<a href="/" class="btn btn-info">メニュー</a> <span> <a
+			href="/production_daily_report/production_daily_reportNew"
 			class="btn btn-primary">新規作成</a>
 		</span>
 
-		</table>
+
 
 		<!-- jqueryの場合 -->
 
