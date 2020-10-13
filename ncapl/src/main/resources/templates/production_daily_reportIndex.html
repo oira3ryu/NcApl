@@ -39,6 +39,20 @@
 			<div class="form-row">
 				<div class="col-sm-9">
 					<p>
+						<label class="col-sm-3 col-form-label">開始日<span
+							class="badge badge-danger">選択</span></label>
+							<input type="date" th:field="*{recorddate}">
+					</p>
+				</div>
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label">終了日<span
+							class="badge badge-danger">選択</span></label>
+							<input type="date" th:field="*{recorddate}">
+					</p>
+				</div>
+				<div class="col-sm-9">
+					<p>
 						<label class="col-sm-3 col-form-label">施工者<span
 							class="badge badge-danger">選択</span></label> <select
 							style="border: black 1px solid; appearance: auto; width: 350px"
@@ -95,7 +109,9 @@
 					<th><a
 						th:href="@{'/production_daily_report/production_daily_report_pdf/'
 						 + ${searchParam.coid} + '/'
-						 + ${searchParam.fiid}}"
+						 + ${searchParam.fiid}} + '/'
+						 + ${searchParam.recorddate} + '/'
+						 + ${searchParam.recorddate}"
 						class="btn btn-primary" target="_blank">日報印刷 </a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
