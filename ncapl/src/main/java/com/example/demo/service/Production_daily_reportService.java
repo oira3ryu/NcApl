@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Production_daily_report;
@@ -20,7 +21,7 @@ public class Production_daily_reportService {
 	Production_daily_reportRepository repository;
 
 	public List<Production_daily_report> findAll() {
-		return repository.findAll();
+		return repository.findAll(Sort.by(Sort.Direction.ASC, "pdrid"));
 	}
 
     public List<Production_daily_report> findByForm(Production_daily_report searchParam) {
