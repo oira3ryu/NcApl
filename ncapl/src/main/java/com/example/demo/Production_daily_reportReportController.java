@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.form.DailyreportSearchForm;
 import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.service.Production_daily_report_viewService;
 
@@ -36,13 +37,14 @@ public class Production_daily_reportReportController {
 	@Autowired
 	Production_daily_report_viewService production_daily_report_viewService;
 
-	@GetMapping(path = "production_daily_report/{jrxml}/{coid}/{fiid}/{recorddate}")
+	@GetMapping(path = "production_daily_report/{jrxml}/{coid}/{fiid}/{recorddate}/{recorddateEnd}")
 	@ResponseBody
     public void getPdf(
             @PathVariable String jrxml,
             @PathVariable String coid,
             @PathVariable String fiid,
             @PathVariable String recorddate,
+            @PathVariable String recorddateEnd,
             HttpServletResponse response) throws Exception {
 
 		//Get JRXML template from resources folder
@@ -56,29 +58,28 @@ public class Production_daily_reportReportController {
 //        Map<String, Object> params = new HashMap<>();
         Map<String, Object> params = getParams();
 
-        Production_daily_report_view param = new Production_daily_report_view();
-        if (!StringUtils.isEmpty(coid)) {
+//        Production_daily_report_view param = new Production_daily_report_view();
+        DailyreportSearchForm param = new DailyreportSearchForm();
+        if (!StringUtils.isEmpty(coid) && !"null".equals(coid)) {
             try {
                 param.setCoid(Integer.valueOf(coid));
             } catch (Exception e) {
                 // エラーは握り潰す
             }
         }
-        if (!StringUtils.isEmpty(fiid)) {
+        if (!StringUtils.isEmpty(fiid) && !"null".equals(fiid)) {
             try {
                 param.setFiid(Integer.valueOf(fiid));
             } catch (Exception e) {
                 // エラーは握り潰す
             }
         }
-        if (!StringUtils.isEmpty(recorddate)) {
-            try {
-                param.setRecorddate((recorddate));
-            } catch (Exception e) {
-                // エラーは握り潰す
-            }
+        if (!StringUtils.isEmpty(recorddate) && !"null".equals(recorddate)) {
+            param.setRecorddate((recorddate));
         }
-
+        if (!StringUtils.isEmpty(recorddateEnd) && !"null".equals(recorddateEnd)) {
+            param.setRecorddateEnd((recorddateEnd));
+        }
         List<Production_daily_report_view> source = production_daily_report_viewService.findByForm(param);
 
         //Data source Set

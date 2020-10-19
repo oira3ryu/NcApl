@@ -7,10 +7,14 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.form.DailyreportSearchForm;
 import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.repository.Production_daily_report_viewRepository;
+import com.example.demo.specification.ProductionDailyReportViewSpecifications;
 
 @Service
 @Transactional(rollbackOn=Exception.class)
@@ -28,6 +32,18 @@ public class Production_daily_report_viewService {
             return findAll();
         }
         return repository.findAll(Example.of(searchParam));
+    }
+
+    public List<Production_daily_report_view> findByForm(DailyreportSearchForm searchParam) {
+        if (searchParam == null) {
+            return findAll();
+        }
+        return repository.findAll(Specification
+    			.where(ProductionDailyReportViewSpecifications.coidEqual(searchParam.getCoid()))
+        		.and(ProductionDailyReportViewSpecifications.fiidEqual(searchParam.getFiid()))
+        		.and(ProductionDailyReportViewSpecifications.recorddateStart(searchParam.getRecorddate()))
+        		.and(ProductionDailyReportViewSpecifications.recorddateEnd(searchParam.getRecorddateEnd()))
+        		, Sort.by(Sort.Direction.ASC, "pdrid"));
     }
 
 	public Production_daily_report_view findOne(Integer id) {

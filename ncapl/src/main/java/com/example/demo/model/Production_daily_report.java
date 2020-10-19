@@ -37,4 +37,9 @@ public class Production_daily_report {
 
 	private String recorddate;
 
+	public String getRecorddateEnd() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }

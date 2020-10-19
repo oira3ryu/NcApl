@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.form.DailyreportSearchForm;
 import com.example.demo.model.Aggregate;
 import com.example.demo.model.Company;
 import com.example.demo.model.Composition;
@@ -117,7 +119,7 @@ public class Production_daily_reportController {
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
 
-		model.addAttribute("searchParam", new Production_daily_report());
+		model.addAttribute("searchParam", new DailyreportSearchForm());
 
 	    return "production_daily_reportIndex";
 	}
@@ -210,7 +212,15 @@ public class Production_daily_reportController {
 	}
 
     @PostMapping("search")
-    public String search(@ModelAttribute("searchParam") Production_daily_report form, Model model) {
+    public String search(@ModelAttribute("searchParam") DailyreportSearchForm form, Model model) {
+
+    	if (StringUtils.isBlank(form.getRecorddate())) {
+    		form.setRecorddate(null);
+    	}
+
+    	if (StringUtils.isBlank(form.getRecorddateEnd())) {
+    		form.setRecorddateEnd(null);
+    	}
 
         List<Production_daily_report> production_daily_reports =
                 production_daily_reportService.findByForm(form);
@@ -219,7 +229,7 @@ public class Production_daily_reportController {
 	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
 	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
 
-	    List<Product_name> product_names = product_nameService.findAll();
+        List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
 
         List<Plant> plants = plantService.findAll();

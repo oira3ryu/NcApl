@@ -70,7 +70,7 @@ public class Production_daily_report_viewController {
 	@GetMapping
 	  public String production_daily_report_viewIndex(Model model) {
 
-		List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
+	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
 	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
 
 		List<Plant> plants = plantService.findAll();
