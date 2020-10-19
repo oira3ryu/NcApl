@@ -29,6 +29,59 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 
+	<script language="JavaScript">
+
+	function setJid(txt)
+	{
+		document.product_name.jid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setStid(txt)
+	{
+		document.product_name.stid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setAgid(txt)
+	{
+		document.product_name.agid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setSlid(txt)
+	{
+		document.product_name.slid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setUid(txt)
+	{
+		document.product_name.uid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setStartdate(txt)
+	{
+		document.product_name.staartdate.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setEnddate(txt)
+	{
+		document.product_name.enddate.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlgid(txt)
+	{
+		document.product_name.flgid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	</script>
+
+
 	<h1 class="my-3 ml-3">売掛</h1>
 
 	<!-- 選択用ドロップダウンリスト ここから -->
@@ -65,13 +118,17 @@
 						</select>
 					</p>
 				</div>
-<!--  				<div class="col-sm-9"> -->
-<!--  					<p> -->
-<!--  						<label class="col-sm-3 col-form-label">開始日<span -->
-<!--  							class="badge badge-danger">選択</span></label> -->
-<!--  							<input type="date" id="recorddate" name="recorddate" th:field="*{recorddate}" /> -->
-<!--  					</p> -->
-<!--  				</div> -->
+ 				<div class="col-sm-9">
+ 					<p>
+ 						<label class="col-sm-3 col-form-label">開始日<span
+ 							class="badge badge-danger">選択</span></label>
+<!--  							<input type="date" name="recorddate" /> -->
+						<input type="hidden" name="startdate" />
+						<!-- 適用開始日選択ドロップダウン  -->
+						<input type="date" name="today"
+							onChange="setStartdate(this.value)" />
+ 					</p>
+ 				</div>
 <!--  				<div class="col-sm-9"> -->
 <!--  					<p> -->
 <!--  						<label class="col-sm-3 col-form-label">終了日<span -->
@@ -172,7 +229,16 @@
 			class="btn btn-primary">新規作成</a>
 		</span>
 
-
+	<script type="text/javascript">
+		function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+		</script>
 
 		<!-- jqueryの場合 -->
 

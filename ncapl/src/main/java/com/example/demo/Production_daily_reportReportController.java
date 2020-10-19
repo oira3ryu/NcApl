@@ -42,7 +42,7 @@ public class Production_daily_reportReportController {
             @PathVariable String jrxml,
             @PathVariable String coid,
             @PathVariable String fiid,
-            //@PathVariable String recorddate,
+            @PathVariable String recorddate,
             HttpServletResponse response) throws Exception {
 
 		//Get JRXML template from resources folder
@@ -71,13 +71,14 @@ public class Production_daily_reportReportController {
                 // エラーは握り潰す
             }
         }
-//        if (!StringUtils.isEmpty(recorddate)) {
-//            try {
-//                param.setRecorddate((recorddate));
-//            } catch (Exception e) {
-//                // エラーは握り潰す
-//            }
-//        }
+        if (!StringUtils.isEmpty(recorddate)) {
+            try {
+                param.setRecorddate((recorddate));
+            } catch (Exception e) {
+                // エラーは握り潰す
+            }
+        }
+
         List<Production_daily_report_view> source = production_daily_report_viewService.findByForm(param);
 
         //Data source Set
