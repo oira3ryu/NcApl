@@ -65,20 +65,24 @@
 						</select>
 					</p>
 				</div>
- 				<div class="col-sm-9">
- 					<p>
- 						<label class="col-sm-3 col-form-label">開始日<span
- 							class="badge badge-danger">選択</span></label>
- 							<input type="date" id="recorddate" name="recorddate" th:field="*{recorddate}" />
- 					</p>
- 				</div>
-  				<div class="col-sm-9">
-  					<p>
-  						<label class="col-sm-3 col-form-label">終了日<span
-  							class="badge badge-danger">選択</span></label>
-  							<input type="date" id="recorddateEnd" name="recorddateEnd" th:field="*{recorddateEnd}" />
-  					</p>
-  				</div>
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label">開始日<span
+							class="badge badge-danger">選択</span></label> <input type="date"
+							id="recorddate" name="recorddate" th:field="*{recorddate}" />
+							<input type="button" value="クリア" onclick="recorddateClear()" />
+					</p>
+				</div>
+
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label">終了日<span
+							class="badge badge-danger">選択</span></label> <input type="date"
+							id="recorddateEnd" name="recorddateEnd"
+							th:field="*{recorddateEnd}" />
+							<input type="button" value="クリア" onclick="recorddateEndClear()" />
+					</p>
+				</div>
 				<div class="col-sm-9">
 					<p>
 						<label class="col-sm-3 col-form-label"><span
@@ -86,6 +90,7 @@
 							value="実行" />
 					</p>
 				</div>
+
 			</div>
 		</div>
 	</form>
@@ -106,7 +111,7 @@
 					<th><a
 						href="/production_daily_report/production_daily_reportNew"
 						class="btn btn-primary">新規作成</a></th>
-<!--
+					<!--
  					<th><a
  						th:href="@{'/production_daily_report/production_daily_report_pdf/'
  						 + ${searchParam.coid} + '/'
@@ -114,13 +119,13 @@
  						 + ${searchParam.recorddate}"
  						class="btn btn-primary" target="_blank">日報印刷 </a></th>
 -->
- 					<th><a
- 						th:href="@{'/production_daily_report/production_daily_report_pdf/'
+					<th><a
+						th:href="@{'/production_daily_report/production_daily_report_pdf/'
  						 + ${searchParam.coid} + '/'
  						 + ${searchParam.fiid}} + '/'
  						 + ${searchParam.recorddate} + '/'
  						 + ${searchParam.recorddateEnd}"
- 						class="btn btn-primary" target="_blank">日報印刷 </a></th>
+						class="btn btn-primary" target="_blank">日報印刷 </a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
 				</tr>
 			</thead>
@@ -182,7 +187,6 @@
 		</span>
 
 
-
 		<!-- jqueryの場合 -->
 
 		<script>
@@ -201,6 +205,16 @@
 					return false;
 				}
 			});
+
+			function recorddateClear() {
+				var textForm = document.getElementById("recorddate");
+				textForm.value = '';
+			}
+
+			function recorddateEndClear() {
+				var textForm = document.getElementById("recorddateEnd");
+				textForm.value = '';
+			}
 		</script>
 
 		<!-- javascriptの場合
