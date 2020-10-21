@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,5 +40,5 @@ public class Discount_amount {
 		private Integer flgid;
 
 	    @Column(name="createat")
-		private Timestamp createat;
+		private String createat;
 }

@@ -53,6 +53,11 @@
 		select.selectedIndex = index;
 	}
 
+	function setJid(txt)
+	{
+		document.production_daily_report.jid.value = txt;
+		select.selectedIndex = index;
+	}
 	function setRecorddate(txt)
 	{
 		document.production_daily_report.recorddate.value = txt;
@@ -64,23 +69,24 @@
 	<div class="container">
 
 		<div class="navbar">
-		<h1>売掛 新規入力</h1>
+			<h1>売掛 新規入力</h1>
 		</div>
 
-				<form th:action="@{/production_daily_report}" th:object="${production_daily_report}" th:method="post" name="production_daily_report">
+		<form th:action="@{/production_daily_report}"
+			th:object="${production_daily_report}" th:method="post"
+			name="production_daily_report">
 
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">工場名<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-					<input type="hidden" name="pid" /><select
-						id="plant" onChange="setPid(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="plantlists : ${plantlist}"
-							th:value="${plantlists.id}">[[${plantlists.name}]]
-						</option>
-					</select>
+						<input type="hidden" name="pid" /><select id="plant"
+							onChange="setPid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="plantlists : ${plantlist}"
+								th:value="${plantlists.id}">[[${plantlists.name}]]</option>
+						</select>
 					</p>
 				</div>
 			</div>
@@ -89,13 +95,13 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-					<input type="hidden" name="coid" /><select
-						id="company" onChange="setCoid(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="companylists : ${companylist}"
-							th:value="${companylists.id}">[[${companylists.name}]]
-						</option>
-					</select>
+						<input type="hidden" name="coid" /><select id="company"
+							onChange="setCoid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="companylists : ${companylist}"
+								th:value="${companylists.id}">[[${companylists.name}]]
+							</option>
+						</select>
 					</p>
 				</div>
 			</div>
@@ -104,13 +110,27 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-					<input type="hidden" name="fiid" /><select
-						id="field" onChange="setFiid(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="fieldlists : ${fieldlist}"
-							th:value="${fieldlists.id}">[[${fieldlists.name}]]
-						</option>
-					</select>
+						<input type="hidden" name="fiid" /><select id="field"
+							onChange="setFiid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="fieldlists : ${fieldlist}"
+								th:value="${fieldlists.id}">[[${fieldlists.name}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">製品種別<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="jid" /><select id="journal"
+							onChange="setJid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="journallists : ${journallist}"
+								th:value="${journallists.id}">[[${journallists.name}]]
+							</option>
+						</select>
 					</p>
 				</div>
 			</div>
@@ -119,13 +139,13 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-					<input type="hidden" name="pnid" /><select
-						id="product_name" onChange="setPnid(this[this.selectedIndex].value)">
-						<option value="">---</option>
-						<option th:each="product_namelists : ${product_namelist}"
-							th:value="${product_namelists.pnid}">[[${product_namelists.name}]]
-						</option>
-					</select>
+						<input type="hidden" name="pnid" /><select id="product_name"
+							onChange="setPnid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="product_namelists : ${product_namelist}"
+								th:value="${product_namelists.pnid}">[[${product_namelists.name}]]
+							</option>
+						</select>
 					</p>
 				</div>
 			</div>
@@ -134,7 +154,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-					<input type="text" name="quantity" />
+						<input type="text" name="quantity" />
 					</p>
 				</div>
 			</div>
@@ -143,32 +163,32 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-					<input type="hidden" name="recorddate" />
+						<input type="hidden" name="recorddate" />
 
-					<!-- 記録日選択ドロップダウン  -->
-					<input type="date" name="today" onChange="setRecorddate(this.value)" />
+						<!-- 記録日選択ドロップダウン  -->
+						<input type="date" name="today"
+							onChange="setRecorddate(this.value)" />
 					</p>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-sm-9">
 					<p>
-					<input type="submit"
-						class="btn btn-warning" value="作成" />
+						<input type="submit" class="btn btn-warning" value="作成" />
 					</p>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-sm-9">
 					<p>
-					<a href="/production_daily_report" class="btn btn-info">一覧画面へ</a>
+						<a href="/production_daily_report" class="btn btn-info">一覧画面へ</a>
 					</p>
 				</div>
 			</div>
 		</form>
 	</div>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function () {
 		    var today = new Date();
 		    today.setDate(today.getDate());
