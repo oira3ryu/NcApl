@@ -111,7 +111,7 @@ public class Product_nameController {
 	}
 
 	@GetMapping("product_nameNew")
-	public String newproduct_name(Model model) {
+	public String newProduct_name(Model model) {
 
 		List<Book> books = bookService.findAll();
 		model.addAttribute("booklist", books);

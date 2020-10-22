@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,6 +39,6 @@ public class Price_list {
 
 	private Integer flgid;
 
-	private String createat;
+	private Timestamp createat;
 
 }

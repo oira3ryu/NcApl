@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,6 +43,6 @@ public class Product_name_view {
 
 	private String flag;
 
-	private String createat;
+	private Timestamp createat;
 
 }
