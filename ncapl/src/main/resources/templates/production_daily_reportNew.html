@@ -134,6 +134,7 @@
 					</p>
 				</div>
 			</div>
+
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">製品名<span
 					class="badge badge-danger">必須</span></label>
@@ -142,8 +143,8 @@
 						<input type="hidden" name="pnid" /><select id="product_name"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="product_namelists : ${product_namelist}"
-								th:value="${product_namelists.pnid}">[[${product_namelists.name}]]
+							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+								th:value="${product_name_viewlists.pnid}">[[${product_name_viewlists.name}]]
 							</option>
 						</select>
 					</p>

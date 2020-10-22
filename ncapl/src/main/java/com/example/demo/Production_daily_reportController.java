@@ -21,6 +21,7 @@ import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
+import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Production_daily_report;
 import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.model.Slump;
@@ -35,6 +36,7 @@ import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
+import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Production_daily_reportService;
 import com.example.demo.service.Production_daily_report_viewService;
 import com.example.demo.service.SlumpService;
@@ -54,6 +56,9 @@ public class Production_daily_reportController {
 
 	@Autowired
 	private Product_nameService product_nameService;
+
+	@Autowired
+	private Product_name_viewService product_name_viewService;
 
 	@Autowired
 	private PlantService plantService;
@@ -101,6 +106,9 @@ public class Production_daily_reportController {
 	    List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
 
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
+
 	    List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 
@@ -129,6 +137,9 @@ public class Production_daily_reportController {
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
@@ -174,6 +185,9 @@ public class Production_daily_reportController {
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
 
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
@@ -231,6 +245,9 @@ public class Production_daily_reportController {
 
         List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+		model.addAttribute("product_name_viewlist", product_name_views);
 
         List<Plant> plants = plantService.findAll();
         model.addAttribute("plantlist", plants);

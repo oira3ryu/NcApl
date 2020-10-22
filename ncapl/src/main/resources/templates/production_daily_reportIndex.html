@@ -155,9 +155,9 @@
 					</select></td>
 					<td><select id="pnid" style="pointer-events: none;"
 						tabindex="-1">
-							<option th:each="product_namelists : ${product_namelist}"
-								th:value="${product_namelists.pnid}"
-								th:selected="${product_namelists.pnid} == *{pnid}">[[${product_namelists.name}]]</option>
+							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+								th:value="${product_name_viewlists.pnid}"
+								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
 					<td th:text="*{quantity}"></td>
 					<td><select id="spprice" style="pointer-events: none;"
