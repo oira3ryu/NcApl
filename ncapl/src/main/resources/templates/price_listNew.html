@@ -78,9 +78,28 @@
 						<input type="hidden" name="pnid" /> <select id="product_name"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+							<option
+								th:each="product_name_viewlists : ${product_name_viewlist}"
 								th:value="${product_name_viewlists.pnid}">[[${product_name_viewlists.name}]]</option>
 						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 標準単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="stdprice" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 設計単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="spprice" />
 					</p>
 				</div>
 			</div>
@@ -103,8 +122,7 @@
 					<p>
 						<input type="hidden" name="enddate" />
 						<!-- 適用終了日選択ドロップダウン  -->
-						<input type="date" name="today"
-							onChange="setEnddate(this.value)" />
+						<input type="date" name="today" onChange="setEnddate(this.value)" />
 					</p>
 				</div>
 			</div>
