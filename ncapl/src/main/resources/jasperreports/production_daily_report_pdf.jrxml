@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="production_daily_report_pdf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b562c40-562f-4990-be0f-cb3784585ebc">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
@@ -12,7 +12,11 @@
 	t_production_daily_report_view.productname,
 	t_production_daily_report_view.quantity,
 	t_production_daily_report_view.recorddate,
-	t_production_daily_report_view.plant
+	t_production_daily_report_view.plant,
+	t_production_daily_report_view.stdprice,
+	t_production_daily_report_view.spdprice,
+	t_production_daily_report_view.stdsalesamount,
+	t_production_daily_report_view.spsalesamount			
 FROM t_production_daily_report_view]]>
 	</queryString>
 	<field name="pdrid" class="java.lang.Integer">
@@ -53,6 +57,26 @@ FROM t_production_daily_report_view]]>
 	<field name="plant" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="plant"/>
 		<property name="com.jaspersoft.studio.field.label" value="plant"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+	</field>
+	<field name="stdprice" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stdprice"/>
+		<property name="com.jaspersoft.studio.field.label" value="stdprice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+	</field>
+	<field name="spprice" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="spprice"/>
+		<property name="com.jaspersoft.studio.field.name" value="spprice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
+	</field>
+	<field name="stdsalesamount" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="stdsalesamount"/>
+		<property name="com.jaspersoft.studio.field.name" value="stdsalesamount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_report_view"/>
+	</field>
+	<field name="spsalesamount" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="spsalesamount"/>
+		<property name="com.jaspersoft.studio.field.name" value="spsalesamount"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="t_production_daily_report_view"/>
 	</field>
 	<background>

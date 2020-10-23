@@ -105,20 +105,14 @@
 					<th>施工者</th>
 					<th>現場名</th>
 					<th>製品名</th>
-					<th>数量</th>
-					<th>金額</th>
+					<th style="text-align:right">数量</th>
+					<th style="text-align:right">単価</th>
+					<th style="text-align:right">金額</th>
 					<th>記録日</th>
 					<th><a
 						href="/production_daily_report/production_daily_reportNew"
 						class="btn btn-primary">新規作成</a></th>
-					<!--
- 					<th><a
- 						th:href="@{'/production_daily_report/production_daily_report_pdf/'
- 						 + ${searchParam.coid} + '/'
- 						 + ${searchParam.fiid}} + '/'
- 						 + ${searchParam.recorddate}"
- 						class="btn btn-primary" target="_blank">日報印刷 </a></th>
--->
+
 					<th><a
 						th:href="@{'/production_daily_report/production_daily_report_pdf/'
  						 + ${searchParam.coid} + '/'
@@ -160,12 +154,19 @@
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
 					<td th:text="*{quantity}"></td>
-					<td><select id="spprice" style="pointer-events: none;"
+					<td><select id="spprice" style="pointer-events: none;" dir="rtl"
 						tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
 								th:value="${production_daily_report_viewlists.pnid}"
 								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spprice}]]</option>
+					</select></td>
+					<td><select id="spprice" style="pointer-events: none;" dir="rtl"
+						tabindex="-1">
+							<option
+								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+								th:value="${production_daily_report_viewlists.pnid}"
+								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spsalesamount}]]</option>
 					</select></td>
 					<td th:text="*{recorddate}"></td>
 
