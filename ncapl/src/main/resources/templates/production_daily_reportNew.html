@@ -124,7 +124,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="jid" /><select id="journal"
+						<input type="text" name="jid" /><select id="journal"
 							onChange="setJid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
@@ -134,7 +134,6 @@
 					</p>
 				</div>
 			</div>
-
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">製品名<span
 					class="badge badge-danger">必須</span></label>
