@@ -20,6 +20,7 @@ import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name_view;
+import com.example.demo.model.Product_name_view_jid;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
@@ -33,6 +34,7 @@ import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_name_viewService;
+import com.example.demo.service.Product_name_view_jidService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
@@ -41,6 +43,9 @@ import com.example.demo.service.UnitService;
 @Controller
 @RequestMapping("/product_name_view")
 public class Product_name_viewController {
+
+	@Autowired
+	private Product_name_view_jidService product_name_view_jidService;
 
 	@Autowired
 	private Product_name_viewService product_name_viewService;
@@ -109,6 +114,9 @@ public class Product_name_viewController {
 
 	@GetMapping("product_name_viewNew")
 	public String newproduct_name_view(Model model) {
+
+		List<Product_name_view_jid> product_name_view_jids = product_name_view_jidService.findAll();
+	    model.addAttribute("product_name_view_jidlist",product_name_view_jids);
 
 		List<Book> books = bookService.findAll();
 		model.addAttribute("booklist", books);

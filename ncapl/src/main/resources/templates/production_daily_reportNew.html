@@ -56,6 +56,7 @@
 	function setJid(txt)
 	{
 		document.production_daily_report.jid.value = txt;
+		//document.production_daily_report.jid_child.value = txt;
 		select.selectedIndex = index;
 	}
 	function setRecorddate(txt)
@@ -124,7 +125,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="jid" /><select id="journal"
+						<input type="text" name="jid" style="width:20px;" /><select id="journal" name="jid_parent"
 							onChange="setJid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
@@ -139,16 +140,17 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pnid" /><select id="product_name"
+						<input type="hidden" name="pnid" /><input type="text" name="jid1" style="width:200px;" /><select id="product_name" name="jid_child"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="product_name_viewlists : ${product_name_viewlist}"
-								th:value="${product_name_viewlists.pnid}">[[${product_name_viewlists.name}]]
+							<option th:each="product_name_view_jidlists : ${product_name_view_jidlist}"
+								th:value="${product_name_view_jidlists.pnid}">[[${product_name_view_jidlists.name}]]
 							</option>
 						</select>
 					</p>
 				</div>
 			</div>
+
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">数量<span
 					class="badge badge-danger">必須</span></label>
@@ -198,5 +200,19 @@
 		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
 		}
 		</script>
+		<script type="text/javascript">
+		$(function() {
+
+			// 製品種別が変更されたら発動
+			$('select[name="jid_parent"]').change(function() {
+
+				// 選択されている製品種別のクラス名を取得
+				var countyName = $('select[name="jid_parent"] option:selected').attr("value");
+				document.production_daily_report.jid1.value = countyName;
+				console.log(countyName);
+			})
+		})
+		</script>
+
 </body>
 </html>

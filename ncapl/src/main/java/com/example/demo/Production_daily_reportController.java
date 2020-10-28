@@ -22,6 +22,7 @@ import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
 import com.example.demo.model.Product_name_view;
+import com.example.demo.model.Product_name_view_jid;
 import com.example.demo.model.Production_daily_report;
 import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.model.Slump;
@@ -37,6 +38,7 @@ import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
 import com.example.demo.service.Product_name_viewService;
+import com.example.demo.service.Product_name_view_jidService;
 import com.example.demo.service.Production_daily_reportService;
 import com.example.demo.service.Production_daily_report_viewService;
 import com.example.demo.service.SlumpService;
@@ -54,6 +56,9 @@ public class Production_daily_reportController {
 	@Autowired
 	private Production_daily_report_viewService production_daily_report_viewService;
 
+	@Autowired
+	private Product_name_view_jidService product_name_view_jidService;
+	
 	@Autowired
 	private Product_nameService product_nameService;
 
@@ -140,7 +145,10 @@ public class Production_daily_reportController {
 
 		List<Product_name_view> product_name_views = product_name_viewService.findAll();
 		model.addAttribute("product_name_viewlist", product_name_views);
-
+		
+		List<Product_name_view_jid> product_name_view_jids = product_name_view_jidService.findAll();
+		model.addAttribute("product_name_view_jidlist", product_name_view_jids);
+		
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 

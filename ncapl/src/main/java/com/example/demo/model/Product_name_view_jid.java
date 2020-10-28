@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Product_name_view {
+public class Product_name_view_jid {
 	@Id
 	@Column(name = "pnid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
