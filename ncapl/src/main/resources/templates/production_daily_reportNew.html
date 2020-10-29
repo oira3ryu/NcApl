@@ -57,8 +57,20 @@
 	{
 		document.production_daily_report.jid.value = txt;
 		//document.production_daily_report.jid_child.value = txt;
-		select.selectedIndex = index;
+		//select.selectedIndex = index;
+		// 製品名ドロップダウンのoptionを取得し、option1件毎に処理を行う
+		$("#product_name option").each(function(index, object) {
+			// 製品名のclassに設定されている値と、選択した製品種別の値が一致する場合
+			if ($(object).attr("class") == $("#journal").val()) {
+				// 表示
+				$(object).show();
+			} else {
+				// 非表示
+				$(object).hide();
+			}
+		});
 	}
+
 	function setRecorddate(txt)
 	{
 		document.production_daily_report.recorddate.value = txt;
@@ -140,11 +152,12 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pnid" /><input type="text" name="jid1" style="width:200px;" /><select id="product_name" name="jid_child"
+						<input type="hidden" name="pnid" /><input type="text" name="jid1" style="width:20px;" /><select id="product_name" name="jid_child"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="product_name_view_jidlists : ${product_name_view_jidlist}"
-								th:value="${product_name_view_jidlists.jid}">[[${product_name_view_jidlists.name}]]
+								th:classappend="${product_name_view_jidlists.jid}"
+								th:value="${product_name_view_jidlists.pnid}">[[${product_name_view_jidlists.name}]]
 							</option>
 						</select>
 					</p>
