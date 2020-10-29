@@ -144,7 +144,7 @@
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="product_name_view_jidlists : ${product_name_view_jidlist}"
-								th:value="${product_name_view_jidlists.pnid}">[[${product_name_view_jidlists.name}]]
+								th:value="${product_name_view_jidlists.jid}">[[${product_name_view_jidlists.name}]]
 							</option>
 						</select>
 					</p>
