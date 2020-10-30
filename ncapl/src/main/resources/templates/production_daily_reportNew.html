@@ -56,7 +56,7 @@
 	function setJid(txt)
 	{
 		document.production_daily_report.jid.value = txt;
-		//document.production_daily_report.jid_child.value = txt;
+		document.production_daily_report.jid1.value = txt;
 		//select.selectedIndex = index;
 		// 製品名ドロップダウンのoptionを取得し、option1件毎に処理を行う
 		$("#product_name option").each(function(index, object) {
@@ -100,6 +100,7 @@
 							<option th:each="plantlists : ${plantlist}"
 								th:value="${plantlists.id}">[[${plantlists.name}]]</option>
 						</select>
+						<a	href="/plant/plantIndex" th:href="@{/plant}" class="btn btn-primary btn-sm">工場マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -115,6 +116,7 @@
 								th:value="${companylists.id}">[[${companylists.name}]]
 							</option>
 						</select>
+						<a	href="/company/companyIndex" th:href="@{/company}"	class="btn btn-primary btn-sm">施工者マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -129,6 +131,7 @@
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}">[[${fieldlists.name}]]</option>
 						</select>
+						<a	href="/field/fieldIndex" th:href="@{/field}" class="btn btn-primary btn-sm">現場マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -137,13 +140,14 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="text" name="jid" style="width:20px;" /><select id="journal" name="jid_parent"
+						<input type="hidden" name="jid" style="width:20px;" /><select id="journal" name="jid_parent"
 							onChange="setJid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
 								th:value="${journallists.id}">[[${journallists.name}]]
 							</option>
 						</select>
+						<a	href="/journal/journalIndex" th:href="@{/journal}" class="btn btn-primary btn-sm">製品マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -152,7 +156,9 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pnid" /><input type="text" name="jid1" style="width:20px;" /><select id="product_name" name="jid_child"
+						<input type="hidden" name="pnid" />
+						<input type="hidden" name="jid1" style="width:20px;" />
+						<select id="product_name" name="jid_child"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="product_name_view_jidlists : ${product_name_view_jidlist}"
@@ -160,6 +166,7 @@
 								th:value="${product_name_view_jidlists.pnid}">[[${product_name_view_jidlists.name}]]
 							</option>
 						</select>
+						<a	href="/product_name/product_nameIndex" th:href="@{/product_name}" class="btn btn-primary btn-sm">製品名マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -181,8 +188,9 @@
 						<input type="hidden" name="recorddate" />
 
 						<!-- 記録日選択ドロップダウン  -->
-						<input type="date" name="today"
+						<input type="date" name="today"id="recorddate"
 							onChange="setRecorddate(this.value)" />
+							<input type="button" value="クリア" onclick="recorddateClear()" />
 					</p>
 				</div>
 			</div>
@@ -213,19 +221,12 @@
 		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
 		}
 		</script>
-		<script type="text/javascript">
-		$(function() {
+	<script type="text/javascript">
+		function recorddateClear() {
+			var textForm = document.getElementById("recorddate");
+			textForm.value = '';
+		}
 
-			// 製品種別が変更されたら発動
-			$('select[name="jid_parent"]').change(function() {
-
-				// 選択されている製品種別のクラス名を取得
-				var countyName = $('select[name="jid_parent"] option:selected').attr("value");
-				document.production_daily_report.jid1.value = countyName;
-				console.log(countyName);
-			})
-		})
 		</script>
-
 </body>
 </html>
