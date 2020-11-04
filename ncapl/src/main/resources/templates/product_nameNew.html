@@ -158,7 +158,7 @@
 						<input type="hidden" name="ptid" /> <select id="proxy_test"
 							onChange="setPtid(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="proxy_testlists : ${slumplist}"
+							<option th:each="proxy_testlists : ${proxy_testlist}"
 								th:value="${proxy_testlists.id}">[[${proxy_testlists.name}]]</option>
 						</select>
 					</p>

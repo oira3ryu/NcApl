@@ -159,7 +159,7 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="ptid" th:field="*{ptlid}" /> <select
+						<input type="hidden" name="ptid" th:field="*{ptid}" /> <select
 							id="proxy_test" onChange="setPtid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="proxy_testlists : ${proxy_testlist}" th:value="${proxy_testlists.id}"
