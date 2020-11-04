@@ -40,7 +40,7 @@
 					<th>呼び強度</th>
 					<th>骨材寸法</th>
 					<th>スランプ</th>
-					<th>単位</th>
+					<th>代行試験</th>
 					<th>適用開始日</th>
 					<th>適用終了日</th>
 					<th>可／否</th>
@@ -80,6 +80,12 @@
 							<option th:each="slumplists : ${slumplist}"
 								th:value="${slumplists.id}"
 								th:selected="${slumplists.id} == *{slid}">[[${slumplists.value}]]</option>
+					</select></td>
+					<td><select id="proxy_test" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="proxy_testlists : ${proxy_testlist}"
+								th:value="${proxy_testlists.id}"
+								th:selected="${proxy_testlists.id} == *{ptid}">[[${proxy_testlists.name}]]</option>
 					</select></td>
 					<td><select id="unit" style="pointer-events: none;"
 						tabindex="-1">

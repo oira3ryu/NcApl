@@ -35,6 +35,8 @@ public class Product_name_view_jid {
 
 	private String slump;
 
+	private Integer ptid;
+
 	private String name;
 
 	private String startdate;

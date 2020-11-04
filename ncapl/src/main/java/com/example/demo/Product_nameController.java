@@ -20,6 +20,7 @@ import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
+import com.example.demo.model.Proxy_test;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
@@ -33,6 +34,7 @@ import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
+import com.example.demo.service.Proxy_testService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
@@ -62,6 +64,9 @@ public class Product_nameController {
 
 	@Autowired
 	private CompositionService compositionService;
+
+	@Autowired
+	private Proxy_testService proxy_testService;
 
 	@Autowired
 	private CompanyService companyService;
@@ -103,6 +108,9 @@ public class Product_nameController {
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
 
+		List<Proxy_test> proxy_tests = proxy_testService.findAll();
+		model.addAttribute("proxy_testlist", proxy_tests);
+
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
 
@@ -130,6 +138,9 @@ public class Product_nameController {
 
 		List<Composition> compositions = compositionService.findAll();
 		model.addAttribute("compositionlist", compositions);
+
+		List<Proxy_test> proxy_tests = proxy_testService.findAll();
+		model.addAttribute("proxy_testlist", proxy_tests);
 
 		List<Company> companys = companyService.findAll();
 		model.addAttribute("companylist", companys);
@@ -175,6 +186,9 @@ public class Product_nameController {
 
 		List<Composition> compositions = compositionService.findAll();
 		model.addAttribute("compositionlist", compositions);
+
+		List<Proxy_test> proxy_tests = proxy_testService.findAll();
+		model.addAttribute("proxy_testlist", proxy_tests);
 
 		List<Company> companys = companyService.findAll();
 		model.addAttribute("companylist", companys);

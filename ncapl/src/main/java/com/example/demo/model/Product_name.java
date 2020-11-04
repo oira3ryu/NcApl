@@ -35,6 +35,8 @@ public class Product_name {
 
 	private Integer slid;
 
+	private Integer ptid;
+
 	private Integer uid;
 
 	private String name;
