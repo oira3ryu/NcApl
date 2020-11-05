@@ -116,8 +116,8 @@
 					class="badge badge-danger"></span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="recorddate" />
-						<input type="date" name="today"
+						<input type="hidden" name="recorddate" id="recorddate" />
+						<input type="date" name="today" id="today"
 				onChange="setRecorddate(this.value)" />
 					</p>
 				</div>
@@ -301,14 +301,17 @@
 	</div>
 
 	<script type="text/javascript">
-		function () {
-		    var today = new Date();
-		    today.setDate(today.getDate());
-		    var yyyy = today.getFullYear();
-		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
-		    var dd = ("0"+today.getDate()).slice(-2);
-		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
-		}
-		</script>
+		//今日の日付データを変数hidukeに格納
+		var hiduke=new Date();
+		//年・月・日・曜日を取得する
+		var year = hiduke.getFullYear();
+		var month = ("0"+(hiduke.getMonth()+1)).slice(-2);
+		var week = hiduke.getDay();
+		var day = ("0"+hiduke.getDate()).slice(-2);
+		//var yobi= new Array("日","月","火","水","木","金","土");
+		document.getElementById('today').value=year+"-"+month+"-"+day;
+		document.getElementById('recorddate').value=year+"-"+month+"-"+day;
+		//document.write(year+"-"+month+"-"+day);
+	</script>
 </body>
 </html>
