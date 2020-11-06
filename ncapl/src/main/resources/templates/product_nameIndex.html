@@ -49,6 +49,8 @@
 					<th><a href="/product_name/product_nameNew"
 						class="btn btn-primary">新規作成</a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
+					<th><input type="button" onclick="pagedown();" value="最下部へ" class="btn btn-primary"></th>
+
 				</tr>
 			</thead>
 
@@ -115,9 +117,22 @@
 			</tbody>
 		</table>
 		<button type="button" onclick="history.back()" class="btn btn-primary">戻る</button>
+		<button type="button" onclick="pageup();" class="btn btn-primary">TOPへ</button>
 		<a href="/" class="btn btn-info">メニュー</a> <span> <a
 			href="/product_name/product_nameNew" class="btn btn-primary">新規作成</a>
 		</span>
+
+		<script>
+		function pagedown(){
+		  var a = document.documentElement;
+		  var y = a.scrollHeight - a.clientHeight;
+		  window.scroll(0, y);
+		}
+
+		function pageup(){
+			 scrollTo(0, 0);
+		}
+		</script>
 
 		<!-- jqueryの場合 -->
 		<script>

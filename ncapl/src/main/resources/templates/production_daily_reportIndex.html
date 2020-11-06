@@ -49,7 +49,7 @@
 								th:value="${companylists.id}"
 								th:selected="${companylists.id} == *{coid}">[[${companylists.name}]]</option>
 						</select>
-						<a	href="/plant/plantIndex" th:href="@{/plant}" class="btn btn-primary btn-sm">工場マスタ</a>
+						<a	href="/company/companyIndex" th:href="@{/company}"	class="btn btn-primary btn-sm">施工者マスタ</a>
 					</p>
 				</div>
 				<div class="col-sm-9">
@@ -64,7 +64,7 @@
 								th:value="${fieldlists.id}"
 								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.name}]]</option>
 						</select>
-						<a	href="/company/companyIndex" th:href="@{/company}"	class="btn btn-primary btn-sm">施工者マスタ</a>
+						<a	href="/field/fieldIndex" th:href="@{/field}" class="btn btn-primary btn-sm">現場マスタ</a>
 					</p>
 				</div>
 				<div class="col-sm-9">

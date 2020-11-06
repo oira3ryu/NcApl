@@ -115,7 +115,6 @@
 					<p>
 						<input type="hidden" name="stid" /> <select id="strength"
 							onChange="setStid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="strengthlists : ${strengthlist}"
 								th:value="${strengthlists.id}">[[${strengthlists.value}]]</option>
 						</select>
@@ -129,7 +128,6 @@
 					<p>
 						<input type="hidden" name="agid" /> <select id="aggregate"
 							onChange="setAgid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="aggregatelists : ${aggregatelist}"
 								th:value="${aggregatelists.id}">[[${aggregatelists.value}]]</option>
 						</select>
@@ -143,7 +141,6 @@
 					<p>
 						<input type="hidden" name="slid" /> <select id="slump"
 							onChange="setSlid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="slumplists : ${slumplist}"
 								th:value="${slumplists.id}">[[${slumplists.value}]]</option>
 						</select>
@@ -175,6 +172,7 @@
 							<option th:each="unitlists : ${unitlist}"
 								th:value="${unitlists.id}">[[${unitlists.value}]]</option>
 						</select>
+						<a href="/unit/unitIndex" th:href="@{/unit}" class="btn btn-primary btn-sm">単位マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -185,7 +183,7 @@
 					<p>
 						<input type="hidden" name="startdate" />
 						<!-- 適用開始日選択ドロップダウン  -->
-						<input type="date" name="today"
+						<input type="date" name="today" id="today"
 							onChange="setStartdate(this.value)" />
 					</p>
 				</div>
@@ -238,14 +236,17 @@
 	</div>
 
 	<script type="text/javascript">
-		function () {
-		    var today = new Date();
-		    today.setDate(today.getDate());
-		    var yyyy = today.getFullYear();
-		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
-		    var dd = ("0"+today.getDate()).slice(-2);
-		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
-		}
-		</script>
+		//今日の日付データを変数hidukeに格納
+		var hiduke=new Date();
+		//年・月・日・曜日を取得する
+		var year = hiduke.getFullYear();
+		var month = ("0"+(hiduke.getMonth()+1)).slice(-2);
+		var week = hiduke.getDay();
+		var day = ("0"+hiduke.getDate()).slice(-2);
+		//var yobi= new Array("日","月","火","水","木","金","土");
+		document.getElementById('today').value=year+"-"+month+"-"+day;
+		document.getElementById('startdate').value=year+"-"+month+"-"+day;
+		//document.write(year+"-"+month+"-"+day);
+	</script>
 </body>
 </html>
