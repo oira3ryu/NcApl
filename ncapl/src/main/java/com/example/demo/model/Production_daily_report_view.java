@@ -39,9 +39,9 @@ public class Production_daily_report_view {
 
 	private String quantity;
 
-	private Integer stdprice;
+	private String stdprice;
 
-	private Integer spprice;
+	private String spprice;
 
 	private String stdsalesamount;
 

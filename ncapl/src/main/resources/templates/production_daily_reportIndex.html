@@ -123,6 +123,7 @@
  						 + ${searchParam.recorddateEnd}"
 						class="btn btn-primary" target="_blank">日報印刷 </a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
+					<th><button type="button" onclick="pagedown();" class="btn btn-info">最下部へ</button></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -155,7 +156,7 @@
 								th:value="${product_name_viewlists.pnid}"
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
-					<td th:text="*{quantity}"></td>
+					<td th:text="*{quantity}" style="text-align:right"></td>
 					<td><select id="spprice" style="pointer-events: none;" dir="rtl"
 						tabindex="-1">
 							<option
@@ -163,7 +164,7 @@
 								th:value="${production_daily_report_viewlists.pnid}"
 								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spprice}]]</option>
 					</select></td>
-					<td><select id="spprice" style="pointer-events: none;" dir="rtl"
+					<td><select id="spsalesamount" style="pointer-events: none;" dir="rtl"
 						tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
@@ -184,11 +185,24 @@
 				</tr>
 			</tbody>
 		</table>
+		<button type="button" onclick="history.back()" class="btn btn-info">戻る</button>
+		<button type="button" onclick="pageup();" class="btn btn-info">TOPへ</button>
 		<a href="/" class="btn btn-info">メニュー</a> <span> <a
 			href="/production_daily_report/production_daily_reportNew"
 			class="btn btn-primary">新規作成</a>
 		</span>
 
+		<script>
+		function pagedown(){
+		  var a = document.documentElement;
+		  var y = a.scrollHeight - a.clientHeight;
+		  window.scroll(0, y);
+		}
+
+		function pageup(){
+			 scrollTo(0, 0);
+		}
+		</script>
 
 		<!-- jqueryの場合 -->
 
