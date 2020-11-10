@@ -108,6 +108,7 @@
 					<th>現場名</th>
 					<th>製品名</th>
 					<th style="text-align:right">数量</th>
+					<th>単位</th>
 					<th style="text-align:right">単価</th>
 					<th style="text-align:right">金額</th>
 					<th>記録日</th>
@@ -157,6 +158,12 @@
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
 					<td th:text="*{quantity}" style="text-align:right"></td>
+					<td><select id="uid" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+								th:value="${product_name_viewlists.pnid}"
+								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.unit}]]</option>
+					</select></td>
 					<td><select id="spprice" style="pointer-events: none;" dir="rtl"
 						tabindex="-1">
 							<option

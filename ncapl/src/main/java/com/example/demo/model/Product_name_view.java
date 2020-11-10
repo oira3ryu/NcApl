@@ -47,6 +47,14 @@ public class Product_name_view {
 
 	private Integer jid;
 
+	private Integer uid;
+
+	private String unit;
+
+	private Integer puid;
+
+	private String pump;
+
 	private Timestamp createat;
 
 }

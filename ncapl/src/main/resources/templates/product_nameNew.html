@@ -105,6 +105,7 @@
 							<option th:each="journallists : ${journallist}"
 								th:value="${journallists.id}">[[${journallists.name}]]</option>
 						</select>
+						<a	href="/journal/journalIndex" th:href="@{/journal}" class="btn btn-primary btn-sm">製品種別マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -158,6 +159,7 @@
 							<option th:each="proxy_testlists : ${proxy_testlist}"
 								th:value="${proxy_testlists.id}">[[${proxy_testlists.name}]]</option>
 						</select>
+						<a	href="/proxy_test/proxy_testIndex" th:href="@{/proxy_test}" class="btn btn-primary btn-sm">代行試験マスタ</a>
 					</p>
 				</div>
 			</div>
