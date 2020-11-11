@@ -20,6 +20,7 @@ import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
 import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Production_daily_report_view;
+import com.example.demo.model.Pump;
 import com.example.demo.model.Type;
 import com.example.demo.model.Unit;
 import com.example.demo.service.CompanyService;
@@ -31,6 +32,7 @@ import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
 import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Production_daily_report_viewService;
+import com.example.demo.service.PumpService;
 import com.example.demo.service.TypeService;
 import com.example.demo.service.UnitService;
 
@@ -71,6 +73,9 @@ public class Production_daily_report_viewController {
 	@Autowired
 	private UnitService unitService;
 
+	@Autowired
+	private PumpService pumpService;
+
 
 	@GetMapping
 	  public String production_daily_report_viewIndex(Model model) {
@@ -92,6 +97,9 @@ public class Production_daily_report_viewController {
 
 		List<Field> fields = fieldService.findAll();
 		model.addAttribute("fieldlist", fields);
+
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
 		model.addAttribute("searchParam", new Production_daily_report_view());
 
@@ -130,6 +138,9 @@ public class Production_daily_report_viewController {
 
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
+
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
 		return "production_daily_report_viewNew";
 	}
@@ -170,6 +181,9 @@ public class Production_daily_report_viewController {
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
 
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
+
 		return "production_daily_report_viewEdit";
 	}
 
@@ -194,6 +208,9 @@ public class Production_daily_report_viewController {
 
         List<Field> fields = fieldService.findAll();
         model.addAttribute("fieldlist", fields);
+
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
         model.addAttribute("searchParam", form);
 

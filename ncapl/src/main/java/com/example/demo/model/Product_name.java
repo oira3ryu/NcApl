@@ -47,6 +47,8 @@ public class Product_name {
 
 	private Integer flgid;
 
+	private Integer puid;
+
 	private Timestamp createat;
 
 }

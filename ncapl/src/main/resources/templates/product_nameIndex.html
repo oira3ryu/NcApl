@@ -41,6 +41,7 @@
 					<th>骨材寸法</th>
 					<th>スランプ</th>
 					<th>代行試験</th>
+					<th>ポンプ</th>
 					<th>単位</th>
 					<th>適用開始日</th>
 					<th>適用終了日</th>
@@ -88,6 +89,12 @@
 							<option th:each="proxy_testlists : ${proxy_testlist}"
 								th:value="${proxy_testlists.id}"
 								th:selected="${proxy_testlists.id} == *{ptid}">[[${proxy_testlists.name}]]</option>
+					</select></td>
+					<td><select id="pump" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="pumplists : ${pumplist}"
+								th:value="${pumplists.id}"
+								th:selected="${pumplists.id} == *{puid}">[[${pumplists.name}]]</option>
 					</select></td>
 					<td><select id="unit" style="pointer-events: none;"
 						tabindex="-1">

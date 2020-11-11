@@ -21,6 +21,7 @@ import com.example.demo.model.Journal;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
 import com.example.demo.model.Proxy_test;
+import com.example.demo.model.Pump;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
@@ -35,6 +36,7 @@ import com.example.demo.service.JournalService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
 import com.example.demo.service.Proxy_testService;
+import com.example.demo.service.PumpService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
@@ -86,6 +88,8 @@ public class Product_nameController {
 	@Autowired
 	private UnitService unitService;
 
+	@Autowired
+	private PumpService pumpService;
 
 	@GetMapping
 	  public String product_nameIndex(Model model) {
@@ -113,6 +117,9 @@ public class Product_nameController {
 
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
+
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
 		return "product_nameIndex";
 
@@ -159,6 +166,9 @@ public class Product_nameController {
 
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
+
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
 		return "product_nameNew";
 	}
@@ -207,6 +217,9 @@ public class Product_nameController {
 
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
+
+		List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
 		return "product_nameEdit";
 	}

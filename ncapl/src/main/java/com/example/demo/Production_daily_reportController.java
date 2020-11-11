@@ -25,6 +25,7 @@ import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Product_name_view_jid;
 import com.example.demo.model.Production_daily_report;
 import com.example.demo.model.Production_daily_report_view;
+import com.example.demo.model.Pump;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
 import com.example.demo.model.Type;
@@ -41,6 +42,7 @@ import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Product_name_view_jidService;
 import com.example.demo.service.Production_daily_reportService;
 import com.example.demo.service.Production_daily_report_viewService;
+import com.example.demo.service.PumpService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
 import com.example.demo.service.TypeService;
@@ -58,7 +60,7 @@ public class Production_daily_reportController {
 
 	@Autowired
 	private Product_name_view_jidService product_name_view_jidService;
-	
+
 	@Autowired
 	private Product_nameService product_nameService;
 
@@ -98,6 +100,9 @@ public class Production_daily_reportController {
 	@Autowired
 	private UnitService unitService;
 
+	@Autowired
+	private PumpService pumpService;
+
 
 	@GetMapping
 	  public String production_daily_reportIndex(Model model) {
@@ -132,6 +137,9 @@ public class Production_daily_reportController {
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
 
+	    List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
+
 		model.addAttribute("searchParam", new DailyreportSearchForm());
 
 	    return "production_daily_reportIndex";
@@ -145,10 +153,10 @@ public class Production_daily_reportController {
 
 		List<Product_name_view> product_name_views = product_name_viewService.findAll();
 		model.addAttribute("product_name_viewlist", product_name_views);
-		
+
 		List<Product_name_view_jid> product_name_view_jids = product_name_view_jidService.findAll();
 		model.addAttribute("product_name_view_jidlist", product_name_view_jids);
-		
+
 		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 
@@ -181,6 +189,9 @@ public class Production_daily_reportController {
 
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
+
+	    List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
 		return "production_daily_reportNew";
 	}
@@ -230,6 +241,9 @@ public class Production_daily_reportController {
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
 
+	    List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
+
 		return "production_daily_reportEdit";
 	}
 
@@ -274,6 +288,9 @@ public class Production_daily_reportController {
 
         List<Slump> slumps = slumpService.findAll();
         model.addAttribute("slumplist", slumps);
+
+	    List<Pump> pumps = pumpService.findAll();
+		model.addAttribute("pumplist", pumps);
 
         model.addAttribute("searchParam", form);
 

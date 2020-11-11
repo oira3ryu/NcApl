@@ -77,6 +77,11 @@
 		select.selectedIndex = index;
 	}
 
+	function setPuid(txt)
+	{
+		document.product_name.puid.value = txt;
+		select.selectedIndex = index;
+	}
 	</script>
 
 	<div class="container">
@@ -150,6 +155,20 @@
 							<option value="">---</option>
 							<option th:each="slumplists : ${slumplist}" th:value="${slumplists.id}"
 								th:selected="${slumplists.id}==${product_name.slid}">[[${slumplists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> ポンプ<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="puid" th:field="*{puid}" /> <select
+							id="pump" onChange="setPuid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="pumplists : ${pumplist}" th:value="${pumplists.id}"
+								th:selected="${pumplists.id}==${product_name.puid}">[[${pumplists.name}]]</option>
 						</select>
 					</p>
 				</div>
