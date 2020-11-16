@@ -9,31 +9,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.Proxy_test;
-import com.example.demo.repository.Proxy_testRepository;
+import com.example.demo.model.Other_charge;
+import com.example.demo.repository.Other_chargeRepository;
 
 @Service
 @Transactional(rollbackOn=Exception.class)
-public class Proxy_testService {
+public class Other_chargeService {
 
 	@Autowired
-	Proxy_testRepository repository;
+	Other_chargeRepository repository;
 
-	public List<Proxy_test> findAll() {
+	public List<Other_charge> findAll() {
 		return repository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
 
-	public Proxy_test findOne(Integer id) {
-		Optional<Proxy_test> proxy_test = repository.findById(id);
-		if (proxy_test.isPresent()) {
-			return proxy_test.get();
+	public Other_charge findOne(Integer id) {
+		Optional<Other_charge> other_charge = repository.findById(id);
+		if (other_charge.isPresent()) {
+			return other_charge.get();
 		} else {
 			return null;
 		}
 	}
 
-	public Proxy_test save(Proxy_test proxy_test) {
-		return repository.save(proxy_test);
+	public Other_charge save(Other_charge other_charge) {
+		return repository.save(other_charge);
 	}
 
 	public void delete(Integer id) {

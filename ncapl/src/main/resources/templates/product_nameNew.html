@@ -65,6 +65,18 @@
 		select.selectedIndex = index;
 	}
 
+	function setEcid(txt)
+	{
+		document.product_name.ecid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setOcid(txt)
+	{
+		document.product_name.ocid.value = txt;
+		select.selectedIndex = index;
+	}
+
 	function setUid(txt)
 	{
 		document.product_name.uid.value = txt;
@@ -161,7 +173,6 @@
 					<p>
 						<input type="hidden" name="puid" /> <select id="pump"
 							onChange="setPuid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="pumplists : ${pumplist}"
 								th:value="${pumplists.id}">[[${pumplists.name}]]</option>
 						</select>
@@ -176,11 +187,38 @@
 					<p>
 						<input type="hidden" name="ptid" /> <select id="proxy_test"
 							onChange="setPtid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="proxy_testlists : ${proxy_testlist}"
 								th:value="${proxy_testlists.id}">[[${proxy_testlists.name}]]</option>
 						</select>
 						<a	href="/proxy_test/proxy_testIndex" th:href="@{/proxy_test}" class="btn btn-primary btn-sm">代行試験マスタ</a>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 割増<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="ecid" /> <select id="extra_charge"
+							onChange="setEcid(this[this.selectedIndex].value)">
+							<option th:each="extra_chargelists : ${extra_chargelist}"
+								th:value="${extra_chargelists.id}">[[${extra_chargelists.name}]]</option>
+						</select>
+						<a	href="/extra_charge/extra_chargeIndex" th:href="@{/extra_charge}" class="btn btn-primary btn-sm">割増マスタ</a>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 加算<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="ocid" /> <select id="other_charge"
+							onChange="setOcid(this[this.selectedIndex].value)">
+							<option th:each="other_chargelists : ${other_chargelist}"
+								th:value="${other_chargelists.id}">[[${other_chargelists.name}]]</option>
+						</select>
+						<a	href="/other_charge/other_chargeIndex" th:href="@{/other_charge}" class="btn btn-primary btn-sm">加算マスタ</a>
 					</p>
 				</div>
 			</div>

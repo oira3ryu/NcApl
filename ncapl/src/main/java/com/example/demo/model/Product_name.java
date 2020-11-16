@@ -49,6 +49,10 @@ public class Product_name {
 
 	private Integer puid;
 
+	private Integer ecid;
+
+	private Integer ocid;
+
 	private Timestamp createat;
 
 }

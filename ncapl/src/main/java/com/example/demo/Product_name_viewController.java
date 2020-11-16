@@ -15,9 +15,11 @@ import com.example.demo.model.Aggregate;
 import com.example.demo.model.Book;
 import com.example.demo.model.Company;
 import com.example.demo.model.Composition;
+import com.example.demo.model.Extra_charge;
 import com.example.demo.model.Field;
 import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
+import com.example.demo.model.Other_charge;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Product_name_view_jid;
@@ -31,9 +33,11 @@ import com.example.demo.service.AggregateService;
 import com.example.demo.service.BookService;
 import com.example.demo.service.CompanyService;
 import com.example.demo.service.CompositionService;
+import com.example.demo.service.Extra_chargeService;
 import com.example.demo.service.FieldService;
 import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
+import com.example.demo.service.Other_chargeService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Product_name_view_jidService;
@@ -74,6 +78,12 @@ public class Product_name_viewController {
 
 	@Autowired
 	private Proxy_testService proxy_testService;
+
+	@Autowired
+	private Extra_chargeService extra_chargeService;
+
+	@Autowired
+	private Other_chargeService other_chargeService;
 
 	@Autowired
 	private CompanyService companyService;
@@ -120,6 +130,12 @@ public class Product_name_viewController {
 		List<Proxy_test> proxy_tests = proxy_testService.findAll();
 		model.addAttribute("proxy_testlist", proxy_tests);
 
+		List<Extra_charge> extra_charges = extra_chargeService.findAll();
+		model.addAttribute("extra_chargelist", extra_charges);
+
+		List<Other_charge> other_charges = other_chargeService.findAll();
+		model.addAttribute("other_chargelist", other_charges);
+
 		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
@@ -153,6 +169,12 @@ public class Product_name_viewController {
 
 		List<Proxy_test> proxy_tests = proxy_testService.findAll();
 		model.addAttribute("proxy_testlist", proxy_tests);
+
+		List<Extra_charge> extra_charges = extra_chargeService.findAll();
+		model.addAttribute("extra_chargelist", extra_charges);
+
+		List<Other_charge> other_charges = other_chargeService.findAll();
+		model.addAttribute("other_chargelist", other_charges);
 
 		List<Company> companys = companyService.findAll();
 		model.addAttribute("companylist", companys);
@@ -204,6 +226,12 @@ public class Product_name_viewController {
 
 		List<Proxy_test> proxy_tests = proxy_testService.findAll();
 		model.addAttribute("proxy_testlist", proxy_tests);
+
+		List<Extra_charge> extra_charges = extra_chargeService.findAll();
+		model.addAttribute("extra_chargelist", extra_charges);
+
+		List<Other_charge> other_charges = other_chargeService.findAll();
+		model.addAttribute("other_chargelist", other_charges);
 
 		List<Company> companys = companyService.findAll();
 		model.addAttribute("companylist", companys);

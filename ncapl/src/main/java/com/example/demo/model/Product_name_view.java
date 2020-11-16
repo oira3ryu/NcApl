@@ -55,6 +55,14 @@ public class Product_name_view {
 
 	private String pump;
 
+	private Integer ecid;
+
+	private String extra_charge;
+
+	private Integer ocid;
+
+	private String other_charge;
+
 	private Timestamp createat;
 
 }

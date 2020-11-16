@@ -42,6 +42,8 @@
 					<th>スランプ</th>
 					<th>代行試験</th>
 					<th>ポンプ</th>
+					<th>割増</th>
+					<th>加算</th>
 					<th>単位</th>
 					<th>適用開始日</th>
 					<th>適用終了日</th>
@@ -89,6 +91,18 @@
 							<option th:each="proxy_testlists : ${proxy_testlist}"
 								th:value="${proxy_testlists.id}"
 								th:selected="${proxy_testlists.id} == *{ptid}">[[${proxy_testlists.name}]]</option>
+					</select></td>
+					<td><select id="extra_charge" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="extra_chargelists : ${extra_chargelist}"
+								th:value="${extra_chargelists.id}"
+								th:selected="${extra_chargelists.id} == *{ecid}">[[${extra_chargelists.name}]]</option>
+					</select></td>
+					<td><select id="other_charge" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="other_chargelists : ${other_chargelist}"
+								th:value="${other_chargelists.id}"
+								th:selected="${other_chargelists.id} == *{ocid}">[[${other_chargelists.name}]]</option>
 					</select></td>
 					<td><select id="pump" style="pointer-events: none;"
 						tabindex="-1">
