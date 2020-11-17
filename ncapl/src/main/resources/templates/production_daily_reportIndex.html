@@ -168,15 +168,15 @@
 						tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
-								th:value="${production_daily_report_viewlists.pnid}"
-								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spprice}]]</option>
+								th:value="${production_daily_report_viewlists.pdrid}"
+								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.spprice}]]</option>
 					</select></td>
 					<td><select id="spsalesamount" style="pointer-events: none;" dir="rtl"
 						tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
-								th:value="${production_daily_report_viewlists.pnid}"
-								th:selected="${production_daily_report_viewlists.pnid} == *{pnid}">[[${production_daily_report_viewlists.spsalesamount}]]</option>
+								th:value="${production_daily_report_viewlists.pdrid}"
+								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.spsalesamount}]]</option>
 					</select></td>
 					<td th:text="*{recorddate}"></td>
 

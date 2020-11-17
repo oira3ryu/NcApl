@@ -82,12 +82,25 @@
 		document.product_name.puid.value = txt;
 		select.selectedIndex = index;
 	}
+
+	function setEcid(txt)
+	{
+		document.product_name.ecid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setOcid(txt)
+	{
+		document.product_name.ocid.value = txt;
+		select.selectedIndex = index;
+	}
+
 	</script>
 
 	<div class="container">
 
 		<div class="navbar">
-			<h1>製品 編集</h1>
+			<h1>製品登録 編集</h1>
 		</div>
 
 		<form th:action="@{/product_name/{id}/edit(id=*{pnid})}"
@@ -110,7 +123,6 @@
 					<p>
 						<input type="hidden" name="jid" th:field="*{jid}" /> <select
 							id="journal" onChange="setJid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="journallists : ${journallist}" th:value="${journallists.id}"
 								th:selected="${journallists.id}==${product_name.jid}">[[${journallists.name}]]</option>
 						</select>
@@ -124,7 +136,6 @@
 					<p>
 						<input type="hidden" name="stid" th:field="*{stid}" /> <select
 							id="strength" onChange="setStid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="strengthlists : ${strengthlist}" th:value="${strengthlists.id}"
 								th:selected="${strengthlists.id}==${product_name.stid}">[[${strengthlists.value}]]</option>
 						</select>
@@ -138,7 +149,6 @@
 					<p>
 						<input type="hidden" name="agid" th:field="*{agid}" /> <select
 							id="aggregate" onChange="setAgid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="aggregatelists : ${aggregatelist}" th:value="${aggregatelists.id}"
 								th:selected="${aggregatelists.id}==${product_name.agid}">[[${aggregatelists.value}]]</option>
 						</select>
@@ -152,7 +162,6 @@
 					<p>
 						<input type="hidden" name="slid" th:field="*{slid}" /> <select
 							id="slump" onChange="setSlid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="slumplists : ${slumplist}" th:value="${slumplists.id}"
 								th:selected="${slumplists.id}==${product_name.slid}">[[${slumplists.value}]]</option>
 						</select>
@@ -166,7 +175,6 @@
 					<p>
 						<input type="hidden" name="puid" th:field="*{puid}" /> <select
 							id="pump" onChange="setPuid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="pumplists : ${pumplist}" th:value="${pumplists.id}"
 								th:selected="${pumplists.id}==${product_name.puid}">[[${pumplists.name}]]</option>
 						</select>
@@ -180,9 +188,34 @@
 					<p>
 						<input type="hidden" name="ptid" th:field="*{ptid}" /> <select
 							id="proxy_test" onChange="setPtid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="proxy_testlists : ${proxy_testlist}" th:value="${proxy_testlists.id}"
 								th:selected="${proxy_testlists.id}==${product_name.ptid}">[[${proxy_testlists.name}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 割増<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="ecid" th:field="*{ecid}" /> <select
+							id="extra_charge" onChange="setEcid(this[this.selectedIndex].value)">
+							<option th:each="extra_chargelists : ${extra_chargelist}" th:value="${extra_chargelists.id}"
+								th:selected="${extra_chargelists.id}==${product_name.ecid}">[[${extra_chargelists.name}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 加算<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="ocid" th:field="*{ocid}" /> <select
+							id="other_charge" onChange="setOcid(this[this.selectedIndex].value)">
+							<option th:each="other_chargelists : ${other_chargelist}" th:value="${other_chargelists.id}"
+								th:selected="${other_chargelists.id}==${product_name.ocid}">[[${other_chargelists.name}]]</option>
 						</select>
 					</p>
 				</div>
@@ -228,7 +261,6 @@
 					<p>
 						<input type="hidden" name="flgid" th:field="*{flgid}" /> <select
 							id="flg" onChange="setFlgid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
 								th:selected="${flglists.id}==${product_name.flgid}">[[${flglists.value}]]</option>
 						</select>

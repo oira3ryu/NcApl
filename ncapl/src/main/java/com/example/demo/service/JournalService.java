@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Journal;
@@ -19,7 +20,7 @@ public class JournalService {
 	JournalRepository journalrepository;
 
 	public List<Journal> findAll() {
-		return journalrepository.findAll();
+		return journalrepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
 
 	public Journal findOne(Integer id) {

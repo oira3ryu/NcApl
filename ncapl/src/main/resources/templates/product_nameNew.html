@@ -106,7 +106,7 @@
 	<div class="container">
 
 		<div class="navbar">
-			<h1>製品 新規入力</h1>
+			<h1>製品登録 新規入力</h1>
 		</div>
 
 		<form th:action="@{/product_name}" th:object="${product_name}"
@@ -268,7 +268,6 @@
 					<p>
 						<input type="hidden" name="flgid" /><select id="flg"
 							onChange="setFlgid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
 						</select>
 					</p>

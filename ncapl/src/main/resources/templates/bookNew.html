@@ -277,7 +277,6 @@
 					<p>
 						<input type="hidden" name="flgid" /><select id="flg"
 							onChange="setFlgid(this[this.selectedIndex].value)">
-							<option value="">---</option>
 							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
 						</select>
 					</p>
