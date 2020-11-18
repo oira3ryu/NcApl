@@ -63,6 +63,10 @@ public class Product_name_view {
 
 	private String other_charge;
 
+	private Integer psid;
+
+	private String product_sales;
+
 	private Timestamp createat;
 
 }

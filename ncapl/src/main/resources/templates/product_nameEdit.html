@@ -65,6 +65,12 @@
 		select.selectedIndex = index;
 	}
 
+	function setPsid(txt)
+	{
+		document.product_name.psid.value = txt;
+		select.selectedIndex = index;
+	}
+
 	function setUid(txt)
 	{
 		document.product_name.uid.value = txt;
@@ -190,6 +196,19 @@
 							id="proxy_test" onChange="setPtid(this[this.selectedIndex].value)">
 							<option th:each="proxy_testlists : ${proxy_testlist}" th:value="${proxy_testlists.id}"
 								th:selected="${proxy_testlists.id}==${product_name.ptid}">[[${proxy_testlists.name}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 商品売上<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="psid" th:field="*{psid}" /> <select
+							id="product_sales" onChange="setPsid(this[this.selectedIndex].value)">
+							<option th:each="product_saleslists : ${product_saleslist}" th:value="${product_saleslists.id}"
+								th:selected="${product_saleslists.id}==${product_name.psid}">[[${product_saleslists.name}]]</option>
 						</select>
 					</p>
 				</div>

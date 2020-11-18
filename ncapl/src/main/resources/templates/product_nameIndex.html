@@ -41,6 +41,7 @@
 					<th>骨材寸法</th>
 					<th>スランプ</th>
 					<th>代行試験</th>
+					<th>商品売上</th>
 					<th>ポンプ</th>
 					<th>割増</th>
 					<th>加算</th>
@@ -91,6 +92,12 @@
 							<option th:each="proxy_testlists : ${proxy_testlist}"
 								th:value="${proxy_testlists.id}"
 								th:selected="${proxy_testlists.id} == *{ptid}">[[${proxy_testlists.name}]]</option>
+					</select></td>
+					<td><select id="product_sales" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="product_saleslists : ${product_saleslist}"
+								th:value="${product_saleslists.id}"
+								th:selected="${product_saleslists.id} == *{psid}">[[${product_saleslists.name}]]</option>
 					</select></td>
 					<td><select id="extra_charge" style="pointer-events: none;"
 						tabindex="-1">

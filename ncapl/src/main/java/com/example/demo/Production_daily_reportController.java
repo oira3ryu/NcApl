@@ -23,6 +23,7 @@ import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
 import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Product_name_view_jid;
+import com.example.demo.model.Product_sales;
 import com.example.demo.model.Production_daily_report;
 import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.model.Pump;
@@ -40,6 +41,7 @@ import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
 import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Product_name_view_jidService;
+import com.example.demo.service.Product_salesService;
 import com.example.demo.service.Production_daily_reportService;
 import com.example.demo.service.Production_daily_report_viewService;
 import com.example.demo.service.PumpService;
@@ -103,6 +105,8 @@ public class Production_daily_reportController {
 	@Autowired
 	private PumpService pumpService;
 
+	@Autowired
+	private Product_salesService product_salesService;
 
 	@GetMapping
 	  public String production_daily_reportIndex(Model model) {
@@ -139,6 +143,9 @@ public class Production_daily_reportController {
 
 	    List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
+
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
 
 		model.addAttribute("searchParam", new DailyreportSearchForm());
 
@@ -193,6 +200,9 @@ public class Production_daily_reportController {
 	    List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
+
 		return "production_daily_reportNew";
 	}
 
@@ -244,6 +254,9 @@ public class Production_daily_reportController {
 	    List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
+
 		return "production_daily_reportEdit";
 	}
 
@@ -291,6 +304,9 @@ public class Production_daily_reportController {
 
 	    List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
+
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
 
         model.addAttribute("searchParam", form);
 

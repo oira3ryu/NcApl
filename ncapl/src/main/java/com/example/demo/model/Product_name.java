@@ -53,6 +53,8 @@ public class Product_name {
 
 	private Integer ocid;
 
+	private Integer psid;
+
 	private Timestamp createat;
 
 }

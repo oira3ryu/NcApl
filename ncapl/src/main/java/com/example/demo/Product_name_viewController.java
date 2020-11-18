@@ -23,6 +23,7 @@ import com.example.demo.model.Other_charge;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Product_name_view_jid;
+import com.example.demo.model.Product_sales;
 import com.example.demo.model.Proxy_test;
 import com.example.demo.model.Pump;
 import com.example.demo.model.Slump;
@@ -41,6 +42,7 @@ import com.example.demo.service.Other_chargeService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Product_name_view_jidService;
+import com.example.demo.service.Product_salesService;
 import com.example.demo.service.Proxy_testService;
 import com.example.demo.service.PumpService;
 import com.example.demo.service.SlumpService;
@@ -106,6 +108,9 @@ public class Product_name_viewController {
 	@Autowired
 	private PumpService pumpService;
 
+	@Autowired
+	private Product_salesService product_salesService;
+
 	@GetMapping
 	  public String product_name_viewIndex(Model model) {
 
@@ -138,6 +143,9 @@ public class Product_name_viewController {
 
 		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
+
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
 
 		return "product_nameIndex";
 
@@ -197,6 +205,9 @@ public class Product_name_viewController {
 		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
+
 		return "product_name_viewNew";
 	}
 
@@ -253,6 +264,9 @@ public class Product_name_viewController {
 
 		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
+
+		List<Product_sales> product_saless = product_salesService.findAll();
+		model.addAttribute("product_saleslist", product_saless);
 
 		return "product_nameEdit";
 	}
