@@ -36,15 +36,8 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>製品名</th>
-					<th>呼び強度</th>
-					<th>骨材寸法</th>
-					<th>スランプ</th>
-					<th>代行試験</th>
-					<th>商品売上</th>
-					<th>ポンプ</th>
-					<th>割増</th>
-					<th>加算</th>
+					<th>種別</th>
+					<th>名称</th>
 					<th>単位</th>
 					<th>適用開始日</th>
 					<th>適用終了日</th>
@@ -59,78 +52,14 @@
 			</thead>
 
 			<tbody>
-
-				<tr th:each="product_name : ${product_names}"
+				<tr th:each="product_name : ${product_name_views}"
 					th:object="${product_name}">
 					<td th:text="*{pnid}"></td>
-					<td><select id="journal" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="journallists : ${journallist}"
-								th:value="${journallists.id}"
-								th:selected="${journallists.id} == *{jid}">[[${journallists.name}]]</option>
-					</select></td>
-					<td><select id="strength" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="strengthlists : ${strengthlist}"
-								th:value="${strengthlists.id}"
-								th:selected="${strengthlists.id} == *{stid}">[[${strengthlists.value}]]</option>
-					</select></td>
-					<td><select id="aggregate" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="aggregatelists : ${aggregatelist}"
-								th:value="${aggregatelists.id}"
-								th:selected="${aggregatelists.id} == *{agid}">[[${aggregatelists.value}]]</option>
-					</select></td>
-					<td><select id="slump" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="slumplists : ${slumplist}"
-								th:value="${slumplists.id}"
-								th:selected="${slumplists.id} == *{slid}">[[${slumplists.value}]]</option>
-					</select></td>
-					<td><select id="proxy_test" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="proxy_testlists : ${proxy_testlist}"
-								th:value="${proxy_testlists.id}"
-								th:selected="${proxy_testlists.id} == *{ptid}">[[${proxy_testlists.name}]]</option>
-					</select></td>
-					<td><select id="product_sales" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="product_saleslists : ${product_saleslist}"
-								th:value="${product_saleslists.id}"
-								th:selected="${product_saleslists.id} == *{psid}">[[${product_saleslists.name}]]</option>
-					</select></td>
-					<td><select id="extra_charge" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="extra_chargelists : ${extra_chargelist}"
-								th:value="${extra_chargelists.id}"
-								th:selected="${extra_chargelists.id} == *{ecid}">[[${extra_chargelists.name}]]</option>
-					</select></td>
-					<td><select id="other_charge" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="other_chargelists : ${other_chargelist}"
-								th:value="${other_chargelists.id}"
-								th:selected="${other_chargelists.id} == *{ocid}">[[${other_chargelists.name}]]</option>
-					</select></td>
-					<td><select id="pump" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="pumplists : ${pumplist}"
-								th:value="${pumplists.id}"
-								th:selected="${pumplists.id} == *{puid}">[[${pumplists.name}]]</option>
-					</select></td>
-					<td><select id="unit" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="unitlists : ${unitlist}"
-								th:value="${unitlists.id}"
-								th:selected="${unitlists.id} == *{uid}">[[${unitlists.value}]]</option>
-					</select></td>
+					<td th:text="*{journal}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{unit}"></td>
 					<td th:text="*{startdate}"></td>
 					<td th:text="*{enddate}"></td>
-					<!-- <td th:text="*{flgid}"></td> -->
-					<td><select id="flg_id" style="pointer-events: none;"
-						tabindex="-1">
-							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
-								th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
-					</select></td>
 					<td th:text="*{createat}"></td>
 
 					<td><a th:href="@{/product_name/{id}/edit(id=*{pnid})}"

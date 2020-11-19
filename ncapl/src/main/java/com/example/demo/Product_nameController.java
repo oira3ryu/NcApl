@@ -22,6 +22,7 @@ import com.example.demo.model.Journal;
 import com.example.demo.model.Other_charge;
 import com.example.demo.model.Plant;
 import com.example.demo.model.Product_name;
+import com.example.demo.model.Product_name_view;
 import com.example.demo.model.Product_sales;
 import com.example.demo.model.Proxy_test;
 import com.example.demo.model.Pump;
@@ -40,6 +41,7 @@ import com.example.demo.service.JournalService;
 import com.example.demo.service.Other_chargeService;
 import com.example.demo.service.PlantService;
 import com.example.demo.service.Product_nameService;
+import com.example.demo.service.Product_name_viewService;
 import com.example.demo.service.Product_salesService;
 import com.example.demo.service.Proxy_testService;
 import com.example.demo.service.PumpService;
@@ -54,6 +56,9 @@ public class Product_nameController {
 
 	@Autowired
 	private Product_nameService product_nameService;
+
+	@Autowired
+	private Product_name_viewService product_name_viewService;
 
 	@Autowired
 	private BookService bookService;
@@ -112,6 +117,9 @@ public class Product_nameController {
 		List<Product_name> product_names = product_nameService.findAll();
 	    model.addAttribute("product_names",product_names);
 
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+	    model.addAttribute("product_name_views",product_name_views);
+
 	    List<Flg> flags = flgService.findAll();
 		model.addAttribute("flglist", flags);
 
@@ -151,6 +159,9 @@ public class Product_nameController {
 
 	@GetMapping("product_nameNew")
 	public String newProduct_name(Model model) {
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+	    model.addAttribute("product_name_views",product_name_views);
 
 		List<Book> books = bookService.findAll();
 		model.addAttribute("booklist", books);
@@ -211,6 +222,9 @@ public class Product_nameController {
 
 		Product_name product_name = product_nameService.findOne(id);
 		model.addAttribute("product_name",product_name);
+
+		List<Product_name_view> product_name_views = product_name_viewService.findAll();
+	    model.addAttribute("product_name_views",product_name_views);
 
 		List<Book> books = bookService.findAll();
 		model.addAttribute("booklist", books);
