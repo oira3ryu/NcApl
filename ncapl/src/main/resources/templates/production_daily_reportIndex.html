@@ -107,6 +107,7 @@
 					<th>施工者</th>
 					<th>現場名</th>
 					<th>製品名</th>
+					<th>工場渡し</th>
 					<th style="text-align:right">数量</th>
 					<th>単位</th>
 					<th style="text-align:right">単価</th>
@@ -156,6 +157,12 @@
 							<option th:each="product_name_viewlists : ${product_name_viewlist}"
 								th:value="${product_name_viewlists.pnid}"
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
+					</select></td>
+					<td><select id="pnid" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="ex_workslists : ${ex_workslist}"
+								th:value="${ex_workslists.id}"
+								th:selected="${ex_workslists.id} == *{exid}">[[${ex_workslists.value}]]</option>
 					</select></td>
 					<td th:text="*{quantity}" style="text-align:right"></td>
 					<td><select id="uid" style="pointer-events: none;"

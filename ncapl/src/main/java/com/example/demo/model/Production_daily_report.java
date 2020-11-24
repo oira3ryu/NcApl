@@ -33,6 +33,8 @@ public class Production_daily_report {
 
 	private Integer fiid;
 
+	private Integer exid;
+
 	private String quantity;
 
 	private String recorddate;

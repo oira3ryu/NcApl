@@ -16,6 +16,7 @@ import com.example.demo.form.DailyreportSearchForm;
 import com.example.demo.model.Aggregate;
 import com.example.demo.model.Company;
 import com.example.demo.model.Composition;
+import com.example.demo.model.Ex_works;
 import com.example.demo.model.Field;
 import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
@@ -34,6 +35,7 @@ import com.example.demo.model.Unit;
 import com.example.demo.service.AggregateService;
 import com.example.demo.service.CompanyService;
 import com.example.demo.service.CompositionService;
+import com.example.demo.service.Ex_worksService;
 import com.example.demo.service.FieldService;
 import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
@@ -108,6 +110,9 @@ public class Production_daily_reportController {
 	@Autowired
 	private Product_salesService product_salesService;
 
+	@Autowired
+	private Ex_worksService ex_worksService;
+
 	@GetMapping
 	  public String production_daily_reportIndex(Model model) {
 
@@ -146,6 +151,9 @@ public class Production_daily_reportController {
 
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
+
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
 
 		model.addAttribute("searchParam", new DailyreportSearchForm());
 
@@ -203,6 +211,9 @@ public class Production_daily_reportController {
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
 
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
+
 		return "production_daily_reportNew";
 	}
 
@@ -257,6 +268,9 @@ public class Production_daily_reportController {
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
 
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
+
 		return "production_daily_reportEdit";
 	}
 
@@ -307,6 +321,9 @@ public class Production_daily_reportController {
 
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
+
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
 
         model.addAttribute("searchParam", form);
 

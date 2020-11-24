@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.Company;
 import com.example.demo.model.Composition;
+import com.example.demo.model.Ex_works;
 import com.example.demo.model.Field;
 import com.example.demo.model.Flg;
 import com.example.demo.model.Journal;
@@ -26,6 +27,7 @@ import com.example.demo.model.Type;
 import com.example.demo.model.Unit;
 import com.example.demo.service.CompanyService;
 import com.example.demo.service.CompositionService;
+import com.example.demo.service.Ex_worksService;
 import com.example.demo.service.FieldService;
 import com.example.demo.service.FlgService;
 import com.example.demo.service.JournalService;
@@ -81,6 +83,9 @@ public class Production_daily_report_viewController {
 	@Autowired
 	private Product_salesService product_salesService;
 
+	@Autowired
+	private Ex_worksService ex_worksService;
+
 	@GetMapping
 	  public String production_daily_report_viewIndex(Model model) {
 
@@ -107,6 +112,9 @@ public class Production_daily_report_viewController {
 
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
+
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
 
 		model.addAttribute("searchParam", new Production_daily_report_view());
 
@@ -151,6 +159,9 @@ public class Production_daily_report_viewController {
 
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
+
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
 
 		return "production_daily_report_viewNew";
 	}
@@ -197,6 +208,9 @@ public class Production_daily_report_viewController {
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
 
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
+
 		return "production_daily_report_viewEdit";
 	}
 
@@ -227,6 +241,9 @@ public class Production_daily_report_viewController {
 
 		List<Product_sales> product_saless = product_salesService.findAll();
 		model.addAttribute("product_saleslist", product_saless);
+
+		List<Ex_works> ex_workss = ex_worksService.findAll();
+		model.addAttribute("ex_workslist", ex_workss);
 
         model.addAttribute("searchParam", form);
 

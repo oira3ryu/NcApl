@@ -54,4 +54,8 @@ public class Production_daily_report_view {
 	private Integer pid;
 
 	private String plant;
+
+	private Integer exid;
+
+	private String exworks;
 }

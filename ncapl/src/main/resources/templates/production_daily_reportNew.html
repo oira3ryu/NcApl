@@ -53,6 +53,12 @@
 		select.selectedIndex = index;
 	}
 
+	function setExid(txt)
+	{
+		document.production_daily_report.exid.value = txt;
+		select.selectedIndex = index;
+	}
+
 	function setJid(txt)
 	{
 		document.production_daily_report.jid.value = txt;
@@ -170,7 +176,21 @@
 					</p>
 				</div>
 			</div>
-
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">工場渡し<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="exid" style="width:20px;" /><select id="ex_works"
+							onChange="setExid(this[this.selectedIndex].value)">
+							<option th:each="ex_workslists : ${ex_workslist}"
+								th:value="${ex_workslists.id}">[[${ex_workslists.value}]]
+							</option>
+						</select>
+						<a	href="/ex_works/ex_worksIndex" th:href="@{/ex_works}" class="btn btn-primary btn-sm">工場渡しマスタ</a>
+					</p>
+				</div>
+			</div>
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">数量<span
 					class="badge badge-danger">必須</span></label>

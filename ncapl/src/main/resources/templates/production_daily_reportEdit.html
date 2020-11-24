@@ -53,6 +53,12 @@
 		select.selectedIndex = index;
 	}
 
+	function setExid(txt)
+	{
+		document.production_daily_report.exid.value = txt;
+		select.selectedIndex = index;
+	}
+
 	</script>
 
 	<div class="container">
@@ -129,6 +135,21 @@
 							<option th:each="product_name_viewlists : ${product_name_viewlist}"
 								th:value="${product_name_viewlists.pnid}"
 								th:selected="${product_name_viewlists.pnid}==${production_daily_reportlist.pnid}">[[${product_name_viewlists.name}]]
+							</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">工場渡し<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="exid" th:field="*{exid}"/><select id="ex_works"
+							onChange="setExid(this[this.selectedIndex].value)">
+							<option th:each="ex_workslists : ${ex_workslist}"
+								th:value="${ex_workslists.id}"
+								th:selected="${ex_workslists.id}==${production_daily_reportlist.exid}">[[${ex_workslists.value}]]
 							</option>
 						</select>
 					</p>
