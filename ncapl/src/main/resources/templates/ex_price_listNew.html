@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	<script language="JavaScript">
+
+	function setPlid(txt)
+	{
+		document.ex_price_list.plid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setId(txt)
+	{
+		document.ex_price_list.id.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setStartdate(txt)
+	{
+		document.ex_price_list.startdate.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setEnddate(txt)
+	{
+		document.ex_price_list.enddate.value = txt;
+		select.selectedIndex = index;
+	}
+
+	function setFlgid(txt)
+	{
+		document.ex_price_list.flgid.value = txt;
+		select.selectedIndex = index;
+	}
+
+	</script>
+
+	<div class="container">
+
+		<div class="navbar">
+			<h1>値引き単価 新規入力</h1>
+		</div>
+
+		<form th:action="@{/ex_price_list}" th:object="${ex_price_listlists}"
+			th:method="post" name="ex_price_list">
+
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 名称<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="id" /> <select id="ex_works"
+							onChange="setId(this[this.selectedIndex].value)">
+							<option
+								th:each="ex_workslists : ${ex_workslist}"
+								th:value="${ex_workslists.id}">[[${ex_workslists.value}]]</option>
+						</select>
+						<a	href="/ex_works/ex_worksIndex" th:href="@{/ex_works}" class="btn btn-primary btn-sm">名称設定</a>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 標準単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="stdprice" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"> 設計単価<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" name="spprice" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">適用開始日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="startdate" id="startdate" />
+						<!-- 適用開始日選択ドロップダウン  -->
+						<input type="date" name="today" id="today"
+							onChange="setStartdate(this.value)" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">適用終了日<span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="enddate" />
+						<!-- 適用終了日選択ドロップダウン  -->
+						<input type="date" name="today" onChange="setEnddate(this.value)" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">可／否<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" name="flgid" /><select id="flg"
+							onChange="setFlgid(this[this.selectedIndex].value)">
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}">[[${flglists.value}]]</option>
+						</select>
+					</p>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="submit" class="btn btn-warning" value="作成" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label"><span
+					class="badge badge-danger"></span></label>
+				<div class="col-sm-9">
+					<p>
+						<a href="/ex_price_list" class="btn btn-info">一覧画面へ</a>
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		//今日の日付データを変数hidukeに格納
+		var hiduke=new Date();
+		//年・月・日・曜日を取得する
+		var year = hiduke.getFullYear();
+		var month = ("0"+(hiduke.getMonth()+1)).slice(-2);
+		var week = hiduke.getDay();
+		var day = ("0"+hiduke.getDate()).slice(-2);
+		//var yobi= new Array("日","月","火","水","木","金","土");
+		document.getElementById('today').value=year+"-"+month+"-"+day;
+		document.getElementById('startdate').value=year+"-"+month+"-"+day;
+		//document.write(year+"-"+month+"-"+day);
+	</script>
+</body>
+</html>

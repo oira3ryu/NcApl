@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<link href="/css/style.css" rel="stylesheet"></link>
+
+</head>
+<body>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	<h1 class="my-3 ml-3">値引き単価マスタ</h1>
+
+	<!-- 選択用ドロップダウンリスト ここから -->
+	<form name="search" action="#"
+		th:action="@{/ex_price_list/search}"
+		th:object="${searchParam}" method="post">
+		<div class="container">
+			<div class="form-row">
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label">名称<span
+							class="badge badge-danger">選択</span></label> <select
+							style="border: black 1px solid; appearance: auto; width: 350px"
+							id="id" name="id"
+							onChange="setId(this[this.selectedIndex].value)">
+							<option value=""></option>
+							<option th:each="ex_workslists : ${ex_workslist}"
+								th:value="${ex_workslists.id}"
+								th:selected="${ex_workslists.id} == *{id}">[[${ex_workslists.value}]]</option>
+						</select>
+						<a	href="/ex_works/ex_worksIndex" th:href="@{/ex_works}" class="btn btn-primary btn-sm">名称設定</a>
+					</p>
+				</div>
+				<div class="col-sm-9">
+					<p>
+						<label class="col-sm-3 col-form-label"><span
+							class="badge badge-danger"></span></label>
+							<input type="submit" value="実行" />
+					</p>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- 選択用ドロップダウンリスト ここまで-->
+
+	<div class="col-5 ml-3">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>製品名</th>
+					<th>標準単価</th>
+					<th>設計単価</th>
+					<th>適用開始日</th>
+					<th>適用終了日</th>
+					<th>可／否</th>
+					<th>記録日</th>
+					<th><a href="/ex_price_list/ex_price_listNew"
+						class="btn btn-primary">新規作成</a></th>
+					<th><a href="/" class="btn btn-info">メニュー</a></th>
+					<th><input type="button" onclick="pagedown();" value="最下部へ" class="btn btn-info"></th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				<tr th:each="ex_price_listlists : ${ex_price_listlist}"
+					th:object="${ex_price_listlists}">
+					<td th:text="*{explid}"></td>
+					<td><select id="ex_price_list" style="pointer-events: none;"
+						tabindex="-1">
+							<option
+								th:each="ex_workslists : ${ex_workslist}"
+								th:value="${ex_workslists.id}"
+								th:selected="${ex_workslists.id} == *{id}">[[${ex_workslists.value}]]</option>
+					</select></td>
+					<td th:text="*{stdprice}"></td>
+					<td th:text="*{spprice}"></td>
+					<td th:text="*{startdate}"></td>
+					<td th:text="*{enddate}"></td>
+					<!-- <td th:text="*{flgid}"></td> -->
+					<td><select id="flgid" style="pointer-events: none;"
+						tabindex="-1">
+							<option th:each="flglists : ${flglist}" th:value="${flglists.id}"
+								th:selected="${flglists.id} == *{flgid}">[[${flglists.value}]]</option>
+					</select></td>
+					<td th:text="*{createat}"></td>
+					<td><a th:href="@{/ex_price_list/{id}/edit(id=*{explid})}"
+						class="btn btn-primary">編集</a></td>
+					<td>
+						<form th:action="@{/ex_price_list/{id}(id=*{explid})}"
+							th:method="post" onSubmit="return delcheck()">
+							<input type="submit" class="btn btn-danger" value="削除" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" onclick="history.back()" class="btn btn-primary">戻る</button>
+		<button type="button" onclick="pageup();" class="btn btn-info">TOPへ</button>
+		<a href="/" class="btn btn-info">メニュー</a> <span> <a
+			href="/ex_price_list/ex_price_listNew" class="btn btn-primary">新規作成</a>
+		</span>
+
+		<script>
+		function pagedown(){
+		  var a = document.documentElement;
+		  var y = a.scrollHeight - a.clientHeight;
+		  window.scroll(0, y);
+		}
+
+		function pageup(){
+			 scrollTo(0, 0);
+		}
+		</script>
+
+		<!-- jqueryの場合 -->
+		<script>
+			//formタグにサブミット時イベントを設定
+
+			$('form[name!="search"]').submit(function(event) {
+
+				// 確認メッセージ表示
+				// 戻り値を変数resultに代入(trueまたはfalse)
+				var result = window.confirm('本当に削除してよろしいですか？');
+
+				// キャンセルボタンが押された場合
+				if (result == false) {
+
+					// サブミットを中止する
+					return false;
+				}
+			});
+		</script>
+
+		<!-- javascriptの場合
+
+		<script type="text/javascript">
+
+		function delcheck() {
+
+			if (window.confirm('削除してよろしいですか？')) { // 確認ダイアログを表示
+
+				return true; // 「OK」時は送信を実行
+
+			} else { // 「キャンセル」時の処理
+
+				window.alert('キャンセルされました'); // 警告ダイアログを表示
+				return false; // 送信を中止
+
+			}
+		}
+
+	</script> -->
+</body>
+</html>

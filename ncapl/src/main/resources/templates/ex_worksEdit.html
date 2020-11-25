@@ -30,10 +30,10 @@
 	<div class="container">
 
 		<div class="navbar">
-			<h1>工場渡しフラグ 編集</h1>
+			<h1>名称 編集</h1>
 		</div>
-				<form th:action="@{//{id}/edit(id=*{id})}" th:method="post"
-					th:object="${}">
+				<form th:action="@{/ex_works/{id}/edit(id=*{id})}" th:method="post"
+					th:object="${ex_works}">
 
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">ID<span
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label">値<span
+				<label class="col-sm-3 col-form-label">名称<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
