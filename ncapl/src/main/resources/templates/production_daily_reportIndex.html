@@ -62,7 +62,7 @@
 							<option value=""></option>
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.name}]]</option>
+								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.number}]] [[${fieldlists.name}]]</option>
 						</select>
 						<a	href="/field/fieldIndex" th:href="@{/field}" class="btn btn-primary btn-sm">現場マスタ</a>
 					</p>
@@ -105,7 +105,7 @@
 					<th>ID</th>
 					<th>工場</th>
 					<th>施工者</th>
-					<th>現場名</th>
+					<th>工事番号・現場名</th>
 					<th>製品名</th>
 					<th>工場渡し</th>
 					<th style="text-align:right">数量</th>
@@ -150,7 +150,7 @@
 						tabindex="-1">
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.name}]]</option>
+								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.number}]]　[[${fieldlists.name}]]</option>
 					</select></td>
 					<td><select id="pnid" style="pointer-events: none;"
 						tabindex="-1">

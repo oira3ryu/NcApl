@@ -25,6 +25,9 @@ public class Field {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name="number")
+    private String number;
+
     @Column(name="name")
     private String name;
 

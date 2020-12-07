@@ -34,6 +34,7 @@
 			<thead>
 				<tr>
 					<th>ID</th>
+					<th>工事番号</th>
 					<th>現場名</th>
 					<th><a href="/field/fieldNew" class="btn btn-primary">新規作成</a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
@@ -43,6 +44,7 @@
 			<tbody>
 				<tr th:each="field : ${fields}" th:object="${field}">
 					<td th:text="*{id}"></td>
+					<td th:text="*{number}"></td>
 					<td th:text="*{name}"></td>
 					<td><a th:href="@{/field/{id}/edit(id=*{id})}"
 						class="btn btn-primary">編集</a></td>
