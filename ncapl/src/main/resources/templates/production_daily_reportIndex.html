@@ -129,7 +129,6 @@
 				</tr>
 			</thead>
 			<tbody>
-
 				<tr
 					th:each="production_daily_report : ${production_daily_reportlist}"
 					th:object="${production_daily_report}">
@@ -178,7 +177,7 @@
 								th:value="${production_daily_report_viewlists.pdrid}"
 								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.spprice}]]</option>
 					</select></td>
-					<td><select id="spsalesamount" style="pointer-events: none;" dir="rtl"
+					<td><input type="text" data-group="Textspsalesamount" disabled><select id="spsalesamount" data-group="spsalesamount" style="pointer-events: none;" dir="rtl"
 						tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
@@ -198,6 +197,13 @@
 					</td>
 				</tr>
 			</tbody>
+			<tfoot>
+					<tr>
+					<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>小計</th><th></th><th></th></tr>
+					<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>消費税</th><th></th><th></th></tr>
+					<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>合計:<input type="text" id="Sumspsalesamount" disabled></th><th></th><th></th></tr>
+					</tr>
+			</tfoot>
 		</table>
 		<button type="button" onclick="history.back()" class="btn btn-info">戻る</button>
 		<button type="button" onclick="pageup();" class="btn btn-info">TOPへ</button>
@@ -246,6 +252,24 @@
 				var textForm = document.getElementById("recorddateEnd");
 				textForm.value = '';
 			}
+
+			function SumspsalesamountAdd() {
+				document.getElementById("Textspsalesamount") = document.getElementById("spsalesamount");
+			}
+		</script>
+
+		<script>
+			const Group = ['Textspsalesamount'];
+			  $('table').on('change', '[data-group]', function(){
+			    for(let i=0; Group.length > i; i++){
+			      var SUM = 0;
+			      var GROUP = Group[i];
+			      $("[data-group='"+ GROUP +"']").each(function(index){
+			        SUM = SUM + Number($(this).val());
+			      });
+			      $("#Sum" + GROUP).val(SUM);
+			    }
+			  });
 		</script>
 
 		<!-- javascriptの場合
