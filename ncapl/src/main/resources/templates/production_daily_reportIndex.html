@@ -177,8 +177,8 @@
 								th:value="${production_daily_report_viewlists.pdrid}"
 								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.spprice}]]</option>
 					</select></td>
-					<td><input type="text" data-group="Textspsalesamount" disabled><select id="spsalesamount" data-group="spsalesamount" style="pointer-events: none;" dir="rtl"
-						tabindex="-1">
+					<td><input type="text" id="Textspsalesamount"><select id="spsalesamount" data-group="spsalesamount" style="pointer-events: none;" dir="rtl"
+						tabindex="-1" >
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
 								th:value="${production_daily_report_viewlists.pdrid}"
@@ -211,6 +211,7 @@
 			href="/production_daily_report/production_daily_reportNew"
 			class="btn btn-primary">新規作成</a>
 		</span>
+		<button onclick="hoge();" type="button" class="btn btn-outline-warning">取得</button>
 
 		<script>
 		function pagedown(){
@@ -252,10 +253,22 @@
 				var textForm = document.getElementById("recorddateEnd");
 				textForm.value = '';
 			}
+		</script>
 
-			function SumspsalesamountAdd() {
-				document.getElementById("Textspsalesamount") = document.getElementById("spsalesamount");
-			}
+		<script>
+
+		  function hoge() {
+
+		    var obj = document.getElementById('spsalesamount');
+		    // 選択されている値の番号を取得
+		    var idx = obj.selectedIndex;
+		    // 値を取得
+		    var txt  = obj.options[idx].text;
+		    // 表示
+		    document.getElementById("Textspsalesamount") = txt;
+
+		  }
+
 		</script>
 
 		<script>
