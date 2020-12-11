@@ -28,17 +28,20 @@ public class Production_daily_report_viewService {
 	}
 
     public List<Production_daily_report_view> findByForm(Production_daily_report_view searchParam) {
-        if (searchParam == null) {
+
+    	if (searchParam == null) {
             return findAll();
         }
         return repository.findAll(Example.of(searchParam));
     }
 
     public List<Production_daily_report_view> findByForm(DailyreportSearchForm searchParam) {
-        if (searchParam == null) {
+
+    	if (searchParam == null) {
             return findAll();
         }
-        return repository.findAll(Specification
+
+    	return repository.findAll(Specification
     			.where(ProductionDailyReportViewSpecifications.coidEqual(searchParam.getCoid()))
         		.and(ProductionDailyReportViewSpecifications.fiidEqual(searchParam.getFiid()))
         		.and(ProductionDailyReportViewSpecifications.recorddateStart(searchParam.getRecorddate()))

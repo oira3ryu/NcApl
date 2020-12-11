@@ -44,4 +44,9 @@ public class Production_daily_report {
 		return null;
 	}
 
+	public int spsalesamount() {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
+
 }

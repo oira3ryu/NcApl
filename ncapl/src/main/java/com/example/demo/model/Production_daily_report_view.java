@@ -25,7 +25,13 @@ public class Production_daily_report_view {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pdrid;
 
+	private Integer pid;
+
+	private String plant;
+
 	private Integer pnid;
+
+	private String productname;
 
 	private Integer coid;
 
@@ -34,8 +40,6 @@ public class Production_daily_report_view {
 	private Integer fiid;
 
 	private String field;
-
-	private String productname;
 
 	private String quantity;
 
@@ -50,10 +54,6 @@ public class Production_daily_report_view {
 	private String startdate;
 
 	private String recorddate;
-
-	private Integer pid;
-
-	private String plant;
 
 	private Integer exid;
 
