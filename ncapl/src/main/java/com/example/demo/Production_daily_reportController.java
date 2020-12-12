@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,9 +129,11 @@ public class Production_daily_reportController {
         for (Production_daily_report_view report : production_daily_report_views) {
         	String remove_commas_and_whitespace = report.getSpsalesamount();
          	total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
-        }
+         }
+		String StrTotal= null;
+        StrTotal = String.format("%1$,3d", total);
         // 計算したtotalをmodelに登録して
-        model.addAttribute("total",total );
+        model.addAttribute("total",StrTotal );
 
 	    List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
@@ -294,21 +298,47 @@ public class Production_daily_reportController {
     		form.setRecorddateEnd(null);
     	}
 
-        List<Production_daily_report> production_daily_reports =
-                production_daily_reportService.findByForm(form);
-        model.addAttribute("production_daily_reportlist",production_daily_reports);
+//        List<Production_daily_report> production_daily_reports =
+//                production_daily_reportService.findByForm(form);
+//        model.addAttribute("production_daily_reportlist",production_daily_reports);
+//
+//	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
+//	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
+//
+//	    // 金額の合計値を計算
+//        int total = 0;
+//        for (Production_daily_report_view report : production_daily_report_views) {
+//        	String remove_commas_and_whitespace = report.getSpsalesamount();
+//         	total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
+//        }
+//        // 計算したtotalをmodelに登録して
+//        model.addAttribute("total",total );
+    	List<Production_daily_report> production_daily_reports =
+    		production_daily_reportService.findByForm(form);
+    		model.addAttribute("production_daily_reportlist",production_daily_reports);
 
-	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
-	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
+    		List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
+    		model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
 
-	    // 金額の合計値を計算
-        int total = 0;
-        for (Production_daily_report_view report : production_daily_report_views) {
-        	String remove_commas_and_whitespace = report.getSpsalesamount();
-         	total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
-        }
-        // 計算したtotalをmodelに登録して
-        model.addAttribute("total",total );
+    		// 絞り込まれた情報のキーを保持する
+    		Set<Integer> keySet = new HashSet<Integer>();
+    		for (Production_daily_report report : production_daily_reports) {
+    		keySet.add(report.getPdrid());
+    		}
+
+    		int total = 0;
+    		for (Production_daily_report_view report : production_daily_report_views) {
+    		// 保持しているキーのデータのみ合計値に加算する
+    		if (keySet.contains(report.getPdrid())) {
+    			String remove_commas_and_whitespace = report.getSpsalesamount();
+    			total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
+
+    		}
+    		}
+    		String StrTotal= null;
+            StrTotal = String.format("%1$,3d", total);
+            // 計算したtotalをmodelに登録して
+            model.addAttribute("total",StrTotal );
 
         List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
