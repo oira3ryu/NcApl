@@ -125,15 +125,25 @@ public class Production_daily_reportController {
 	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
 
 	    // 金額の合計値を計算
-        int total = 0;
+        int Subtotal = 0;
+        int Tax = 0;
+        int Total = 0;
         for (Production_daily_report_view report : production_daily_report_views) {
-        	String remove_commas_and_whitespace = report.getSpsalesamount();
-         	total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
+        	String remove_commas_and_whitespace_Subtotal = report.getSpsalesamount();
+         	Subtotal += Integer.parseInt(remove_commas_and_whitespace_Subtotal.replaceAll("[, ]", ""));
+         	Tax += report.getTax();
          }
-		String StrTotal= null;
-        StrTotal = String.format("%1$,3d", total);
+
+		String StrSubTotal= null;
+		String StrTax = null;
+        StrSubTotal = String.format("%1$,3d", Subtotal);
+        StrTax = String.format("%1$,3d", Tax);
         // 計算したtotalをmodelに登録して
-        model.addAttribute("total",StrTotal );
+        model.addAttribute("Subtotal",StrSubTotal);
+
+        model.addAttribute("Tax",StrTax);
+
+        model.addAttribute("Total",Subtotal + Tax);
 
 	    List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
@@ -326,19 +336,28 @@ public class Production_daily_reportController {
     		keySet.add(report.getPdrid());
     		}
 
-    		int total = 0;
+    	    // 金額の合計値を計算
+            int Subtotal = 0;
+            int Tax = 0;
+            int Total = 0;
     		for (Production_daily_report_view report : production_daily_report_views) {
     		// 保持しているキーのデータのみ合計値に加算する
     		if (keySet.contains(report.getPdrid())) {
     			String remove_commas_and_whitespace = report.getSpsalesamount();
-    			total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
-
+    			Subtotal += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
+             	Tax += report.getTax();
     		}
     		}
-    		String StrTotal= null;
-            StrTotal = String.format("%1$,3d", total);
+    		String StrSubTotal= null;
+    		String StrTax = null;
+            StrSubTotal = String.format("%1$,3d", Subtotal);
+            StrTax = String.format("%1$,3d", Tax);
             // 計算したtotalをmodelに登録して
-            model.addAttribute("total",StrTotal );
+            model.addAttribute("Subtotal",StrSubTotal);
+
+            model.addAttribute("Tax",StrTax);
+
+            model.addAttribute("Total",Subtotal + Tax);
 
         List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);

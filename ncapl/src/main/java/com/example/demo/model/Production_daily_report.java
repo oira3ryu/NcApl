@@ -35,6 +35,8 @@ public class Production_daily_report {
 
 	private Integer exid;
 
+	private Integer taxid;
+
 	private String quantity;
 
 	private String recorddate;

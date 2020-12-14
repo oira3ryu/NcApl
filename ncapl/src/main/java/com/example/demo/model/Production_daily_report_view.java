@@ -58,4 +58,8 @@ public class Production_daily_report_view {
 	private Integer exid;
 
 	private String exworks;
+
+	private Integer taxid;
+
+	private Integer tax;
 }
