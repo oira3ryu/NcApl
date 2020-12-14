@@ -116,42 +116,47 @@ public class Production_daily_reportController {
 	private Ex_worksService ex_worksService;
 
 	@GetMapping
-	  public String production_daily_reportIndex(Model model) {
+	public String production_daily_reportIndex(Model model) {
 
-	    List<Production_daily_report> production_daily_reports = production_daily_reportService.findAll();
-	    model.addAttribute("production_daily_reportlist",production_daily_reports);
+		List<Production_daily_report> production_daily_reports = production_daily_reportService.findAll();
+		model.addAttribute("production_daily_reportlist", production_daily_reports);
 
-	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
-	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
+		List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService
+				.findAll();
+		model.addAttribute("production_daily_report_viewlist", production_daily_report_views);
 
-	    // 金額の合計値を計算
-        int Subtotal = 0;
-        int Tax = 0;
-        int Total = 0;
-        for (Production_daily_report_view report : production_daily_report_views) {
-        	String remove_commas_and_whitespace_Subtotal = report.getSpsalesamount();
-         	Subtotal += Integer.parseInt(remove_commas_and_whitespace_Subtotal.replaceAll("[, ]", ""));
-         	Tax += report.getTax();
-         }
+		// 金額の合計値を計算
+		int Subtotal = 0;
+		int Tax = 0;
+		int Total = 0;
+		for (Production_daily_report_view report : production_daily_report_views) {
+			String remove_commas_and_whitespace_Subtotal = report.getSpsalesamount();
+			Subtotal += Integer.parseInt(remove_commas_and_whitespace_Subtotal.replaceAll("[, ]", ""));
+			Tax += report.getTax();
+		}
 
-		String StrSubTotal= null;
+		String StrSubTotal = null;
 		String StrTax = null;
-        StrSubTotal = String.format("%1$,3d", Subtotal);
-        StrTax = String.format("%1$,3d", Tax);
-        // 計算したtotalをmodelに登録して
-        model.addAttribute("Subtotal",StrSubTotal);
+		String StrTotal = null;
+		StrSubTotal = String.format("%1$,3d", Subtotal);
+		StrTax = String.format("%1$,3d", Tax);
+		Total = Subtotal + Tax;
+		StrTotal = String.format("%1$,3d", Total);
 
-        model.addAttribute("Tax",StrTax);
+		// 計算したtotalをmodelに登録して
+		model.addAttribute("Subtotal", StrSubTotal);
 
-        model.addAttribute("Total",Subtotal + Tax);
+		model.addAttribute("Tax", StrTax);
 
-	    List<Product_name> product_names = product_nameService.findAll();
+		model.addAttribute("Total", StrTotal);
+
+		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
 
 		List<Product_name_view> product_name_views = product_name_viewService.findAll();
 		model.addAttribute("product_name_viewlist", product_name_views);
 
-	    List<Plant> plants = plantService.findAll();
+		List<Plant> plants = plantService.findAll();
 		model.addAttribute("plantlist", plants);
 
 		List<Company> companys = companyService.findAll();
@@ -169,7 +174,7 @@ public class Production_daily_reportController {
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
 
-	    List<Pump> pumps = pumpService.findAll();
+		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
 		List<Product_sales> product_saless = product_salesService.findAll();
@@ -180,7 +185,7 @@ public class Production_daily_reportController {
 
 		model.addAttribute("searchParam", new DailyreportSearchForm());
 
-	    return "production_daily_reportIndex";
+		return "production_daily_reportIndex";
 	}
 
 	@GetMapping("production_daily_reportNew")
@@ -228,7 +233,7 @@ public class Production_daily_reportController {
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
 
-	    List<Pump> pumps = pumpService.findAll();
+		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
 		List<Product_sales> product_saless = product_salesService.findAll();
@@ -244,7 +249,7 @@ public class Production_daily_reportController {
 	public String edit(@PathVariable Integer id, Model model) {
 
 		Production_daily_report production_daily_reports = production_daily_reportService.findOne(id);
-		model.addAttribute("production_daily_reportlist",production_daily_reports);
+		model.addAttribute("production_daily_reportlist", production_daily_reports);
 
 		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
@@ -285,7 +290,7 @@ public class Production_daily_reportController {
 		List<Unit> units = unitService.findAll();
 		model.addAttribute("unitlist", units);
 
-	    List<Pump> pumps = pumpService.findAll();
+		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
 		List<Product_sales> product_saless = product_salesService.findAll();
@@ -297,93 +302,97 @@ public class Production_daily_reportController {
 		return "production_daily_reportEdit";
 	}
 
-    @PostMapping("search")
-    public String search(@ModelAttribute("searchParam") DailyreportSearchForm form, Model model) {
+	@PostMapping("search")
+	public String search(@ModelAttribute("searchParam") DailyreportSearchForm form, Model model) {
 
-    	if (StringUtils.isBlank(form.getRecorddate())) {
-    		form.setRecorddate(null);
-    	}
+		if (StringUtils.isBlank(form.getRecorddate())) {
+			form.setRecorddate(null);
+		}
 
-    	if (StringUtils.isBlank(form.getRecorddateEnd())) {
-    		form.setRecorddateEnd(null);
-    	}
+		if (StringUtils.isBlank(form.getRecorddateEnd())) {
+			form.setRecorddateEnd(null);
+		}
 
-//        List<Production_daily_report> production_daily_reports =
-//                production_daily_reportService.findByForm(form);
-//        model.addAttribute("production_daily_reportlist",production_daily_reports);
-//
-//	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
-//	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
-//
-//	    // 金額の合計値を計算
-//        int total = 0;
-//        for (Production_daily_report_view report : production_daily_report_views) {
-//        	String remove_commas_and_whitespace = report.getSpsalesamount();
-//         	total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
-//        }
-//        // 計算したtotalをmodelに登録して
-//        model.addAttribute("total",total );
-    	List<Production_daily_report> production_daily_reports =
-    		production_daily_reportService.findByForm(form);
-    		model.addAttribute("production_daily_reportlist",production_daily_reports);
+		//        List<Production_daily_report> production_daily_reports =
+		//                production_daily_reportService.findByForm(form);
+		//        model.addAttribute("production_daily_reportlist",production_daily_reports);
+		//
+		//	    List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
+		//	    model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
+		//
+		//	    // 金額の合計値を計算
+		//        int total = 0;
+		//        for (Production_daily_report_view report : production_daily_report_views) {
+		//        	String remove_commas_and_whitespace = report.getSpsalesamount();
+		//         	total += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
+		//        }
+		//        // 計算したtotalをmodelに登録して
+		//        model.addAttribute("total",total );
+		List<Production_daily_report> production_daily_reports = production_daily_reportService.findByForm(form);
+		model.addAttribute("production_daily_reportlist", production_daily_reports);
 
-    		List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService.findAll();
-    		model.addAttribute("production_daily_report_viewlist",production_daily_report_views);
+		List<Production_daily_report_view> production_daily_report_views = production_daily_report_viewService
+				.findAll();
+		model.addAttribute("production_daily_report_viewlist", production_daily_report_views);
 
-    		// 絞り込まれた情報のキーを保持する
-    		Set<Integer> keySet = new HashSet<Integer>();
-    		for (Production_daily_report report : production_daily_reports) {
-    		keySet.add(report.getPdrid());
-    		}
+		// 絞り込まれた情報のキーを保持する
+		Set<Integer> keySet = new HashSet<Integer>();
+		for (Production_daily_report report : production_daily_reports) {
+			keySet.add(report.getPdrid());
+		}
 
-    	    // 金額の合計値を計算
-            int Subtotal = 0;
-            int Tax = 0;
-            int Total = 0;
-    		for (Production_daily_report_view report : production_daily_report_views) {
-    		// 保持しているキーのデータのみ合計値に加算する
-    		if (keySet.contains(report.getPdrid())) {
-    			String remove_commas_and_whitespace = report.getSpsalesamount();
-    			Subtotal += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
-             	Tax += report.getTax();
-    		}
-    		}
-    		String StrSubTotal= null;
-    		String StrTax = null;
-            StrSubTotal = String.format("%1$,3d", Subtotal);
-            StrTax = String.format("%1$,3d", Tax);
-            // 計算したtotalをmodelに登録して
-            model.addAttribute("Subtotal",StrSubTotal);
+		// 金額の合計値を計算
+		int Subtotal = 0;
+		int Tax = 0;
+		int Total = 0;
+		for (Production_daily_report_view report : production_daily_report_views) {
+			// 保持しているキーのデータのみ合計値に加算する
+			if (keySet.contains(report.getPdrid())) {
+				String remove_commas_and_whitespace = report.getSpsalesamount();
+				Subtotal += Integer.parseInt(remove_commas_and_whitespace.replaceAll("[, ]", ""));
+				Tax += report.getTax();
+			}
+		}
+		String StrSubTotal = null;
+		String StrTax = null;
+		String StrTotal = null;
+		StrSubTotal = String.format("%1$,3d", Subtotal);
+		StrTax = String.format("%1$,3d", Tax);
+		Total = Subtotal + Tax;
+		StrTotal = String.format("%1$,3d", Total);
 
-            model.addAttribute("Tax",StrTax);
+		// 計算したtotalをmodelに登録して
+		model.addAttribute("Subtotal", StrSubTotal);
 
-            model.addAttribute("Total",Subtotal + Tax);
+		model.addAttribute("Tax", StrTax);
 
-        List<Product_name> product_names = product_nameService.findAll();
+		model.addAttribute("Total", StrTotal);
+
+		List<Product_name> product_names = product_nameService.findAll();
 		model.addAttribute("product_namelist", product_names);
 
 		List<Product_name_view> product_name_views = product_name_viewService.findAll();
 		model.addAttribute("product_name_viewlist", product_name_views);
 
-        List<Plant> plants = plantService.findAll();
-        model.addAttribute("plantlist", plants);
+		List<Plant> plants = plantService.findAll();
+		model.addAttribute("plantlist", plants);
 
-        List<Company> companys = companyService.findAll();
-        model.addAttribute("companylist", companys);
+		List<Company> companys = companyService.findAll();
+		model.addAttribute("companylist", companys);
 
-        List<Field> fields = fieldService.findAll();
-        model.addAttribute("fieldlist", fields);
+		List<Field> fields = fieldService.findAll();
+		model.addAttribute("fieldlist", fields);
 
-        List<Strength> strengths = strengthService.findAll();
-        model.addAttribute("strengthlist", strengths);
+		List<Strength> strengths = strengthService.findAll();
+		model.addAttribute("strengthlist", strengths);
 
-        List<Aggregate> aggregates = aggregateService.findAll();
-        model.addAttribute("aggregatelist", aggregates);
+		List<Aggregate> aggregates = aggregateService.findAll();
+		model.addAttribute("aggregatelist", aggregates);
 
-        List<Slump> slumps = slumpService.findAll();
-        model.addAttribute("slumplist", slumps);
+		List<Slump> slumps = slumpService.findAll();
+		model.addAttribute("slumplist", slumps);
 
-	    List<Pump> pumps = pumpService.findAll();
+		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
 		List<Product_sales> product_saless = product_salesService.findAll();
@@ -392,10 +401,10 @@ public class Production_daily_reportController {
 		List<Ex_works> ex_workss = ex_worksService.findAll();
 		model.addAttribute("ex_workslist", ex_workss);
 
-        model.addAttribute("searchParam", form);
+		model.addAttribute("searchParam", form);
 
-        return "production_daily_reportIndex";
-    }
+		return "production_daily_reportIndex";
+	}
 
 	@PostMapping
 	public String create(@ModelAttribute Production_daily_report production_daily_report) {
@@ -404,15 +413,15 @@ public class Production_daily_reportController {
 	}
 
 	@PostMapping("{id}/edit")
-    public String update(@PathVariable Integer id, @ModelAttribute Production_daily_report production_daily_report) {
-        production_daily_report.setPdrid(id);
-        production_daily_reportService.save(production_daily_report);
-        return "redirect:/production_daily_report";
-    }
+	public String update(@PathVariable Integer id, @ModelAttribute Production_daily_report production_daily_report) {
+		production_daily_report.setPdrid(id);
+		production_daily_reportService.save(production_daily_report);
+		return "redirect:/production_daily_report";
+	}
 
-    @PostMapping("{id}")
-    public String destroy(@PathVariable Integer id) {
-        production_daily_reportService.delete(id);
-        return "redirect:/production_daily_report";
-    }
+	@PostMapping("{id}")
+	public String destroy(@PathVariable Integer id) {
+		production_daily_reportService.delete(id);
+		return "redirect:/production_daily_report";
+	}
 }

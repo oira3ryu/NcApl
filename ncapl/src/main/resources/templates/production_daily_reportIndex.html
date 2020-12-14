@@ -48,8 +48,8 @@
 							<option th:each="companylists : ${companylist}"
 								th:value="${companylists.id}"
 								th:selected="${companylists.id} == *{coid}">[[${companylists.name}]]</option>
-						</select>
-						<a	href="/company/companyIndex" th:href="@{/company}"	class="btn btn-primary btn-sm">施工者マスタ</a>
+						</select> <a href="/company/companyIndex" th:href="@{/company}"
+							class="btn btn-primary btn-sm">施工者マスタ</a>
 					</p>
 				</div>
 				<div class="col-sm-9">
@@ -62,17 +62,18 @@
 							<option value=""></option>
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.number}]] [[${fieldlists.name}]]</option>
-						</select>
-						<a	href="/field/fieldIndex" th:href="@{/field}" class="btn btn-primary btn-sm">現場マスタ</a>
+								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.number}]]
+								[[${fieldlists.name}]]</option>
+						</select> <a href="/field/fieldIndex" th:href="@{/field}"
+							class="btn btn-primary btn-sm">現場マスタ</a>
 					</p>
 				</div>
 				<div class="col-sm-9">
 					<p>
 						<label class="col-sm-3 col-form-label">開始日<span
 							class="badge badge-danger">選択</span></label> <input type="date"
-							id="recorddate" name="recorddate" th:field="*{recorddate}" />
-							<input type="button" value="クリア" onclick="recorddateClear()" />
+							id="recorddate" name="recorddate" th:field="*{recorddate}" /> <input
+							type="button" value="クリア" onclick="recorddateClear()" />
 					</p>
 				</div>
 
@@ -81,8 +82,8 @@
 						<label class="col-sm-3 col-form-label">終了日<span
 							class="badge badge-danger">選択</span></label> <input type="date"
 							id="recorddateEnd" name="recorddateEnd"
-							th:field="*{recorddateEnd}" />
-							<input type="button" value="クリア" onclick="recorddateEndClear()" />
+							th:field="*{recorddateEnd}" /> <input type="button" value="クリア"
+							onclick="recorddateEndClear()" />
 					</p>
 				</div>
 				<div class="col-sm-9">
@@ -108,10 +109,10 @@
 					<th>工事番号・現場名</th>
 					<th>製品名</th>
 					<th>工場渡し</th>
-					<th style="text-align:right">数量</th>
+					<th style="text-align: right">数量</th>
 					<th>単位</th>
-					<th style="text-align:right">単価</th>
-					<th style="text-align:right">金額</th>
+					<th style="text-align: right">単価</th>
+					<th style="text-align: right">金額</th>
 					<th>記録日</th>
 					<th><a
 						href="/production_daily_report/production_daily_reportNew"
@@ -125,7 +126,8 @@
  						 + ${searchParam.recorddateEnd}"
 						class="btn btn-primary" target="_blank">日報印刷 </a></th>
 					<th><a href="/" class="btn btn-info">メニュー</a></th>
-					<th><button type="button" onclick="pagedown();" class="btn btn-info">最下部へ</button></th>
+					<th><button type="button" onclick="pagedown();"
+							class="btn btn-info">最下部へ</button></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -149,11 +151,13 @@
 						tabindex="-1">
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}"
-								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.number}]]　[[${fieldlists.name}]]</option>
+								th:selected="${fieldlists.id} == *{fiid}">[[${fieldlists.number}]]
+								[[${fieldlists.name}]]</option>
 					</select></td>
 					<td><select id="pnid" style="pointer-events: none;"
 						tabindex="-1">
-							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+							<option
+								th:each="product_name_viewlists : ${product_name_viewlist}"
 								th:value="${product_name_viewlists.pnid}"
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.name}]]</option>
 					</select></td>
@@ -163,22 +167,23 @@
 								th:value="${ex_workslists.id}"
 								th:selected="${ex_workslists.id} == *{exid}">[[${ex_workslists.value}]]</option>
 					</select></td>
-					<td th:text="*{quantity}" style="text-align:right"></td>
+					<td th:text="*{quantity}" style="text-align: right"></td>
 					<td><select id="uid" style="pointer-events: none;"
 						tabindex="-1">
-							<option th:each="product_name_viewlists : ${product_name_viewlist}"
+							<option
+								th:each="product_name_viewlists : ${product_name_viewlist}"
 								th:value="${product_name_viewlists.pnid}"
 								th:selected="${product_name_viewlists.pnid} == *{pnid}">[[${product_name_viewlists.unit}]]</option>
 					</select></td>
-					<td><select id="spprice" style="pointer-events: none;" dir="rtl"
-						tabindex="-1">
+					<td><select id="spprice" style="pointer-events: none;"
+						dir="rtl" tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
 								th:value="${production_daily_report_viewlists.pdrid}"
 								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.spprice}]]</option>
 					</select></td>
-					<td><select id="spsalesamount"style="pointer-events: none;" dir="rtl"
-						tabindex="-1">
+					<td><select id="spsalesamount" style="pointer-events: none;"
+						dir="rtl" tabindex="-1">
 							<option
 								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
 								th:value="${production_daily_report_viewlists.pdrid}"
@@ -198,11 +203,53 @@
 				</tr>
 			</tbody>
 			<tfoot>
-					<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>小計</th><th style="text-align:right">[[${Subtotal}]]<th></th><th></th><th></th></tr>
-					<!-- JSの場合<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>小計</th><th id="subtotal" style="text-align:right"><th></th><th></th><th></th></tr>  -->
-					<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>消費税</th><th id="tax" style="text-align:right">[[${Tax}]]</th><th></th><th></th><th></th></tr>
-					<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>合計</th><th id="total"style="text-align:right">[[${Total}]]</th><th></th><th></th></tr>
-
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>小計</th>
+					<th style="text-align: right">[[${Subtotal}]]
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<!-- JSの場合<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>小計</th><th id="subtotal" style="text-align:right"><th></th><th></th><th></th></tr>  -->
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>消費税</th>
+					<th id="tax" style="text-align: right">[[${Tax}]]</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<!-- JSの場合<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>消費税</th><th id="tax" style="text-align:right"><th></th><th></th><th></th></tr>  -->
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>合計</th>
+					<th id="total" style="text-align: right">[[${Total}]]</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<!-- JSの場合<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>合計</th><th id="total" style="text-align:right"><th></th><th></th><th></th></tr>  -->
 			</tfoot>
 		</table>
 		<button type="button" onclick="history.back()" class="btn btn-info">戻る</button>
@@ -213,73 +260,74 @@
 		</span>
 
 	</div>
-		<script>
-		$(function() {
-			let total = 0;
+	<!-- <script>
+ 		$(function() {
+ 			let total = 0;
 
-			// 金額を表示している全てのコンポーネントを取得
-			$('select[id="spsalesamount"] :selected').each(function(i, item) {
-				// コンポーネント毎に選択している値を取得して、合計に足していく
-				// カンマが付いていると数値化できないので、replaceでカンマを取り除いてparseIntで数値化している。
-				total += parseInt($(item).text().replace(',', ''));
-			});
+ 			// 金額を表示している全てのコンポーネントを取得
+ 			$('select[id="spsalesamount"] :selected').each(function(i, item) {
+ 				// コンポーネント毎に選択している値を取得して、合計に足していく
+ 				// カンマが付いていると数値化できないので、replaceでカンマを取り除いてparseIntで数値化している。
+ 				total += parseInt($(item).text().replace(',', ''));
+ 			});
 
-			// 計算した合計値を小計に設定
-			// toLocaleString()をすることで、カンマ区切り文字にしている
+ 			// 計算した合計値を小計に設定
+ 			// toLocaleString()をすることで、カンマ区切り文字にしている
 			$("#subtotal").text(total.toLocaleString());
 
-			// 消費税（小計から算出し四捨五入して設定）
-			let tax = Math.round(total * 0.1);
-			$("#tax").text(tax.toLocaleString());
+ 			// 消費税（小計から算出し四捨五入して設定）
+ 			let tax = Math.round(total * 0.1);
+ 			$("#tax").text(tax.toLocaleString());
 
-			// 合計に値を設定
-			$("#total").text((total + tax).toLocaleString());
+ 			// 合計に値を設定
+ 			$("#total").text((total + tax).toLocaleString());
 
+ 		});
+ 	<script> -->
+
+	<script>
+		function pagedown() {
+			var a = document.documentElement;
+			var y = a.scrollHeight - a.clientHeight;
+			window.scroll(0, y);
+		}
+
+		function pageup() {
+			scrollTo(0, 0);
+		}
+	</script>
+
+	<!-- jqueryの場合 -->
+
+	<script>
+		//formタグにサブミット時イベントを設定
+
+		$('form[name!="search"]').submit(function(event) {
+
+			// 確認メッセージ表示
+			// 戻り値を変数resultに代入(trueまたはfalse)
+			var result = window.confirm('本当に削除してよろしいですか？');
+
+			// キャンセルボタンが押された場合
+			if (result == false) {
+
+				// サブミットを中止する
+				return false;
+			}
 		});
 
-		function pagedown(){
-		  var a = document.documentElement;
-		  var y = a.scrollHeight - a.clientHeight;
-		  window.scroll(0, y);
+		function recorddateClear() {
+			var textForm = document.getElementById("recorddate");
+			textForm.value = '';
 		}
 
-		function pageup(){
-			 scrollTo(0, 0);
+		function recorddateEndClear() {
+			var textForm = document.getElementById("recorddateEnd");
+			textForm.value = '';
 		}
-		</script>
+	</script>
 
-		<!-- jqueryの場合 -->
-
-		<script>
-			//formタグにサブミット時イベントを設定
-
-			$('form[name!="search"]').submit(function(event) {
-
-				// 確認メッセージ表示
-				// 戻り値を変数resultに代入(trueまたはfalse)
-				var result = window.confirm('本当に削除してよろしいですか？');
-
-				// キャンセルボタンが押された場合
-				if (result == false) {
-
-					// サブミットを中止する
-					return false;
-				}
-			});
-
-			function recorddateClear() {
-				var textForm = document.getElementById("recorddate");
-				textForm.value = '';
-			}
-
-			function recorddateEndClear() {
-				var textForm = document.getElementById("recorddateEnd");
-				textForm.value = '';
-			}
-
-			</script>
-
-		<!-- javascriptの場合
+	<!-- javascriptの場合
 
 		<script type="text/javascript">
 
