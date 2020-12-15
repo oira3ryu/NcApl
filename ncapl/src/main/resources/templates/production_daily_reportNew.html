@@ -28,61 +28,57 @@
 		crossorigin="anonymous"></script>
 
 	<script language="JavaScript">
+		function setPid(txt) {
+			document.production_daily_report.pid.value = txt;
+			select.selectedIndex = index;
+		}
 
-	function setPid(txt)
-	{
-		document.production_daily_report.pid.value = txt;
-		select.selectedIndex = index;
-	}
+		function setCoid(txt) {
+			document.production_daily_report.coid.value = txt;
+			select.selectedIndex = index;
+		}
 
-	function setCoid(txt)
-	{
-		document.production_daily_report.coid.value = txt;
-		select.selectedIndex = index;
-	}
+		function setFiid(txt) {
+			document.production_daily_report.fiid.value = txt;
+			select.selectedIndex = index;
+		}
 
-	function setFiid(txt)
-	{
-		document.production_daily_report.fiid.value = txt;
-		select.selectedIndex = index;
-	}
+		function setPnid(txt) {
+			document.production_daily_report.pnid.value = txt;
+			select.selectedIndex = index;
+		}
 
-	function setPnid(txt)
-	{
-		document.production_daily_report.pnid.value = txt;
-		select.selectedIndex = index;
-	}
+		function setExid(txt) {
+			document.production_daily_report.exid.value = txt;
+			select.selectedIndex = index;
+		}
 
-	function setExid(txt)
-	{
-		document.production_daily_report.exid.value = txt;
-		select.selectedIndex = index;
-	}
+		function setTaxid(txt) {
+			document.production_daily_report.taxid.value = txt;
+			select.selectedIndex = index;
+		}
 
-	function setJid(txt)
-	{
-		document.production_daily_report.jid.value = txt;
-		document.production_daily_report.jid1.value = txt;
-		//select.selectedIndex = index;
-		// 製品名ドロップダウンのoptionを取得し、option1件毎に処理を行う
-		$("#product_name option").each(function(index, object) {
-			// 製品名のclassに設定されている値と、選択した製品種別の値が一致する場合
-			if ($(object).attr("class") == $("#journal").val()) {
-				// 表示
-				$(object).show();
-			} else {
-				// 非表示
-				$(object).hide();
-			}
-		});
-	}
+		function setJid(txt) {
+			document.production_daily_report.jid.value = txt;
+			document.production_daily_report.jid1.value = txt;
+			//select.selectedIndex = index;
+			// 製品名ドロップダウンのoptionを取得し、option1件毎に処理を行う
+			$("#product_name option").each(function(index, object) {
+				// 製品名のclassに設定されている値と、選択した製品種別の値が一致する場合
+				if ($(object).attr("class") == $("#journal").val()) {
+					// 表示
+					$(object).show();
+				} else {
+					// 非表示
+					$(object).hide();
+				}
+			});
+		}
 
-	function setRecorddate(txt)
-	{
-		document.production_daily_report.recorddate.value = txt;
-		select.selectedIndex = index;
-	}
-
+		function setRecorddate(txt) {
+			document.production_daily_report.recorddate.value = txt;
+			select.selectedIndex = index;
+		}
 	</script>
 
 	<div class="container">
@@ -96,6 +92,20 @@
 			name="production_daily_report">
 
 			<div class="form-row">
+
+				<label class="col-sm-3 col-form-label">記録日<span
+					class="badge badge-danger">必須</span></label>
+				<div class="col-sm-9">
+					<p>
+						<input type="hidden" id="recorddate" name="recorddate" />
+						<!-- 記録日選択ドロップダウン  -->
+						<input type="date" name="today" id="today"
+							onChange="setRecorddate(this.value)" /> <input type="button"
+							value="クリア" onclick="recorddateClear()" />
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
 				<label class="col-sm-3 col-form-label">工場名<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
@@ -105,8 +115,8 @@
 							<option value="">---</option>
 							<option th:each="plantlists : ${plantlist}"
 								th:value="${plantlists.id}">[[${plantlists.name}]]</option>
-						</select>
-						<a	href="/plant/plantIndex" th:href="@{/plant}" class="btn btn-primary btn-sm">工場マスタ</a>
+						</select> <a href="/plant/plantIndex" th:href="@{/plant}"
+							class="btn btn-primary btn-sm">工場マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -121,8 +131,8 @@
 							<option th:each="companylists : ${companylist}"
 								th:value="${companylists.id}">[[${companylists.name}]]
 							</option>
-						</select>
-						<a	href="/company/companyIndex" th:href="@{/company}"	class="btn btn-primary btn-sm">施工者マスタ</a>
+						</select> <a href="/company/companyIndex" th:href="@{/company}"
+							class="btn btn-primary btn-sm">施工者マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -136,8 +146,8 @@
 							<option value="">---</option>
 							<option th:each="fieldlists : ${fieldlist}"
 								th:value="${fieldlists.id}">[[${fieldlists.name}]]</option>
-						</select>
-						<a	href="/field/fieldIndex" th:href="@{/field}" class="btn btn-primary btn-sm">現場マスタ</a>
+						</select> <a href="/field/fieldIndex" th:href="@{/field}"
+							class="btn btn-primary btn-sm">現場マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -146,14 +156,15 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="jid" style="width:20px;" /><select id="journal" name="jid_parent"
+						<input type="hidden" name="jid" style="width: 20px;" /><select
+							id="journal" name="jid_parent"
 							onChange="setJid(this[this.selectedIndex].value)">
 							<option value="">---</option>
 							<option th:each="journallists : ${journallist}"
 								th:value="${journallists.id}">[[${journallists.name}]]
 							</option>
-						</select>
-						<a	href="/journal/journalIndex" th:href="@{/journal}" class="btn btn-primary btn-sm">製品マスタ</a>
+						</select> <a href="/journal/journalIndex" th:href="@{/journal}"
+							class="btn btn-primary btn-sm">製品マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -162,17 +173,18 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="pnid" />
-						<input type="hidden" name="jid1" style="width:20px;" />
-						<select id="product_name" name="jid_child"
+						<input type="hidden" name="pnid" /> <input type="hidden"
+							name="jid1" style="width: 20px;" /> <select id="product_name"
+							name="jid_child"
 							onChange="setPnid(this[this.selectedIndex].value)">
 							<option value="">---</option>
-							<option th:each="product_name_view_jidlists : ${product_name_view_jidlist}"
+							<option
+								th:each="product_name_view_jidlists : ${product_name_view_jidlist}"
 								th:classappend="${product_name_view_jidlists.jid}"
 								th:value="${product_name_view_jidlists.pnid}">[[${product_name_view_jidlists.name}]]
 							</option>
-						</select>
-						<a	href="/product_name/product_nameIndex" th:href="@{/product_name}" class="btn btn-primary btn-sm">製品名マスタ</a>
+						</select> <a href="/product_name/product_nameIndex"
+							th:href="@{/product_name}" class="btn btn-primary btn-sm">製品名マスタ</a>
 					</p>
 				</div>
 			</div>
@@ -181,13 +193,13 @@
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" name="exid" style="width:20px;" /><select id="ex_works"
-							onChange="setExid(this[this.selectedIndex].value)">
+						<input type="hidden" name="exid" style="width: 20px;" /><select
+							id="ex_works" onChange="setExid(this[this.selectedIndex].value)">
 							<option th:each="ex_workslists : ${ex_workslist}"
 								th:value="${ex_workslists.id}">[[${ex_workslists.value}]]
 							</option>
-						</select>
-						<a	href="/ex_works/ex_worksIndex" th:href="@{/ex_works}" class="btn btn-primary btn-sm">工場渡しマスタ</a>
+						</select> <a href="/ex_works/ex_worksIndex" th:href="@{/ex_works}"
+							class="btn btn-primary btn-sm">工場渡しマスタ</a>
 					</p>
 				</div>
 			</div>
@@ -201,18 +213,23 @@
 				</div>
 			</div>
 			<div class="form-row">
-				<label class="col-sm-3 col-form-label">記録日<span
+				<label class="col-sm-3 col-form-label">税率<span
 					class="badge badge-danger">必須</span></label>
 				<div class="col-sm-9">
 					<p>
-						<input type="hidden" id="recorddate" name="recorddate" />
-						<!-- 記録日選択ドロップダウン  -->
-						<input type="date" name="today" id="today"
-							onChange="setRecorddate(this.value)" />
-							<input type="button" value="クリア" onclick="recorddateClear()" />
+						<input type="hidden" name="taxid" /> <select id="taxid"
+							name="taxid_child"
+							onChange="setTaxid(this[this.selectedIndex].value)">
+							<option value="">---</option>
+							<option th:each="taxlists : ${taxlist}"
+								th:classappend="${taxlists.id}" th:value="${taxlists.id}">[[${taxlists.value}]]
+							</option>
+						</select> <a href="/tax/taxIndex" th:href="@{/tax}"
+							class="btn btn-primary btn-sm">消費税率マスタ</a>
 					</p>
 				</div>
 			</div>
+
 			<div class="form-row">
 				<div class="col-sm-9">
 					<p>
@@ -232,15 +249,16 @@
 
 	<script type="text/javascript">
 		//今日の日付データを変数hidukeに格納
-		var hiduke=new Date();
+		var hiduke = new Date();
 		//年・月・日・曜日を取得する
 		var year = hiduke.getFullYear();
-		var month = ("0"+(hiduke.getMonth()+1)).slice(-2);
+		var month = ("0" + (hiduke.getMonth() + 1)).slice(-2);
 		var week = hiduke.getDay();
-		var day = ("0"+hiduke.getDate()).slice(-2);
+		var day = ("0" + hiduke.getDate()).slice(-2);
 		//var yobi= new Array("日","月","火","水","木","金","土");
-		document.getElementById('today').value=year+"-"+month+"-"+day;
-		document.getElementById('recorddate').value=year+"-"+month+"-"+day;
+		document.getElementById('today').value = year + "-" + month + "-" + day;
+		document.getElementById('recorddate').value = year + "-" + month + "-"
+				+ day;
 		//document.write(year+"-"+month+"-"+day);
 	</script>
 
@@ -249,7 +267,6 @@
 			var textForm = document.getElementById("today");
 			textForm.value = '';
 		}
-
-		</script>
+	</script>
 </body>
 </html>

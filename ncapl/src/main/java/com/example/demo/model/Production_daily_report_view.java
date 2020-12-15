@@ -62,4 +62,6 @@ public class Production_daily_report_view {
 	private Integer taxid;
 
 	private Integer tax;
+
+	private Integer taxvalue;
 }

@@ -32,6 +32,7 @@ import com.example.demo.model.Production_daily_report_view;
 import com.example.demo.model.Pump;
 import com.example.demo.model.Slump;
 import com.example.demo.model.Strength;
+import com.example.demo.model.Tax;
 import com.example.demo.model.Type;
 import com.example.demo.model.Unit;
 import com.example.demo.service.AggregateService;
@@ -51,6 +52,7 @@ import com.example.demo.service.Production_daily_report_viewService;
 import com.example.demo.service.PumpService;
 import com.example.demo.service.SlumpService;
 import com.example.demo.service.StrengthService;
+import com.example.demo.service.TaxService;
 import com.example.demo.service.TypeService;
 import com.example.demo.service.UnitService;
 
@@ -99,6 +101,9 @@ public class Production_daily_reportController {
 
 	@Autowired
 	private SlumpService slumpService;
+
+	@Autowired
+	private TaxService taxService;
 
 	@Autowired
 	private TypeService typeService;
@@ -174,6 +179,9 @@ public class Production_daily_reportController {
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
 
+		List<Tax> taxs = taxService.findAll();
+		model.addAttribute("taxlist", taxs);
+
 		List<Pump> pumps = pumpService.findAll();
 		model.addAttribute("pumplist", pumps);
 
@@ -226,6 +234,9 @@ public class Production_daily_reportController {
 
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
+
+		List<Tax> taxs = taxService.findAll();
+		model.addAttribute("taxlist", taxs);
 
 		List<Type> types = typeService.findAll();
 		model.addAttribute("typelist", types);
@@ -283,6 +294,9 @@ public class Production_daily_reportController {
 
 		List<Slump> slumps = slumpService.findAll();
 		model.addAttribute("slumplist", slumps);
+
+		List<Tax> taxs = taxService.findAll();
+		model.addAttribute("taxlist", taxs);
 
 		List<Type> types = typeService.findAll();
 		model.addAttribute("typelist", types);

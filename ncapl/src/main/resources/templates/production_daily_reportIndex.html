@@ -104,6 +104,7 @@
 			<thead>
 				<tr>
 					<th>ID</th>
+					<th>記録日</th>
 					<th>工場</th>
 					<th>施工者</th>
 					<th>工事番号・現場名</th>
@@ -113,7 +114,8 @@
 					<th>単位</th>
 					<th style="text-align: right">単価</th>
 					<th style="text-align: right">金額</th>
-					<th>記録日</th>
+					<th>税額</th>
+					<th>税率</th>
 					<th><a
 						href="/production_daily_report/production_daily_reportNew"
 						class="btn btn-primary">新規作成</a></th>
@@ -135,6 +137,7 @@
 					th:each="production_daily_report : ${production_daily_reportlist}"
 					th:object="${production_daily_report}">
 					<td th:text="*{pdrid}"></td>
+					<td th:text="*{recorddate}"></td>
 					<td><select id="pid" style="pointer-events: none;"
 						tabindex="-1">
 							<option th:each="plantlists : ${plantlist}"
@@ -189,7 +192,20 @@
 								th:value="${production_daily_report_viewlists.pdrid}"
 								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.spsalesamount}]]</option>
 					</select></td>
-					<td th:text="*{recorddate}"></td>
+					<td><select id="tax" style="pointer-events: none;"
+						dir="rtl" tabindex="-1">
+							<option
+								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+								th:value="${production_daily_report_viewlists.pdrid}"
+								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.tax}]]</option>
+					</select></td>
+					<td><select id="taxid" style="pointer-events: none;"
+						dir="rtl" tabindex="-1">
+							<option
+								th:each="production_daily_report_viewlists : ${production_daily_report_viewlist}"
+								th:value="${production_daily_report_viewlists.pdrid}"
+								th:selected="${production_daily_report_viewlists.pdrid} == *{pdrid}">[[${production_daily_report_viewlists.taxvalue}]]</option>
+					</select></td>
 
 					<td><a
 						th:href="@{/production_daily_report/{id}/edit(id=*{pdrid})}"
